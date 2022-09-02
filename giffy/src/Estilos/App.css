@@ -12,15 +12,18 @@
 nav {
   grid-column: 1/6;
   grid-row: 1/2;
-  background-color: #bbd852;
+  background-color: #23272e;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #4c525e;
 }
 aside {
   background-color: #282c34;
   grid-column: 1/2;
   grid-row: 2/3;
+
+  border-right: 1px solid #4c525e;
 }
 main {
   grid-column: 2/6;
@@ -30,6 +33,7 @@ footer {
   grid-column: 1/6;
   grid-row: 3/4;
   background-color: #343841;
+  border-top: 1px solid #4c525e;
 }
 
 .App-content {
@@ -38,6 +42,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  padding: 20px;
 }
 .galery-item {
   flex: 1;
@@ -47,21 +52,38 @@ footer {
 input,
 button {
   font-size: 15px;
-  padding: 10px;
+  padding: 8px;
   margin: 10px;
   border: 0px;
   border-radius: 5px;
   background-color: #282c34;
   font-weight: bold;
   color: white;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.514);
+}
+[type="number"] {
+  width: 100px;
+}
+button {
+  background-color: #414855;
 }
 button:hover {
-  background-color: rgb(138, 212, 255);
+  background-color: rgb(209, 209, 209);
+  color: #252525;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }
 input:focus {
-  border: 2px solid #282c34;
-  background-color: #1d829e;
+  outline: none;
+  background-color: #dbdbdb;
+  color: black;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }
 input::placeholder {
-  color: rgb(196, 236, 188);
+  color: rgba(233, 233, 233, 0.753);
+  font-weight: 200;
+}
+input:focus::placeholder {
+  color: #282c34;
 }
