@@ -8,7 +8,7 @@ export default function ListGifs() {
 
   const [array, setArray] = useState([]);
 
-  //Llama a API cuando se renderiza el componente
+  //Llama a API cuando cambia search
   useEffect(() => {
     petition(search).then((arrayAPI) => setArray(arrayAPI));
   }, [search]);
