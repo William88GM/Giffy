@@ -10,8 +10,8 @@
   grid-template-rows: 9vh 1fr 400px;
 }
 nav {
-  grid-column: 1/6;
   grid-row: 1/2;
+  grid-column: 1/6;
   background-color: #23272e;
   display: flex;
   justify-content: center;
@@ -86,4 +86,24 @@ input::placeholder {
 }
 input:focus::placeholder {
   color: #282c34;
+}
+
+a {
+  text-decoration: none;
+  color: #c3ce2d;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+ul {
+  text-align: center;
+  list-style: none;
+  padding: 15px;
+}
+aside {
+  text-align: center;
+  color: #dbdbdb;
+  font-size: 25px;
+  font-weight: bold;
 }

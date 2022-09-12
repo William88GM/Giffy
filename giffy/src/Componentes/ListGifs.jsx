@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { petition } from "./../Servicios/call_API";
+import { petition } from "../Servicios/call_API";
 
 export default function ListGifs() {
-  const { search } = useParams();
+  const { search } = useParams(); //Extrae de la url el parametro
 
   const [array, setArray] = useState([]);
 
@@ -15,7 +15,7 @@ export default function ListGifs() {
 
   return array.map((elem) => (
     <img
-      key={elem.low}
+      key={elem.id}
       className="galery-item"
       src={elem.low}
       alt={`gif-${elem.id}`}

@@ -1,9 +1,10 @@
-export default function Nav({ Search, Limit, Submit }) {
+import logo from "../../assets/logo.png";
+export default function Nav({ Search, Submit }) {
   return (
     <nav>
       <form onSubmit={Submit}>
+        <img src={logo} alt="logo" />
         <input placeholder="Buscar gifs" onChange={Search} />
-        <input placeholder="Cantidad" type="number" onChange={Limit} />
         <button>Buscar</button>
       </form>
     </nav>
