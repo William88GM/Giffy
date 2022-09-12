@@ -12,7 +12,8 @@ export function petition(keyword, limit) {
         const original = elem.images.original.url;
         const low = elem.images.fixed_height.url;
         const id = elem.id;
-        return { original, low, id };
+        const title = elem.title;
+        return { original, low, id, title };
       });
     });
 }

@@ -1,24 +1,22 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { petition } from "../Servicios/call_API";
+import { Context } from "../Context";
 
 export default function ListGifs() {
   const { search } = useParams(); //Extrae de la url el parametro
 
-  const [array, setArray] = useState([]);
+  const { gifs, setGifs } = useContext(Context);
 
   //Llama a API cuando cambia search
   useEffect(() => {
-    petition(search).then((arrayAPI) => setArray(arrayAPI));
-  }, [search]);
+    petition(search).then((arrayAPI) => setGifs(arrayAPI));
+  }, [search, setGifs]); //setGifs para que?
 
-  return array.map((elem) => (
-    <img
-      key={elem.id}
-      className="galery-item"
-      src={elem.low}
-      alt={`gif-${elem.id}`}
-    />
+  return gifs.map((elem) => (
+    <Link to={`${elem.id}`} key={elem.id}>
+      <img className="galery-item" src={elem.low} alt={elem.title} />
+    </Link>
   ));
 }

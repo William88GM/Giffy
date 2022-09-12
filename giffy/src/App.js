@@ -6,6 +6,8 @@ import { useHistorySearch } from "./hooks/HistorySearch";
 import Nav from "./Componentes/Nav";
 import ListGifs from "./Componentes/ListGifs";
 import Aside from "./Componentes/Aside";
+import { ContextProvider } from "./Context";
+import Gif from "./Componentes/Gif";
 
 function App() {
   const [valueSearch, setValueSearch] = useState("");
@@ -21,24 +23,26 @@ function App() {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-    navigate(`/${valueSearch}`); //Cambia url, antiguo history
+    navigate(`/${valueSearch}`); //Cambia url, antiguo history?
     updateHistory(valueSearch);
   }
 
   return (
-    <>
+    <ContextProvider>
       <Nav Search={handleSearch} Submit={handleSubmit} />
       <main>
         <article className="App-content">
           <Routes>
             <Route path={`/:search`} element={<ListGifs />} />
+
+            <Route path=":search/:id" element={<Gif />} />
           </Routes>
         </article>
       </main>
       <Aside recents={recents} />
       <footer></footer>
       <img src="" alt="logo" />
-    </>
+    </ContextProvider>
   );
 }
 
