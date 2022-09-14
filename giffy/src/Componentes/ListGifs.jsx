@@ -16,7 +16,7 @@ export default function ListGifs() {
 
   return gifs.map((elem) => (
     <Link to={`${elem.id}`} key={elem.id}>
-      <img className="galery-item" src={elem.low} alt={elem.title} />
+      <img className="galery-item" src={elem.original} alt={elem.title} />
     </Link>
   ));
 }
