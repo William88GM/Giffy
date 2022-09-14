@@ -6,12 +6,12 @@
 
 #root {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 9vh 1fr 400px;
+  grid-template-columns: 20vw 1fr;
+  grid-template-rows: 9vh auto 1fr 400px;
 }
 nav {
   grid-row: 1/2;
-  grid-column: 1/6;
+  grid-column: 1/3;
   background-color: #23272e;
   display: flex;
   justify-content: center;
@@ -21,32 +21,47 @@ nav {
 aside {
   background-color: #282c34;
   grid-column: 1/2;
-  grid-row: 2/3;
+  grid-row: 2/4;
+  text-align: center;
+  color: #dbdbdb;
+  font-size: 20px;
+  font-weight: bold;
 
+  padding: 10px;
   border-right: 1px solid #4c525e;
 }
 main {
-  grid-column: 2/6;
-  grid-row: 2/3;
+  grid-column: 2/3;
+  grid-row: 2/4;
+}
+article {
+  height: 100%;
 }
 footer {
-  grid-column: 1/6;
-  grid-row: 3/4;
+  grid-column: 1/3;
+  grid-row: 4/5;
   background-color: #343841;
   border-top: 1px solid #4c525e;
+}
+.detail {
+  grid-column: 1/-1;
+  object-fit: contain;
+  object-position: top;
+  margin: auto;
 }
 
 .App-content {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  grid-auto-rows: auto;
+  gap: 1rem;
+  padding: 15px;
 }
 .galery-item {
-  flex: 1;
   border-radius: 5px;
+  width: 100%;
 }
 
 input,
@@ -87,23 +102,62 @@ input::placeholder {
 input:focus::placeholder {
   color: #282c34;
 }
-
+img {
+  width: 100%;
+  height: 100%;
+}
 a {
   text-decoration: none;
-  color: #c3ce2d;
+  color: #c3cc3f;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 2px;
 }
 
 ul {
-  text-align: center;
   list-style: none;
-  padding: 15px;
+  margin-top: 20px;
 }
-aside {
-  text-align: center;
-  color: #dbdbdb;
-  font-size: 25px;
-  font-weight: bold;
+li {
+  border: 1px solid #dbdbdb6e;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 780px) {
+  /*mobile*/
+  aside {
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+  main {
+    grid-column: 1/3;
+    grid-row: 3/4;
+  }
+  footer {
+    grid-column: 1/3;
+    grid-row: 4/5;
+  }
+}
+
+@media screen and (min-width: 2400px) {
+  /*Hight res*/
+  .App-content {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 50rem), 1fr));
+  }
+  aside {
+    font-size: 40px;
+  }
+  a {
+    font-size: 40px;
+  }
+  input,
+  button {
+    font-size: 30px;
+    padding: 16px;
+    margin: 20px;
+  }
 }

@@ -41,7 +41,6 @@ function App() {
       </main>
       <Aside recents={recents} />
       <footer></footer>
-      <img src="" alt="logo" />
     </ContextProvider>
   );
 }

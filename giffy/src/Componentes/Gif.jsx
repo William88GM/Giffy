@@ -8,5 +8,5 @@ export default function Gif() {
 
   const gif = gifs.find((elem) => elem.id === id);
 
-  return <img className="galery-item" src={gif.original} alt={gif.title} />;
+  return <img className="detail" src={gif.original} alt={gif.title} />;
 }
