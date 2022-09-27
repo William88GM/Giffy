@@ -10,6 +10,8 @@
   grid-template-columns: 20vw 1fr;
   grid-template-rows: 9vh auto 1fr 400px;
 }
+
+/*_________________________________________________________________*/
 nav {
   grid-row: 1/2;
   grid-column: 1/3;
@@ -23,10 +25,10 @@ nav {
 }
 .logo {
   height: 42px;
-  width: 42px;
+
+  grid-column: 1/2;
   display: flex;
   align-items: center;
-  grid-column: 1/2;
   font-family: "Dancing Script", cursive;
   font-size: 30px;
 }
@@ -39,6 +41,42 @@ form {
   display: flex;
   align-items: center;
 }
+input,
+button {
+  font-size: 15px;
+  padding: 8px;
+  margin: 10px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #282c34;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.514);
+}
+button {
+  background-color: #414855;
+}
+button:hover {
+  background-color: rgb(209, 209, 209);
+  color: #252525;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+}
+input:focus {
+  outline: none;
+  background-color: #dbdbdb;
+  color: black;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+}
+input::placeholder {
+  color: rgba(233, 233, 233, 0.753);
+  font-weight: 200;
+}
+input:focus::placeholder {
+  color: #282c34;
+}
+/*_________________________________________________________________*/
 aside {
   background-color: #282c34;
   grid-column: 1/2;
@@ -51,6 +89,14 @@ aside {
   padding: 10px;
   border-right: 1px solid #00fdff6e;
 }
+
+footer {
+  grid-column: 1/3;
+  grid-row: 4/5;
+  background-color: #343841;
+  border-top: 1px solid #00fdff6e;
+}
+/*_________________________________________________________________*/
 main {
   grid-column: 2/3;
   grid-row: 2/4;
@@ -58,13 +104,6 @@ main {
 article {
   height: 100%;
 }
-footer {
-  grid-column: 1/3;
-  grid-row: 4/5;
-  background-color: #343841;
-  border-top: 1px solid #00fdff6e;
-}
-
 .gif {
   grid-column: 1/-1;
   position: relative;
@@ -101,46 +140,7 @@ img {
   width: 100%;
   /* max-height: 90vh; */
 }
-
-input,
-button {
-  font-size: 15px;
-  padding: 8px;
-  margin: 10px;
-  border: 0px;
-  border-radius: 5px;
-  background-color: #282c34;
-  font-weight: bold;
-  color: white;
-  box-shadow: 0 0 2px rgba(255, 255, 255, 0.514);
-}
-[type="number"] {
-  width: 100px;
-}
-button {
-  background-color: #414855;
-}
-button:hover {
-  background-color: rgb(209, 209, 209);
-  color: #252525;
-  transition-property: background-color, color;
-  transition-duration: 0.2s;
-}
-input:focus {
-  outline: none;
-  background-color: #dbdbdb;
-  color: black;
-  transition-property: background-color, color;
-  transition-duration: 0.2s;
-}
-input::placeholder {
-  color: rgba(233, 233, 233, 0.753);
-  font-weight: 200;
-}
-input:focus::placeholder {
-  color: #282c34;
-}
-
+/*_________________________________________________________________*/
 a {
   text-decoration: none;
   color: #ffffff;
@@ -164,7 +164,7 @@ li a {
   padding: 10px;
   width: 100%;
 }
-
+/*_________________________________________________________________*/
 @media screen and (max-width: 780px) {
   /*tablet/mobile*/
   aside {
@@ -184,6 +184,14 @@ li a {
   }
   .Back {
     display: none;
+  }
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 5px;
+  }
+  input {
+    width: 100%;
   }
 }
 
@@ -207,5 +215,6 @@ li a {
   .logo {
     height: 70px;
     width: 70px;
+    font-size: 50px;
   }
 }
