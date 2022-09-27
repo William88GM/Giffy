@@ -8,6 +8,7 @@ import ListGifs from "./Componentes/ListGifs";
 import Aside from "./Componentes/Aside";
 import { ContextProvider } from "./Context";
 import Gif from "./Componentes/Gif";
+import { Page404 } from "./Componentes/Page404";
 
 function App() {
   const [valueSearch, setValueSearch] = useState("");
@@ -33,9 +34,11 @@ function App() {
       <main>
         <article className="App-content">
           <Routes>
+            <Route path="/" element={<ListGifs />} />
             <Route path={`/:search`} element={<ListGifs />} />
 
-            <Route path=":search/:id" element={<Gif />} />
+            <Route path="/:search/:id" element={<Gif />} />
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </article>
       </main>

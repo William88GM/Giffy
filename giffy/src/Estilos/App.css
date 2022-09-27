@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
 #root {
   display: grid;
@@ -13,22 +14,42 @@ nav {
   grid-row: 1/2;
   grid-column: 1/3;
   background-color: #23272e;
-  display: flex;
-  justify-content: center;
+  border-bottom: 1px solid #00fdff6e;
+  position: sticky;
+  display: grid;
+  grid-template-columns: 20vw 1fr;
+  justify-items: center;
   align-items: center;
-  border-bottom: 1px solid #4c525e;
+}
+.logo {
+  height: 42px;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  grid-column: 1/2;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+}
+.logo img {
+  border-radius: 50%;
+  margin: 5px;
+}
+form {
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
 }
 aside {
   background-color: #282c34;
   grid-column: 1/2;
   grid-row: 2/4;
   text-align: center;
-  color: #dbdbdb;
+  color: #ffffff;
   font-size: 20px;
   font-weight: bold;
 
   padding: 10px;
-  border-right: 1px solid #4c525e;
+  border-right: 1px solid #00fdff6e;
 }
 main {
   grid-column: 2/3;
@@ -41,27 +62,44 @@ footer {
   grid-column: 1/3;
   grid-row: 4/5;
   background-color: #343841;
-  border-top: 1px solid #4c525e;
+  border-top: 1px solid #00fdff6e;
 }
-.detail {
+
+.gif {
   grid-column: 1/-1;
+  position: relative;
+}
+.gif img {
   object-fit: contain;
   object-position: top;
-  margin: auto;
+}
+.Back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  border-radius: 60%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 2px 2px 10px #23272ed7;
 }
 
 .App-content {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 90vh;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-  grid-auto-rows: auto;
+  /* grid-template-rows: masonry; */
   gap: 1rem;
   padding: 15px;
+}
+img {
+  height: 100%; /*without masonry*/
 }
 .galery-item {
   border-radius: 5px;
   width: 100%;
+  /* max-height: 90vh; */
 }
 
 input,
@@ -102,13 +140,10 @@ input::placeholder {
 input:focus::placeholder {
   color: #282c34;
 }
-img {
-  width: 100%;
-  height: 100%;
-}
+
 a {
   text-decoration: none;
-  color: #c3cc3f;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -119,34 +154,43 @@ ul {
   margin-top: 20px;
 }
 li {
-  border: 1px solid #dbdbdb6e;
-  margin: 10px;
-  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+li a {
+  border: 1px solid #00fdff6e;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+}
 
 @media screen and (max-width: 780px) {
-  /*mobile*/
+  /*tablet/mobile*/
   aside {
     grid-column: 1/3;
-    grid-row: 2/3;
+    grid-row: 3/4;
   }
   main {
     grid-column: 1/3;
-    grid-row: 3/4;
+    grid-row: 2/3;
   }
   footer {
     grid-column: 1/3;
     grid-row: 4/5;
+  }
+  nav form button {
+    display: none;
+  }
+  .Back {
+    display: none;
   }
 }
 
 @media screen and (min-width: 2400px) {
   /*Hight res*/
   .App-content {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 50rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 35rem), 1fr));
   }
   aside {
     font-size: 40px;
@@ -159,5 +203,9 @@ li {
     font-size: 30px;
     padding: 16px;
     margin: 20px;
+  }
+  .logo {
+    height: 70px;
+    width: 70px;
   }
 }
