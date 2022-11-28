@@ -8,7 +8,7 @@
 #root {
 	display: grid;
 	grid-template-columns: 20vw 1fr;
-	grid-template-rows: 9vh auto 1fr 400px;
+	grid-template-rows: 60px auto 1fr 400px;
 }
 
 /*_________________________________________________________________*/
