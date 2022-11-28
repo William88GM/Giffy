@@ -1,29 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function useHistorySearch() {
-  const [recents, setRecents] = useState([]);
+	const [recents, setRecents] = useState([]);
 
-  function initialRecover() {
-    if (localStorage.getItem("HS")) {
-      const array = localStorage.getItem("HS").split(","); //Recupera lo guardado en el storage
-      setRecents(array);
-    }
-  }
+	useEffect(() => {
+		if (localStorage.getItem("HS")) {
+			const array = localStorage.getItem("HS").split(","); //Recupera lo guardado en el storage
+			setRecents(array);
+		}
+	}, []);
 
-  function updateHistory(newElement) {
-    //Otro dia veo el error
-    if (newElement) {
-      // if(recents.length===9){
+	function updateHistory(newElement) {
+		if (newElement) {
+			//Por qué no se elmina el ultimo?
+			//if (recents.length === 20) setRecents((prev) => prev.pop());
+			// if (recents.length === 20) {
+			// 	let sideArray = [...recents];
+			// 	sideArray.pop();
+			// 	setRecents(sideArray);
+			// }
 
-      // }
-      setRecents([...recents, newElement]);
-      localStorage.setItem("HS", recents); //creo que no llega a guardarlo porque la operacion anterior es asincrona
-    }
-  }
+			setRecents((prev) => [newElement, ...recents]);
+			localStorage.setItem("HS", [newElement, ...recents]);
 
-  return {
-    updateHistory,
-    recents,
-    initialRecover,
-  };
+			//localStorage.setItem("HS", recents); Por que no funcionaba de esta forma?
+			//creo que no llegaba a guardarlo porque la operacion anterior es asincrona
+		}
+	}
+
+	return {
+		updateHistory,
+		recents,
+	};
 }
