@@ -9,6 +9,8 @@ import Aside from "./Componentes/Aside";
 import { ContextProvider } from "./Context";
 import Gif from "./Componentes/Gif";
 import { Page404 } from "./Componentes/Page404";
+import Trending from "./Componentes/Trending";
+import SearchResults from "./Componentes/SearchResults";
 
 function App() {
 	const [valueSearch, setValueSearch] = useState("");
@@ -28,10 +30,10 @@ function App() {
 		<ContextProvider>
 			<Nav Search={handleSearch} Submit={handleSubmit} />
 			<main>
-				<article className="App-content">
+				<article>
 					<Routes>
-						<Route path="/" element={<ListGifs />} />
-						<Route path={`/:search`} element={<ListGifs />} />
+						<Route path="/" element={<Trending />} />
+						<Route path={`/:search`} element={<SearchResults />} />
 
 						<Route path="/:search/:id" element={<Gif />} />
 						<Route path="*" element={<Page404 />} />

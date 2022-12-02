@@ -3,20 +3,21 @@ export default function useObserver({ elRef }) {
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
-		const observer = new IntersectionObserver(onView, { rootMargin: "100px" });
-
 		function onView(entries, observer) {
 			const element = entries[0];
 			if (element.isIntersecting) {
-				setShow(true);
-				observer.disconect();
+				setShow((prev) => true);
+				console.log("intersecting");
+			} else {
+				setShow((prev) => false);
 			}
 		}
+		const observer = new IntersectionObserver(onView, { rootMargin: "100px" });
 
 		observer.observe(elRef.current);
 
 		return () => observer.disconnect();
 	});
 
-	return show;
+	return { show };
 }

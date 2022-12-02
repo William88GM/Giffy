@@ -9,11 +9,11 @@ export default function ListGifs() {
 	const { gifs, setGifs } = useContext(Context);
 	const [page, setPage] = useState(1);
 	const elRef = useRef();
-	// const isView = useObserver({ elRef });
+	const { isView } = useObserver({ elRef });
 
 	//Llama a API cuando cambia search
 	useEffect(() => {
-		petition(search).then((arrayAPI) => setGifs((prev) => arrayAPI));
+		petition(search).then((arrayGIFS) => setGifs((prev) => arrayGIFS));
 	}, [search]); //eslint-disable-line
 
 	function handlePage() {
@@ -27,32 +27,22 @@ export default function ListGifs() {
 	//El problema esta al reemplazar los trends?
 
 	//Esto de abajo creo que hay una mejor forma de hacerlo
-	if (search) {
-		return (
-			<>
-				{gifs.map((elem) => (
-					<Link to={`${elem.id}`} key={elem.id}>
-						<img className="galery-item" src={elem.original} alt={elem.title} />
-					</Link>
-				))}
 
-				{/* <div ref={elRef}>{isView ? () => handlePage : null}</div> */}
+	return (
+		<div className="App-content">
+			{gifs.map((elem) => (
+				<Link to={search ? `${elem.id}` : `trends/${elem.id}`} key={elem.id}>
+					<img
+						// loading="lazy"
+						className="galery-item"
+						src={elem.original}
+						alt={elem.title}
+					/>
+				</Link>
+			))}
 
-				<button className="moreResults" onClick={handlePage}>
-					Cargar mas
-				</button>
-				{/*Para arreglar el botón hay que sacarlo fuera del componente, quizas incluso la funcion handlePage, ver*/}
-			</>
-		);
-	} else {
-		return (
-			<>
-				{gifs.map((elem) => (
-					<Link to={`trends/${elem.id}`} key={elem.id}>
-						<img className="galery-item" src={elem.original} alt={elem.title} />
-					</Link>
-				))}
-			</>
-		);
-	}
+			<div ref={elRef}></div>
+			{isView ? () => handlePage : null}
+		</div>
+	);
 }
