@@ -5,7 +5,7 @@ export default function Trending() {
 	return (
 		<>
 			<h3>🔥 Tendencias 🔥</h3>
-            <ListGifs/>
+			<ListGifs pagination={false} />
 		</>
 	);
 }

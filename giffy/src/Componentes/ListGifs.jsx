@@ -4,29 +4,30 @@ import { petition } from "../Servicios/call_API";
 import { Context } from "../Context";
 import useObserver from "../hooks/useObserver";
 
-export default function ListGifs() {
+export default function ListGifs({ pagination = true }) {
 	const { search } = useParams(); //Extrae de la url el parametro, si es que hay uno
 	const { gifs, setGifs } = useContext(Context);
 	const [page, setPage] = useState(1);
 	const elRef = useRef();
-	const { isView } = useObserver({ elRef });
+	const { show } = useObserver({ elRef });
 
 	//Llama a API cuando cambia search
 	useEffect(() => {
 		petition(search).then((arrayGIFS) => setGifs((prev) => arrayGIFS));
 	}, [search]); //eslint-disable-line
 
-	function handlePage() {
-		petition(search, page).then(
-			(nextGIFS) => setGifs((prev) => prev.concat(nextGIFS)),
-			setPage((prev) => prev + 1)
-		);
+	function handlePage(pagePlus) {
+		if (pagination) {
+			petition(search, pagePlus).then((nextGIFS) =>
+				setGifs((prev) => prev.concat(nextGIFS))
+			);
+		}
 	}
-	//Hay un problema cuando devuelvo mas de 16 resultados, al backear una pagina se mantienen algunos gifs que ya no deberian mostrarse
-	//puede que el problema este en el context
-	//El problema esta al reemplazar los trends?
-
-	//Esto de abajo creo que hay una mejor forma de hacerlo
+	useEffect(() => {
+		if (!show) return;
+		handlePage(page);
+		setPage((prev) => prev + 1);
+	}, [show]);
 
 	return (
 		<div className="App-content">
@@ -42,7 +43,6 @@ export default function ListGifs() {
 			))}
 
 			<div ref={elRef}></div>
-			{isView ? () => handlePage : null}
 		</div>
 	);
 }

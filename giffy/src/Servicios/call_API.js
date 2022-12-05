@@ -7,9 +7,9 @@ export function petition(keyword, page = 0) {
 			16 * page
 		}&rating=g&lang=en`;
 	} else {
-		API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=12&rating=g`;
+		API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=12&rating=g`; //No tiene offset
 	}
-	//El problema esta cuando le pido que me devuelva 14 trends o mas
+	//El problema esta cuando le pido que me devuelva 14 trends o mas?
 	return fetch(API_URL)
 		.then((res) => res.json())
 		.then((res) => {
