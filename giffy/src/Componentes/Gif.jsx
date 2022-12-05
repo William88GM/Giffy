@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Context } from "../Context";
+import { Context } from "../Servicios/Context";
 import arrow from "../assets/arrow.jpg";
 
 export default function Gif() {

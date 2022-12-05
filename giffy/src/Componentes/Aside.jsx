@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useHistorySearch } from "../hooks/HistorySearch";
 
-export default function Aside({ recents = [] }) {
-	recents.reverse(); //<- no funciona
+export default function Aside() {
+	const { list, deleteItem } = useHistorySearch();
+
 	return (
 		<aside>
 			Busquedas recientes
 			<ul>
-				{recents.map((e, i) => (
+				{list.map((el, i) => (
 					<li key={i}>
-						<Link onClick={window.scroll(0, 0)} to={e}>
-							{e}
+						<button onClick={()=>deleteItem(i)}>X</button>
+						<Link onClick={window.scroll(0, 0)} to={el}>
+							{el}
 						</Link>
 					</li>
 				))}

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { petition } from "../Servicios/call_API";
-import { Context } from "../Context";
+import { Context } from "../Servicios/Context";
 import useObserver from "../hooks/useObserver";
 
 export default function ListGifs({ pagination = true }) {
@@ -18,9 +18,10 @@ export default function ListGifs({ pagination = true }) {
 
 	function handlePage(pagePlus) {
 		if (pagination) {
-			petition(search, pagePlus).then((nextGIFS) =>
-				setGifs((prev) => prev.concat(nextGIFS))
-			);
+			petition(search, pagePlus).then((nextGIFS) => {
+				setGifs((prev) => prev.concat(nextGIFS));
+				//agregar condicional para que no haga llamadas cuando no hay mas gifs?
+			});
 		}
 	}
 	useEffect(() => {

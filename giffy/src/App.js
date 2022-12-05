@@ -1,46 +1,33 @@
 import "./Estilos/App.css";
+import { Routes, Route } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { useHistorySearch } from "./hooks/HistorySearch";
 import Nav from "./Componentes/Nav";
-import ListGifs from "./Componentes/ListGifs";
 import Aside from "./Componentes/Aside";
-import { ContextProvider } from "./Context";
+import { ContextProvider } from "./Servicios/Context";
 import Gif from "./Componentes/Gif";
 import { Page404 } from "./Componentes/Page404";
 import Trending from "./Componentes/Trending";
 import SearchResults from "./Componentes/SearchResults";
-
+import HistorialContextProvider from "./Servicios/historialContext";
 function App() {
-	const [valueSearch, setValueSearch] = useState("");
-	const navigate = useNavigate();
-	const { updateHistory, recents } = useHistorySearch();
-
-	function handleSearch(evt) {
-		setValueSearch(evt.target.value); //Actualiza el valor del input
-	}
-	function handleSubmit(evt) {
-		evt.preventDefault();
-		navigate(`/${valueSearch}`); //Cambia url
-		updateHistory(valueSearch);
-	}
-
 	return (
 		<ContextProvider>
-			<Nav Search={handleSearch} Submit={handleSubmit} />
-			<main>
-				<article>
-					<Routes>
-						<Route path="/" element={<Trending />} />
-						<Route path={`/:search`} element={<SearchResults />} />
+			<HistorialContextProvider>
+				<Nav />
+				<main>
+					<article>
+						<Routes>
+							<Route path="/" element={<Trending />} />
+							<Route path={`/:search`} element={<SearchResults />} />
 
-						<Route path="/:search/:id" element={<Gif />} />
-						<Route path="*" element={<Page404 />} />
-					</Routes>
-				</article>
-			</main>
-			<Aside recents={recents} />
+							<Route path="/:search/:id" element={<Gif />} />
+							<Route path="*" element={<Page404 />} />
+						</Routes>
+					</article>
+				</main>
+
+				<Aside />
+			</HistorialContextProvider>
 			<footer></footer>
 		</ContextProvider>
 	);
