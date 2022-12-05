@@ -26,7 +26,6 @@ export default function Gif() {
 				})
 			);
 	}
-	console.log(gif);
 
 	return (
 		<>
