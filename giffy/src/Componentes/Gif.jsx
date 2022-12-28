@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Context } from "../Servicios/Context";
-import arrow from "../assets/arrow.jpg";
+import arrow from "../assets/arrow.svg";
 
 export default function Gif() {
 	const { id } = useParams();
@@ -10,9 +10,9 @@ export default function Gif() {
 	const [gif, setGif] = useState({});
 
 	useEffect(() => {
-		window.scroll(0, 0);
 		setGif(gifs.find((elem) => elem.id === id));
-	}, [gifs, id]);
+		window.scroll(0, 0);
+	}, [id]);
 
 	if (!gif) {
 		fetch(

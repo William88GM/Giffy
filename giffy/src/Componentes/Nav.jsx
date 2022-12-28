@@ -25,8 +25,20 @@ export default function Nav() {
 				Giffy
 			</Link>
 			<form onSubmit={handleSubmit}>
-				<input placeholder="Buscar gifs" onChange={handleSearch} />
-				<button>Buscar</button>
+				<div className="div-absolute">
+					<input
+						placeholder="Buscar gifs"
+						onChange={handleSearch}
+						value={valueSearch}
+					/>
+					<button type="submit">Buscar</button>
+					<button
+						onClick={() => setValueSearch("")}
+						className="absolute-button"
+					>
+						X
+					</button>
+				</div>
 			</form>
 		</nav>
 	);

@@ -4,7 +4,7 @@ export function petition(keyword, page = 0) {
 
 	if (keyword) {
 		API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${keyword}&limit=9&offset=${
-			16 * page
+			9 * page
 		}&rating=g&lang=en`;
 	} else {
 		API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=12&rating=g`; //No tiene offset
@@ -16,9 +16,10 @@ export function petition(keyword, page = 0) {
 			const { data } = res;
 			return data.map((elem) => {
 				const original = elem.images.original.url;
+				const lowRes = elem.images.fixed_height_downsampled.url;
 				const id = elem.id;
 				const title = elem.title;
-				return { original, id, title };
+				return { original, lowRes, id, title };
 			});
 		});
 }

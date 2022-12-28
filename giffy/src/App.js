@@ -9,6 +9,7 @@ import { Page404 } from "./Componentes/Page404";
 import Trending from "./Componentes/Trending";
 import SearchResults from "./Componentes/SearchResults";
 import HistorialContextProvider from "./Servicios/historialContext";
+import Footer from "./Componentes/Footer";
 function App() {
 	return (
 		<ContextProvider>
@@ -28,7 +29,7 @@ function App() {
 
 				<Aside />
 			</HistorialContextProvider>
-			<footer></footer>
+			<Footer />
 		</ContextProvider>
 	);
 }
