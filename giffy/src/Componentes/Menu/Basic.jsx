@@ -4,7 +4,10 @@ export default function Basic({ setCurrentMenu }) {
   return (
     <ul>
       <li>
-        <button onClick={() => setCurrentMenu(() => "Favoritos")}>
+        <button
+          className="BasicFavButton"
+          onClick={() => setCurrentMenu(() => "Favoritos")}
+        >
           Favoritos
         </button>
       </li>

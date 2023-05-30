@@ -10,28 +10,33 @@ import Trending from "./Componentes/Trending";
 import SearchResults from "./Componentes/SearchResults";
 import HistorialContextProvider from "./Servicios/historialContext";
 import Footer from "./Componentes/Footer";
+import { FavoritosContextProvider } from "./Servicios/favoritosContextProvider";
+
 function App() {
-	return (
-		<ContextProvider>
-			<HistorialContextProvider>
-				<Nav />
-				<main>
-					<article>
-						<Routes>
-							<Route path="/" element={<Trending />} />
-							<Route path={`/:search`} element={<SearchResults />} />
+  return (
+    <ContextProvider>
+      <HistorialContextProvider>
+        <FavoritosContextProvider>
+          <Nav />
+          <main>
+            <article>
+              <Routes>
+                <Route path="/" element={<Trending />} />
+                <Route path={`/:search`} element={<SearchResults />} />
 
-							<Route path="/:search/:id" element={<Gif />} />
-							<Route path="*" element={<Page404 />} />
-						</Routes>
-					</article>
-				</main>
+                <Route path="/:search/:id" element={<Gif />} />
+                <Route path="/favorites/:id" element={<Gif />} />
+                <Route path="*" element={<Page404 />} />
+              </Routes>
+            </article>
+          </main>
 
-				<Aside />
-			</HistorialContextProvider>
-			<Footer />
-		</ContextProvider>
-	);
+          <Aside />
+        </FavoritosContextProvider>
+      </HistorialContextProvider>
+      <Footer />
+    </ContextProvider>
+  );
 }
 
 export default App;
