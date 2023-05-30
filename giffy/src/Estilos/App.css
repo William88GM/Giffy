@@ -49,32 +49,67 @@ form {
 .MenuButton {
   grid-column: 3/4;
 }
+
 .Menu {
   background-color: #282c34;
   color: #fff;
-  border-top: 1px solid #00fdff6e;
   border-left: 1px solid #00fdff6e;
   font-weight: bold;
   position: absolute;
   right: 0;
-  top: 9vh;
+  top: 60px;
   height: 91vh;
   width: 20vw;
+  padding: 8px;
+
+  overflow: auto;
+  direction: rtl;
 
   transition: right 0.5s ease-in-out;
 }
+.Menu::-webkit-scrollbar {
+  width: 10px;
+}
+
+.Menu::-webkit-scrollbar-track {
+  background-color: #282c34;
+}
+
+.Menu::-webkit-scrollbar-thumb {
+  background-color: #00ffff7e;
+  border-radius: 5px;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #282c34;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00ffff7e;
+  border-radius: 5px;
+}
+
 .MenuHidden {
   background-color: #282c34;
   color: #fff;
-  border-top: 1px solid #00fdff6e;
   border-left: 1px solid #00fdff6e;
   font-weight: bold;
   position: absolute;
   right: -20vw;
-  top: 9vh;
+  top: 60px;
   height: 91vh;
   width: 20vw;
+  padding: 8px;
   transition: right 0.5s ease-in-out;
+}
+.gif-favorito {
+  width: 100%;
+}
+.BasicFavButton {
+  font-size: clamp(0.4rem, 0.6rem, 2rem);
 }
 input,
 button {
@@ -184,6 +219,22 @@ article {
   height: 50px;
   box-shadow: 2px 2px 10px #23272ed7;
 }
+.gif .Descargar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #0e8494;
+  background-color: #252525;
+  border-radius: 8px;
+  width: 160px;
+  height: 40px;
+  font-family: Arial;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 article {
   min-height: 90vh;
 }
@@ -195,6 +246,14 @@ article {
   grid-row: auto;
   gap: 1rem;
   padding: 15px;
+}
+.App-content div {
+  position: relative;
+}
+.App-content div button {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .App-content-1-image {
   background-color: #282c34;
@@ -261,6 +320,18 @@ li a {
   }
   input {
     width: 100%;
+  }
+  .Menu {
+    position: absolute;
+    right: 0;
+    width: 100vw;
+    transition: right 0.5s ease-in-out, width 0.5s ease-in-out;
+  }
+  .MenuHidden {
+    position: absolute;
+    right: -20vw;
+    width: 20vw;
+    transition: right 0.5s ease-in-out, width 0.5s ease-in-out;
   }
 }
 
