@@ -41,7 +41,7 @@ export default function Gif() {
                             onClick={() => navigate(-1)}
                         />
                         <a
-                            href={`http://localhost:3002/download/${id}`}
+                            href={`https://giffy-back.onrender.com/download/${id}`} //http://localhost:3002
                             alt="Descargar gif"
                             className="Descargar"
                         >

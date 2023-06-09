@@ -39,7 +39,7 @@ export default function ListGifs({ pagination = true }) {
 
     function handleFavorite(id) {
         axios
-            .post(`http://localhost:3002/favoritos/${id}`)
+            .post(`https://giffy-back.onrender.com/favoritos/${id}`) //http://localhost:3002
             .then(
                 (res) => setFavs((prevFavs) => prevFavs.concat(res.data)),
                 toast.success("Guardado")

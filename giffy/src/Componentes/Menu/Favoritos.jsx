@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Favoritos({ setCurrentMenu }) {
     const { favs, setFavs } = useContext(FavContext);
     useEffect(() => {
-        fetch("http://localhost:3002/favoritos/all")
+        fetch("https://giffy-back.onrender.com/favoritos/all") //http://localhost:3002
             .then((res) => res.json())
             .then((res) => {
                 setFavs(res);
