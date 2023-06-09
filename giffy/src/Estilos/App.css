@@ -106,8 +106,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .gif-favorito {
-    min-width: 250px;
-    max-width: 400px;
+    width: 100%;
+    transition: none;
 }
 .BasicFavButton {
     /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
