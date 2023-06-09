@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { FavContext } from "../../Servicios/favoritosContextProvider";
 import { Link } from "react-router-dom";
 
-export default function Favoritos({ setCurrentMenu }) {
+export default function Favoritos({ setCurrentMenu, setMenuIsActive }) {
     const { favs, setFavs } = useContext(FavContext);
     useEffect(() => {
         fetch("https://giffy-back.onrender.com/favoritos/all") //http://localhost:3002
@@ -13,9 +13,14 @@ export default function Favoritos({ setCurrentMenu }) {
         console.log(favs);
     }, []); //eslint-disable-line
 
+    function handleClick() {
+        setMenuIsActive(false);
+        setCurrentMenu(() => "Basic");
+    }
+
     return (
         <>
-            <button onClick={() => setCurrentMenu(() => "Basic")}>Atras</button>
+            <button onClick={handleClick}>Atras</button>
             {favs &&
                 favs.map((e) => (
                     <Link to={`/favorites/${e.id_giffy}`}>
