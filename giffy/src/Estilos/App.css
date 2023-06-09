@@ -327,13 +327,13 @@ li a {
         position: absolute;
         right: 0;
         width: 100vw;
-        transition: right 0.5s ease-in-out, width 0.5s ease-in-out;
+        transition: right 0.5s ease-in-out;
     }
     .MenuHidden {
         position: absolute;
-        right: -20vw;
-        width: 20vw;
-        transition: right 0.5s ease-in-out, width 0.5s ease-in-out;
+        right: -100vw;
+        width: 100vw;
+        transition: right 0.5s ease-in-out;
     }
 }
 
