@@ -67,6 +67,19 @@ form {
 
     transition: right 0.5s ease-in-out;
 }
+.MenuHidden {
+    background-color: #282c34;
+    color: #fff;
+    border-left: 1px solid #00fdff6e;
+    font-weight: bold;
+    position: absolute;
+    right: -20vw;
+    top: 60px;
+    height: 91vh;
+    width: 20vw;
+    padding: 8px;
+    transition: right 0.5s ease-in-out;
+}
 .Menu::-webkit-scrollbar {
     width: 10px;
 }
@@ -92,21 +105,9 @@ body::-webkit-scrollbar-thumb {
     border-radius: 5px;
 }
 
-.MenuHidden {
-    background-color: #282c34;
-    color: #fff;
-    border-left: 1px solid #00fdff6e;
-    font-weight: bold;
-    position: absolute;
-    right: -20vw;
-    top: 60px;
-    height: 91vh;
-    width: 20vw;
-    padding: 8px;
-    transition: right 0.5s ease-in-out;
-}
 .gif-favorito {
-    width: 100%;
+    min-width: 250px;
+    max-width: 400px;
 }
 .BasicFavButton {
     /* font-size: clamp(0.4rem, 0.6rem, 2rem); */

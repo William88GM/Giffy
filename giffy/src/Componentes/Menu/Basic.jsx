@@ -1,4 +1,5 @@
 import React from "react";
+import Aside from "../Aside";
 
 export default function Basic({ setCurrentMenu }) {
     return (
@@ -14,6 +15,7 @@ export default function Basic({ setCurrentMenu }) {
             {/* <li>B</li>
       <li>C</li> */}
             <li>Salir</li>
+            <Aside />
         </ul>
     );
 }
