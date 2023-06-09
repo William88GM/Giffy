@@ -15,6 +15,7 @@ export default function Basic({ setCurrentMenu }) {
             {/* <li>B</li>
       <li>C</li> */}
             <li>Salir</li>
+            ----- Divisor imaginario -----
             <Aside />
         </ul>
     );
