@@ -7,7 +7,7 @@ export default function Aside() {
 
     return (
         <aside>
-            Busquedas recientes
+            Búsquedas recientes
             <ul>
                 {list.map((el, i) => (
                     <li key={i}>

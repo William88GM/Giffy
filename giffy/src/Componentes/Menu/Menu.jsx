@@ -9,7 +9,7 @@ export default function Menu({ className, setMenuIsActive }) {
     return (
         <div className={className}>
             {/* <---- MENU DESPLEGABLE */}
-            <div className="scrollbar">
+            <div>
                 {currentMenu === "Basic" ? (
                     <Basic setCurrentMenu={setCurrentMenu} />
                 ) : currentMenu === "Favoritos" ? (
