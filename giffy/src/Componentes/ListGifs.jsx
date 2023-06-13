@@ -10,16 +10,21 @@ import { FavContext } from "../Servicios/favoritosContextProvider";
 export default function ListGifs({ pagination = true }) {
     const { search } = useParams(); //Extrae de la url el parametro, si es que hay uno
     const { gifs, setGifs } = useContext(Context);
-    const { favs, setFavs } = useContext(FavContext);
+    const { setFavs } = useContext(FavContext);
     const [page, setPage] = useState(1);
     const elRef = useRef();
     const { show } = useObserver({ elRef });
     // const [buscado, setBuscado] = useState("");
 
     //Llama a API cuando cambia search
+
     useEffect(() => {
         //Aqui el problema, una vez que se buscó, al abrir una foto y luego volver a la pagina se vuelve a cargar por lo que se reemplaza el array con imagenes caargadas al scrollear con las primeras imagenes que aparecen al buscar
-        petition(search).then((arrayGIFS) => setGifs((prev) => arrayGIFS));
+
+        petition(search).then((arrayGIFS) => {
+            if (gifs[0].id === arrayGIFS[0].id) return;
+            setGifs((prev) => arrayGIFS);
+        });
     }, [search]); //eslint-disable-line
 
     useEffect(() => {
@@ -48,10 +53,10 @@ export default function ListGifs({ pagination = true }) {
 
     return (
         <div className={gifs[1] ? "App-content" : "App-content-1-image"}>
-            {/* Si hay un solo gif la imagen se rompe, por eso cambio la clase*/}
+            {/* Si el resultado de busqueda es un solo gif la imagen se rompe, por eso cambio la clase*/}
             <Toaster />
             {gifs.map((elem) => (
-                <div key={elem.id}>
+                <div key={elem.id} className="gif_in_list">
                     <Link to={search ? `${elem.id}` : `trends/${elem.id}`}>
                         <img
                             // loading="lazy"

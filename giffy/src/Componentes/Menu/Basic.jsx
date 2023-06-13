@@ -12,10 +12,7 @@ export default function Basic({ setCurrentMenu }) {
                     Favoritos
                 </button>
             </li>
-            {/* <li>B</li>
-      <li>C</li> */}
-            <li>Salir</li>
-            ----- Divisor imaginario -----
+
             <Aside />
         </ul>
     );

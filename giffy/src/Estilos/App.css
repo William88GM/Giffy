@@ -4,7 +4,9 @@
     padding: 0;
 }
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
-
+:root {
+    --svgBackground: '<svg xmlns="http://www.w3.org/2000/svg" role="img" width="400" height="460" aria-labelledby="loading-aria" viewBox="0 0 400 460" preserveAspectRatio="none"><title id="loading-aria">Loading...</title><rect x="0" y="0" width="100%" height="100%" clip-path="url(#clip-path)" style="fill: url(%22#fill%22);"></rect><defs><clipPath id="clip-path"><circle cx="369" cy="127" r="15" /><rect x="23" y="95" rx="2" ry="2" width="400" height="400" /></clipPath><linearGradient id="fill"><stop offset="0.599964" stop-color="%23424855" stop-opacity="1"><animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="1.59996" stop-color="%23282c34" stop-opacity="1"><animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="2.59996" stop-color="%23424855" stop-opacity="1"><animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop></linearGradient></defs></svg>';
+}
 #root {
     display: grid;
     grid-template-columns: 20vw 1fr;
@@ -50,6 +52,17 @@ form {
     grid-column: 3/4;
 }
 
+.Menu aside {
+    border-top: 1px solid #0e8494;
+    border-right: none;
+    margin-top: 10px;
+}
+.MenuHidden aside {
+    border-top: 1px solid #0e8494;
+    border-right: none;
+    margin-top: 10px;
+}
+
 .Menu {
     background-color: #282c34;
     color: #fff;
@@ -78,6 +91,9 @@ form {
     height: 91vh;
     width: 20vw;
     padding: 8px;
+
+    direction: rtl;
+
     transition: right 0.5s ease-in-out;
 }
 .Menu::-webkit-scrollbar {
@@ -108,6 +124,7 @@ body::-webkit-scrollbar-thumb {
 .gif-favorito {
     width: 100%;
     transition: none;
+    border-radius: 10px;
 }
 .BasicFavButton {
     /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
@@ -220,14 +237,26 @@ article {
     width: 50px;
     height: 50px;
     box-shadow: 2px 2px 10px #23272ed7;
+    filter: brightness(90%);
 }
+.gif_in_list {
+    min-height: 260px;
+    border-radius: 6px;
+    background-image: image("../../public/PlaceHolder.svg");
+}
+.gif .Back:hover {
+    filter: brightness(100%);
+    transition-property: filter;
+    transition-duration: 0.2s;
+}
+
 .gif .Descargar {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
     color: #0e8494;
-    background-color: #252525;
+    background-color: #282c34;
     border-radius: 8px;
     width: 160px;
     height: 40px;
@@ -237,6 +266,14 @@ article {
     align-items: center;
     justify-content: center;
 }
+
+.gif .Descargar:hover {
+    color: #00ffff9d;
+    background-color: #3b404d;
+    transition-property: background-color, color;
+    transition-duration: 0.2s;
+}
+
 article {
     min-height: 90vh;
 }
