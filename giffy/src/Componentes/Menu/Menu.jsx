@@ -11,7 +11,10 @@ export default function Menu({ className, setMenuIsActive }) {
             {/* <---- MENU DESPLEGABLE */}
             <div>
                 {currentMenu === "Basic" ? (
-                    <Basic setCurrentMenu={setCurrentMenu} />
+                    <Basic
+                        setCurrentMenu={setCurrentMenu}
+                        setMenuIsActive={setMenuIsActive}
+                    />
                 ) : currentMenu === "Favoritos" ? (
                     <Favoritos
                         setMenuIsActive={setMenuIsActive}

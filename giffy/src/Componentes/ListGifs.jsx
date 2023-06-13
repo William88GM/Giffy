@@ -19,10 +19,11 @@ export default function ListGifs({ pagination = true }) {
     //Llama a API cuando cambia search
 
     useEffect(() => {
-        //Aqui el problema, una vez que se buscó, al abrir una foto y luego volver a la pagina se vuelve a cargar por lo que se reemplaza el array con imagenes caargadas al scrollear con las primeras imagenes que aparecen al buscar
-
         petition(search).then((arrayGIFS) => {
-            if (gifs[0].id === arrayGIFS[0].id) return;
+            if (gifs[0]) {
+                //necesitaba que la primera vez no se ejecute
+                if (gifs[0].id === arrayGIFS[0].id) return; //Aqui el problema, una vez que se buscó, al abrir una foto y luego volver a la pagina se vuelve a cargar por lo que se reemplaza el array con imagenes caargadas al scrollear con las primeras imagenes que aparecen al buscar
+            }
             setGifs((prev) => arrayGIFS);
         });
     }, [search]); //eslint-disable-line
