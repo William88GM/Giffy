@@ -26,7 +26,9 @@ export default function Favoritos({ setCurrentMenu, setMenuIsActive }) {
 
     return (
         <>
-            <button onClick={handleClickButton}>Atras</button>
+            <button className="MenuAtrasButton" onClick={handleClickButton}>
+                Atrás
+            </button>
             {favs ? (
                 favs.map((e) => (
                     <Link

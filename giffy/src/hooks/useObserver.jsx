@@ -6,7 +6,7 @@ export default function useObserver({ elRef }) {
 		function onView(entries, observer) {
 			const element = entries[0];
 			if (element.isIntersecting) {
-				setShow((prev) => true);
+				setShow((prev) => true); 
 			} else {
 				setShow((prev) => false);
 			}

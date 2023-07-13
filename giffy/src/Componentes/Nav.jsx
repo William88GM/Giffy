@@ -22,9 +22,13 @@ export default function Nav() {
     function handleMenu() {
         setMenuIsActive(!menuIsActive);
     }
+    function handleReload() {
+        window.scroll(0, 0);
+        navigate("/", { replace: true });
+    }
     return (
         <nav>
-            <Link to={"/"} className="logo">
+            <Link to={"/"} onClick={handleReload} className="logo">
                 <img src={logo} alt="logo" />
                 Giffy
             </Link>
@@ -45,7 +49,7 @@ export default function Nav() {
                 </div>
             </form>
             <button className="MenuButton" onClick={handleMenu}>
-                X
+                Menú
             </button>
             <Menu
                 setMenuIsActive={setMenuIsActive}

@@ -14,7 +14,7 @@ export default function Aside({ setMenuIsActive, menu }) {
     if (menu)
         return (
             <aside>
-                Búsquedas recientes
+                <span> Búsquedas recientes</span>
                 <ul>
                     {list.map((el, i) => (
                         <li key={i}>
@@ -29,7 +29,7 @@ export default function Aside({ setMenuIsActive, menu }) {
         );
     return (
         <aside>
-            Búsquedas recientes
+            <span> Búsquedas recientes</span>
             <ul>
                 {list.map((el, i) => (
                     <li key={i}>
