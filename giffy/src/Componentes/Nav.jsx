@@ -28,7 +28,12 @@ export default function Nav() {
     }
     return (
         <nav>
-            <Link to={"/"} onClick={handleReload} className="logo">
+            <Link
+                translate="no"
+                to={"/"}
+                onClick={handleReload}
+                className="logo"
+            >
                 <img src={logo} alt="logo" />
                 Giffy
             </Link>
