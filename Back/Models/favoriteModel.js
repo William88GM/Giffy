@@ -5,6 +5,9 @@ const favoriteSchema = new mongoose.Schema({
     title: String,
     date: Date,
     id_giffy: String,
+    user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-export { favoriteSchema };
+const favoriteModel = mongoose.model("Favorite", favoriteSchema);
+
+export { favoriteModel };
