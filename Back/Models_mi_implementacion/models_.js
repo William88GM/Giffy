@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
-import { favoriteSchema } from "./schemas.js";
+import { favoriteSchema, userSchema } from "./schemas.js";
 
 export function modelsCreation() {
-    const favoriteModel = mongoose.model("favorite", favoriteSchema);
+    const favoriteModel = mongoose.model("Favorite", favoriteSchema);
 
-    return { favoriteModel };
+    const userModel = mongoose.model("User", userSchema);
+
+    return { favoriteModel, userModel };
 }
 //---------------------------------------------------------------------------------------------------
 
@@ -18,3 +20,6 @@ export function newFavorite({ favoriteModel, obj }) {
 
     return favorite;
 }
+
+//Esta forma requiere que se le pase el modelo por parametros al router
+// const { favoriteModel } = modelsCreation(); <-- dentro de index.js

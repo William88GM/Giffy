@@ -18,6 +18,7 @@ export default function Nav() {
         evt.preventDefault();
         navigate(`/${valueSearch}`); //Cambia url
         updateHistory(valueSearch);
+        window.scroll(0, 0);
     }
     function handleMenu() {
         setMenuIsActive(!menuIsActive);

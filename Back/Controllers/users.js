@@ -1,0 +1,17 @@
+import { Router } from "express";
+import { userModel } from "../Models/userModel";
+
+export const usersRouter = Router();
+
+usersRouter.post("/", async (req, res) => {
+    const { username, name, password } = req.params;
+
+    const user = new userModel({
+        username,
+        name,
+        passwordHash: password,
+    });
+
+    const savedUser = await user.save();
+    res.json(savedUser);
+});
