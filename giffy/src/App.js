@@ -11,32 +11,45 @@ import SearchResults from "./Componentes/SearchResults";
 import HistorialContextProvider from "./Servicios/historialContext";
 import Footer from "./Componentes/Footer";
 import { FavoritosContextProvider } from "./Servicios/favoritosContextProvider";
+import PageContextProvider from "./Servicios/pageContextProvider";
 
 function App() {
-  return (
-    <ContextProvider>
-      <HistorialContextProvider>
-        <FavoritosContextProvider>
-          <Nav />
-          <main>
-            <article>
-              <Routes>
-                <Route path="/" element={<Trending />} />
-                <Route path={`/:search`} element={<SearchResults />} />
+    //El bug es al entrar a un gif, luego salir y luego cargar mas gifs, ahi empieza a cargar repetidos
+    return (
+        <ContextProvider>
+            <HistorialContextProvider>
+                <FavoritosContextProvider>
+                    <PageContextProvider>
+                        <Nav />
+                        <main>
+                            <article>
+                                <Routes>
+                                    <Route path="/" element={<Trending />} />
+                                    <Route
+                                        path={`/:search`}
+                                        element={<SearchResults />}
+                                    />
 
-                <Route path="/:search/:id" element={<Gif />} />
-                <Route path="/favorites/:id" element={<Gif />} />
-                <Route path="*" element={<Page404 />} />
-              </Routes>
-            </article>
-          </main>
+                                    <Route
+                                        path="/:search/:id"
+                                        element={<Gif />}
+                                    />
+                                    <Route
+                                        path="/favorites/:id"
+                                        element={<Gif />}
+                                    />
+                                    <Route path="*" element={<Page404 />} />
+                                </Routes>
+                            </article>
+                        </main>
 
-          <Aside />
-        </FavoritosContextProvider>
-      </HistorialContextProvider>
-      <Footer />
-    </ContextProvider>
-  );
+                        <Aside />
+                    </PageContextProvider>
+                </FavoritosContextProvider>
+            </HistorialContextProvider>
+            <Footer />
+        </ContextProvider>
+    );
 }
 
 export default App;

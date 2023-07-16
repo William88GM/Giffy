@@ -15,6 +15,7 @@ export default function Gif() {
     }, [id]);
 
     if (!gif) {
+        //!gifs?
         fetch(
             `https://api.giphy.com/v1/gifs/${id}?api_key=W4lIh5l8sYAEb9cE9NnQACvmFei8NNwM`
         )
