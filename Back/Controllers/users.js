@@ -10,7 +10,7 @@ usersRouter.post("/", async (req, res) => {
     connectToMongo();
     const { username, name, password } = req.body;
 
-    const userSearched = await ususerModel.find({ username });
+    const userSearched = await userModel.find({ username });
 
     console.log(userSearched);
 
