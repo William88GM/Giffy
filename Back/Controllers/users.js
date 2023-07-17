@@ -10,7 +10,7 @@ usersRouter.post("/", async (req, res) => {
     connectToMongo();
     const { username, name, password } = req.body;
 
-    const userSearched = await user.find({ username });
+    const userSearched = await ususerModel.find({ username });
 
     console.log(userSearched);
 
@@ -23,6 +23,6 @@ usersRouter.post("/", async (req, res) => {
     });
 
     const savedUser = await user.save();
-    mongoose.connection.close();
+    // mongoose.connection.close();
     res.json(savedUser);
 });

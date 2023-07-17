@@ -40,16 +40,13 @@ favoritesRouter.post("/:id", (req, res) => {
                             //res.status...?
                         })
                         .finally(() => {
-                            mongoose.connection.close();
+                            // mongoose.connection.close();
                         });
                     res.status(201).json(obj).end(); //Si llega a aca,
                 })
                 .catch((error) => {
                     console.error(error);
                     res.status(500).end();
-                })
-                .finally(() => {
-                    // mongoose.connection.close();
                 });
         })
         .catch((err) => {
@@ -69,7 +66,7 @@ favoritesRouter.get("/all", (req, response) => {
                 })
                 .catch((err) => console.log(err))
                 .finally(() => {
-                    mongoose.connection.close();
+                    // mongoose.connection.close();
                 });
         })
         .catch((err) => {
