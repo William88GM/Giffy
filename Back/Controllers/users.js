@@ -21,19 +21,19 @@ usersRouter.post("/", async (req, res) => {
             userSearched[0].username === username
         ) {
             res.status(409).end("Already registered user");
+        } else {
+            const passwordHash = await bcrypt.hash(password, 10);
+
+            const user = new userModel({
+                username,
+                name,
+                passwordHash,
+            });
+
+            const savedUser = await user.save();
+            // mongoose.connection.close();
+            res.json(savedUser);
         }
-
-        const passwordHash = await bcrypt.hash(password, 10);
-
-        const user = new userModel({
-            username,
-            name,
-            passwordHash,
-        });
-
-        const savedUser = await user.save();
-        // mongoose.connection.close();
-        res.json(savedUser);
     } catch (error) {
         console.log(error);
     }
