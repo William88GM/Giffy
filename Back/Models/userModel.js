@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
             ref: "Favorite",
         },
     ],
-    id_user: String,
 });
 
 userSchema.set("toJSON", {
