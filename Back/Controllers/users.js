@@ -15,10 +15,14 @@ usersRouter.post("/", async (req, res) => {
 
         console.log(userSearched);
 
-        if (userSearched && userSearched[0].username === username) {
-            res.status(409).end("Already registered user");
+        if (userSearched) {
+            if (userSearched[0].username === username) {
+                res.status(409).end("Already registered user");
+            }
         }
-
+        // if (userSearched && userSearched[0].username === username) {
+        //     res.status(409).end("Already registered user");
+        // }
         const passwordHash = await bcrypt.hash(password, 10);
 
         const user = new userModel({
