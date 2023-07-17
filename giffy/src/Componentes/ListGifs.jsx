@@ -22,7 +22,7 @@ export default function ListGifs() {
         axios
             .post(`https://giffy-back.onrender.com/favoritos/${id}`) //http://localhost:3002
             .then((res) => {
-                if (favs[0]) {
+                if (favs) {
                     setFavs((prevFavs) => prevFavs.concat(res.data));
                 }
                 toast.success("Guardado");
