@@ -10,6 +10,10 @@ usersRouter.post("/", async (req, res) => {
     connectToMongo();
     const { username, name, password } = req.body;
 
+    const userSearched = await user.find({ username });
+
+    console.log(userSearched);
+
     const passwordHash = await bcrypt.hash(password, 10);
 
     const user = new userModel({
