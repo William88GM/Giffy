@@ -7,22 +7,30 @@ import bcrypt from "bcrypt";
 export const usersRouter = Router();
 
 usersRouter.post("/", async (req, res) => {
-    connectToMongo();
-    const { username, name, password } = req.body;
+    try {
+        await connectToMongo();
+        const { username, name, password } = req.body;
 
-    const userSearched = await userModel.find({ username });
+        const userSearched = await userModel.find({ username });
 
-    console.log(userSearched);
+        console.log(userSearched);
 
-    const passwordHash = await bcrypt.hash(password, 10);
+        if (userSearched[0].username === username) {
+            res.status(409).end("Already registered user");
+        }
 
-    const user = new userModel({
-        username,
-        name,
-        passwordHash,
-    });
+        const passwordHash = await bcrypt.hash(password, 10);
 
-    const savedUser = await user.save();
-    // mongoose.connection.close();
-    res.json(savedUser);
+        const user = new userModel({
+            username,
+            name,
+            passwordHash,
+        });
+
+        const savedUser = await user.save();
+        // mongoose.connection.close();
+        res.json(savedUser);
+    } catch (error) {
+        console.log(error);
+    }
 });
