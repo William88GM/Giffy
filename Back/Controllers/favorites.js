@@ -4,7 +4,7 @@ import Axios from "axios";
 import { favoriteModel } from "../Models/favoriteModel.js";
 import mongoose from "mongoose";
 
-export const favoritesRouter = Router();
+const favoritesRouter = Router();
 
 favoritesRouter.post("/:id", (req, res) => {
     //EXTRACCION DE URL
@@ -57,7 +57,7 @@ favoritesRouter.post("/:id", (req, res) => {
         });
 });
 
-favoritesRouter.post("/all", (req, response) => {
+favoritesRouter.get("/all", (req, response) => {
     connectToMongo()
         .then(() => {
             console.log("Conectao!");
@@ -76,3 +76,5 @@ favoritesRouter.post("/all", (req, response) => {
             console.log("no conectao " + err);
         });
 });
+
+export { favoritesRouter };
