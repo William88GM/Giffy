@@ -2,6 +2,7 @@ import { Router } from "express";
 import { connectToMongo } from "../mongoDB_connection.js";
 import Axios from "axios";
 import { favoriteModel } from "../Models/favoriteModel.js";
+import mongoose from "mongoose";
 
 export const favoritesRouter = Router();
 
