@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { connectToMongo } from "../mongoDB_connection";
+import { connectToMongo } from "../mongoDB_connection.js";
 
 export const favoritesRouter = Router();
 
