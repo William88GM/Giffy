@@ -15,7 +15,7 @@ usersRouter.post("/", async (req, res) => {
 
         console.log(userSearched);
 
-        if (userSearched) {
+        if (!userSearched) {
             if (userSearched[0].username === username) {
                 res.status(409).end("Already registered user");
             }
