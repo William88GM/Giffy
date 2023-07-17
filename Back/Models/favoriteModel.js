@@ -8,7 +8,7 @@ const favoriteSchema = new mongoose.Schema({
     user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-favoriteModel.set("toJSON", {
+favoriteSchema.set("toJSON", {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id;
 
