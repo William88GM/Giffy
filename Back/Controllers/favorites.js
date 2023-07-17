@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { connectToMongo } from "../mongoDB_connection.js";
-import { Axios } from "axios";
+import Axios from "axios";
 
 export const favoritesRouter = Router();
 
