@@ -2,28 +2,36 @@ import { useContext, useEffect } from "react";
 import { petition } from "../Servicios/call_API";
 import { Context } from "../Servicios/Context";
 import { contextPage } from "../Servicios/pageContextProvider";
-import useFilterRepetitiveGifs from "./useFilterRepetitiveGifs";
 import { useParams } from "react-router-dom";
-// import { filterRepetitiveGifs } from "./filterRepetitiveGifs";
 
 export default function usePagination({ show }) {
     const { gifs, setGifs } = useContext(Context);
     const { page, setPage } = useContext(contextPage);
     const { search } = useParams();
 
+    async function callConcatAndFiltertGifs() {
+        const nextGIFS = await petition(search, page);
+        await setPage((prev) => prev + 1);
+
+        //.............FILTRO DE GIFS REPETIDOS al scrollear..............
+        // console.log(nextGIFS);
+        // const concatedGifs = [...gifs, ...nextGIFS];
+        // const idsUnicos = {};
+        // const arrayFiltrado = concatedGifs.filter((objeto) => {
+        //     if (!idsUnicos[objeto.id]) {
+        //         idsUnicos[objeto.id] = true;
+        //         return true;
+        //     }
+        //     return false;
+        // });
+        // setGifs(() => arrayFiltrado);
+
+        setGifs((prev) => prev.concat(nextGIFS));
+    }
+
     useEffect(() => {
         if (!show) return;
-        petition(search, page).then((nextGIFS) => {
-            //filtrar repetidos aqui?
-            setGifs((prev) => prev.concat(nextGIFS));
-            setPage((prev) => prev + 1);
-            //agregar condicional para que no haga llamadas cuando no hay mas gifs?
-        });
-
+        callConcatAndFiltertGifs();
         console.log(page);
     }, [show]); //eslint-disable-line
-    useFilterRepetitiveGifs();
-    // useEffect(() => {
-    //     filterRepetitiveGifs({ gifs, setGifs });
-    // }, [gifs]);
 }

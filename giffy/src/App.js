@@ -20,8 +20,11 @@ function App() {
 
             <div
                 style={{
-                    backdropFilter: menuIsActive ? "blur(20px)" : "none",
-                    opacity: menuIsActive ? 1 : 0,
+                    backdropFilter:
+                        menuIsActive && window.innerWidth > 780
+                            ? "blur(20px)"
+                            : "none",
+                    opacity: menuIsActive && window.innerWidth > 780 ? 1 : 0,
                     visibility: menuIsActive ? "visible" : "hidden",
                     transition:
                         "backdrop-filter 0.2s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in",
