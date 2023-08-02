@@ -2,14 +2,15 @@ import React, { useContext, useEffect } from "react";
 import { FavContext } from "../../Servicios/favoritosContextProvider";
 import { Link } from "react-router-dom";
 import { LoadingGif } from "./LoadingGif";
+import { menuContext } from "../../Servicios/MenuContext";
 // import { useLoadingGif } from "./useLoadingGif";
 
-export default function Favoritos({ setCurrentMenu, setMenuIsActive }) {
+export function MenuFavoritos({ setInicioOrFavs }) {
     const { favs, setFavs } = useContext(FavContext);
-    // const random = useLoadingGif();
+    const { setMenuIsActive } = useContext(menuContext);
+
     useEffect(() => {
         if (favs) return;
-        // setFavs(random);
         fetch("https://giffy-back.onrender.com/favoritos/all") //http://localhost:3002
             .then((res) => res.json())
             .then((res) => {
@@ -17,17 +18,17 @@ export default function Favoritos({ setCurrentMenu, setMenuIsActive }) {
             });
     }, []); //eslint-disable-line
 
-    function handleClickButton() {
-        setCurrentMenu(() => "Basic");
-    }
     function handleClickGif() {
         setMenuIsActive(() => false);
     }
 
     return (
         <>
-            <button className="MenuAtrasButton" onClick={handleClickButton}>
-                Atrás
+            <button
+                className="MenuAtrasButton"
+                onClick={() => setInicioOrFavs("Inicio")}
+            >
+                Inicio
             </button>
             {favs ? (
                 favs.map((e) => (

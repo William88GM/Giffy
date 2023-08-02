@@ -1,4 +1,4 @@
-import { Axios } from "axios";
+import Axios from "axios";
 import { Router } from "express";
 
 export const downloadsRouter = Router();
