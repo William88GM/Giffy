@@ -17,7 +17,11 @@ export function LoginMenu({ setMenuToRegister, readLocalStorage }) {
 
                 <label>
                     Contraseña
-                    <input type="password" name="contrasena" />
+                    <input
+                        autoComplete="current-password"
+                        type="password"
+                        name="contrasena"
+                    />
                 </label>
                 <button>Iniciar sesión</button>
             </form>
