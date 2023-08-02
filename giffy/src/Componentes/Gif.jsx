@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Context } from "../Servicios/Context";
 import arrow from "../assets/arrow.svg";
+import Aside from "./Aside";
 
 export default function Gif() {
     const { id } = useParams();
@@ -11,11 +12,11 @@ export default function Gif() {
 
     useEffect(() => {
         setGif(gifs.find((elem) => elem.id === id));
+
         window.scroll(0, 0);
-    }, [id]);
+    }, [id]); //eslint-disable-line
 
     if (!gif) {
-        //!gifs?
         fetch(
             `https://api.giphy.com/v1/gifs/${id}?api_key=W4lIh5l8sYAEb9cE9NnQACvmFei8NNwM`
         )
@@ -28,13 +29,46 @@ export default function Gif() {
                 })
             );
     }
+    /* 
+    //NO SE COMO PERO SE ARREGLO Y YA NO HACE FALTA SETEARLE LA ALTURA A LA IMG, igual no estaba terminado el codigo
+    // /useEffect que calcule la altura de la imagen renderizada y se lo aplique a la altura intrinseca de la img, para que en movil se vea mejor sin importar la relacion de aspecto. pero antes probar en css con max width u otra cosa
 
+
+    // const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+    // const gifImageRef = useRef(null);
+    // useEffect(() => {
+    //     if (gif) getImageSize(gif.original);
+    // }, [gif]);
+
+    // useEffect(() => {
+    //     if (imageSize.height > 0) {
+    //         // Aplicar el estilo al segundo img usando useRef
+    //         gifImageRef.current.style.height = `${imageSize.height}px`;
+    //     }
+    // }, [imageSize]);
+
+    // function getImageSize(url) {
+    //     const img = new Image();
+    //     img.onload = function () {
+    //         const width = img.width;
+    //         const height = img.height;
+    //         setImageSize({ width, height });
+    //     };
+    //     img.src = url;
+    //     console.log(imageSize.height);
+    // }
+*/
     return (
         <>
             <div className="gif">
                 {gif && (
                     <>
-                        <img src={gif.original} alt={gif.title} />
+                        <img
+                            src={gif.original}
+                            alt={gif.title}
+                            // ref={gifImageRef}
+                            // style={{ height: `${imageSize.height}px` }}
+                        />
                         <img
                             src={arrow}
                             className="Back"
@@ -48,21 +82,7 @@ export default function Gif() {
                         >
                             DESCARGAR
                         </a>
-
-                        {/* 
-            NO FUNCIONA, giphy no te deja, y el atributo download tampoco funciona
-            
-            <a
-              href={gif.original_dot_gif}
-              href={
-                "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWVlNzhkZGM3ZTQ5MzdhYmY3ZGY3YmMwZGJmZWJjZDNhYzRmZjgzYyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/lQPKybhDa2ZO1qJVLo/giphy.gif"
-              }
-              alt="Descargar gif"
-              download
-              className="Descargar"
-            >
-              DESCARGAR
-            </a> */}
+                        <Aside />
                     </>
                 )}
             </div>

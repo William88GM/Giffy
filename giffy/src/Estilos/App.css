@@ -10,13 +10,34 @@
 #root {
     display: grid;
     grid-template-columns: 20vw 1fr;
-    grid-template-rows: 60px auto 1fr 400px;
+    grid-template-rows: 60px auto 1fr;
+    /*Footer 
+    grid-template-rows: 60px auto 1fr 400px; */
 }
 body {
     background-color: #282c34;
 }
 
 /*_________________________________________________________________*/
+/*Se tuvo que hacer en linea porque al enfocar no lo hacia de forma progresiva*/
+/* .blur {
+    backdrop-filter: blur(50px);
+
+    position: absolute;
+    z-index: 5;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+
+    transition: backdrop-filter 0.1s ease-in, opacity 0.1s ease-in;
+}
+.blur_none {
+    backdrop-filter: none;
+    opacity: 0;
+    transition: backdrop-filter 0.1s ease-out, opacity 0.5s ease-out;
+} */
 nav {
     height: 60px;
     width: 100%;
@@ -26,7 +47,7 @@ nav {
     grid-template-columns: 20vw 1fr 8vw;
     justify-items: center;
     align-items: center;
-    z-index: 1;
+    z-index: 10;
     position: fixed;
 }
 .logo {
@@ -64,13 +85,51 @@ form {
 .MenuHidden aside {
     border-top: 1px solid #0e8494;
     border-right: none;
-    margin-top: 10px;
 }
 
 .BasicFavButton {
     /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
     font-size: 20px;
     margin: 14px 0;
+}
+
+.LoginMenu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    direction: ltr;
+    padding: 0 8px;
+
+    align-items: center;
+    justify-content: center;
+}
+.LoginMenu span {
+    margin-top: 8px;
+    margin-bottom: 32px;
+    font-size: 20px;
+}
+.LoginMenu form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.LoginMenu form label {
+    max-width: 250px;
+}
+.LoginMenu form label input {
+    width: 100%;
+    max-width: 250px;
+}
+
+.LoginMenu a {
+    font-size: 12px;
+    color: #0e8494;
+}
+
+.LoginMenu a:hover {
+    font-size: 12px;
+    color: #00ffff9d;
 }
 
 .Menu {
@@ -100,7 +159,7 @@ form {
     top: 60px;
     height: 91vh;
     width: 20vw;
-    padding: 8px;
+    padding: 0 8px;
 
     direction: rtl;
 
@@ -133,6 +192,7 @@ body::-webkit-scrollbar-thumb {
 
 .gif-favorito {
     width: 100%;
+    height: auto;
     transition: none;
     border-radius: 10px;
 }
@@ -217,26 +277,28 @@ footer {
     background-color: #343841;
     border-top: 1px solid #00fdff6e;
 }
+
 /*_________________________________________________________________*/
 main {
     grid-column: 2/3;
     grid-row: 2/4;
 }
 article {
-    height: 100%;
-
+    min-height: 90vh;
     text-align: center;
 }
 .gif {
     grid-column: 1/-1;
     position: relative;
     height: 100%;
+    width: 100%;
     background-color: #414855;
 }
 .gif img {
     object-fit: contain;
     object-position: top;
     width: 100%;
+    max-height: min-content;
 }
 .gif .Back {
     position: absolute;
@@ -248,6 +310,7 @@ article {
     height: 50px;
     box-shadow: 2px 2px 10px #23272ed7;
     filter: brightness(90%);
+    padding: 0;
 }
 .gif_in_list {
     min-height: 260px;
@@ -289,9 +352,6 @@ l):not(.skeleton_loaded__oYWz_) {
     transition-duration: 0.2s;
 }
 
-article {
-    min-height: 90vh;
-}
 .App-content {
     background-color: #282c34;
     height: 100%;
@@ -342,12 +402,17 @@ li a {
     padding: 10px;
     width: 100%;
 }
+.gif Aside {
+    display: none;
+}
 /*_________________________________________________________________*/
 @media screen and (max-width: 780px) {
     /*tablet/mobile*/
     aside {
-        grid-column: 1/3;
-        grid-row: 3/4;
+        display: none;
+    }
+    .gif aside {
+        display: block;
     }
     main {
         grid-column: 1/3;

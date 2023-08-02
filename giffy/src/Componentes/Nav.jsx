@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo_GF.svg";
 import { useHistorySearch } from "../hooks/HistorySearch";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Menu from "./Menu/Menu";
+import { menuContext } from "../Servicios/MenuContext";
 
 export default function Nav() {
     const { updateHistory, recents } = useHistorySearch();
     const [valueSearch, setValueSearch] = useState("");
     const navigate = useNavigate();
-    const [menuIsActive, setMenuIsActive] = useState(false);
+    const { menuIsActive, setMenuIsActive } = useContext(menuContext);
 
     function handleSearch(evt) {
         setValueSearch(evt.target.value); //Actualiza el valor del input
@@ -57,11 +58,7 @@ export default function Nav() {
             <button className="MenuButton" onClick={handleMenu}>
                 Menú
             </button>
-            <Menu
-                setMenuIsActive={setMenuIsActive}
-                className={menuIsActive ? "Menu" : "MenuHidden"}
-            />{" "}
-            {/*prop driling*/}
+            <Menu />
         </nav>
     );
 }

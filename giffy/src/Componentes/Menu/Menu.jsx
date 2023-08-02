@@ -1,29 +1,31 @@
-import React from "react";
-import Basic from "./Basic";
+import React, { useContext } from "react";
+import { MenuInicio } from "./MenuInicio";
 import { useState } from "react";
-import Favoritos from "./Favoritos";
+import { LoginMenu } from "./LoginMenu";
+import { menuContext } from "../../Servicios/MenuContext";
 
-export default function Menu({ className, setMenuIsActive }) {
-    const [currentMenu, setCurrentMenu] = useState("Basic");
+export default function Menu() {
+    const [logged, setLogged] = useState(readLocalStorage());
+    const [logOrReg, setLoginOrRegister] = useState("Login");
+    const { menuIsActive } = useContext(menuContext);
+    function readLocalStorage(test) {
+        if (test) setLogged(true);
+
+        return false; //imaginamos que no esta logged
+    }
 
     return (
-        <div className={className}>
-            {/* <---- MENU DESPLEGABLE */}
-            <div>
-                {currentMenu === "Basic" ? (
-                    <Basic
-                        setCurrentMenu={setCurrentMenu}
-                        setMenuIsActive={setMenuIsActive}
-                    />
-                ) : currentMenu === "Favoritos" ? (
-                    <Favoritos
-                        setMenuIsActive={setMenuIsActive}
-                        setCurrentMenu={setCurrentMenu}
-                    />
-                ) : (
-                    ""
-                )}
-            </div>
+        <div className={menuIsActive ? "Menu" : "MenuHidden"}>
+            {logged ? (
+                <MenuInicio />
+            ) : logOrReg === "Login" ? (
+                <LoginMenu
+                    readLocalStorage={readLocalStorage}
+                    setMenuToRegister={setLoginOrRegister}
+                />
+            ) : (
+                "Registro"
+            )}
         </div>
     );
 }
