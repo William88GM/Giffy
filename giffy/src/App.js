@@ -12,13 +12,14 @@ import { menuContext } from "./Servicios/MenuContext";
 
 function App() {
     //El bug es al entrar a un gif, luego salir y luego cargar mas gifs, ahi empieza a cargar repetidos
-    const { menuIsActive } = useContext(menuContext);
+    const { menuIsActive, setMenuIsActive } = useContext(menuContext);
     return (
         <>
             <Nav />
             {/* <div className={menuIsActive ? "blur" : "blur_none"}></div> */}
 
             <div
+                onClick={() => setMenuIsActive(false)}
                 style={{
                     backdropFilter:
                         menuIsActive && window.innerWidth > 780

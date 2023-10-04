@@ -25,6 +25,7 @@ export default function useRenderSearch() {
     }
 
     useEffect(() => {
+        //creo que el problema esta aca, este hook o useEffect se vuelve a crear luego de que se setea el estado desde el usePagination y setea de nuevo el array a los gifs iniciales, y solo ocurre la primera vez porque los use effect se ejecutan solo la primera vez cuando tienen []
         petition(search).then((arrayGIFS) => {
             if (gifs[0]) {
                 /*que no se ejecute si ya hay gifs, ocurre un problema al hacer back desde el detalle de un gif

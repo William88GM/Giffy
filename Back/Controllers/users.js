@@ -6,6 +6,15 @@ import bcrypt from "bcrypt";
 
 export const usersRouter = Router();
 
+usersRouter.get("/", async (req, res) => {
+    await connectToMongo();
+    const users = await userModel
+        .find({})
+        .populate("favs", { user: 0, _id: 0 });
+    res.json(users);
+});
+
+// /Register?
 usersRouter.post("/", async (req, res) => {
     try {
         await connectToMongo();
@@ -32,7 +41,7 @@ usersRouter.post("/", async (req, res) => {
 
             const savedUser = await user.save();
             // mongoose.connection.close();
-            res.json(savedUser);
+            res.status(201).json(savedUser);
         }
     } catch (error) {
         console.log(error);
