@@ -33,7 +33,7 @@ export function MenuFavoritos({ setInicioOrFavs }) {
             {favs ? (
                 favs.map((e) => (
                     <Link
-                        to={`/favorites/${e.id_giffy}`}
+                        to={`/favorites/${e.id_Giphy}`}
                         onClick={handleClickGif}
                     >
                         <img

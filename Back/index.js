@@ -3,6 +3,7 @@ import cors from "cors";
 import { usersRouter } from "./Controllers/users.js";
 import { favoritesRouter } from "./Controllers/favorites.js";
 import { downloadsRouter } from "./Controllers/downloads.js";
+import "dotenv/config";
 
 const App = Express();
 App.use(Express.json());

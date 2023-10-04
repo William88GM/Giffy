@@ -4,10 +4,10 @@ const userSchema = new mongoose.Schema({
     username: String,
     name: String,
     passwordHash: String,
-    notes: [
+    favs: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Favorite",
+            ref: "Favorite", //Donde debe buscar las ids
         },
     ],
 });
