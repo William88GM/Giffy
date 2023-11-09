@@ -49,7 +49,7 @@ usersRouter.post("/register", async (req, res) => {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
             sameSite: "lax",
-            secure: process.env.NODE_ENV === "development" ? false : true,
+            secure: process.env.side === "production" ? true : false,
           });
           res.status(201).json(savedUser);
         }
@@ -92,7 +92,7 @@ usersRouter.post("/login", async (req, res) => {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           httpOnly: true,
           sameSite: "lax",
-          // secure: process.env.side === "production" ? true : false,
+          secure: process.env.side === "production" ? true : false,
         });
 
         res.send({
