@@ -108,7 +108,8 @@ usersRouter.post("/login", async (req, res) => {
 });
 
 usersRouter.post("/autoLogin", validateToken, async (req, res) => {
-  res.status(200).end();
+  const { user } = req;
+  res.status(200).json(user);
 });
 usersRouter.post("/logout", async (req, res) => {
   res.cookie("token", "", { expires: new Date(0) });
