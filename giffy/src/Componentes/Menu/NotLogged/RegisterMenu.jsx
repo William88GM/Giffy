@@ -41,7 +41,7 @@ export function RegisterMenu({ setMenuToLogin }) {
         </label>
         <label>
           Nombre
-          <input type="text" name="username" />
+          <input type="text" name="name" />
         </label>
         <label>
           Contraseña
