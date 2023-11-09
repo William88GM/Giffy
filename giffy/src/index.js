@@ -8,21 +8,24 @@ import { FavoritosContextProvider } from "./Servicios/favoritosContextProvider";
 import { ContextProvider } from "./Servicios/Context";
 import PageContextProvider from "./Servicios/pageContextProvider";
 import { MenuContextProvider } from "./Servicios/MenuContext";
+import { AuthContextProvider } from "./Servicios/authContex";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <BrowserRouter>
-        <ContextProvider>
-            <HistorialContextProvider>
-                <FavoritosContextProvider>
-                    <PageContextProvider>
-                        <MenuContextProvider>
-                            <App />
-                        </MenuContextProvider>
-                    </PageContextProvider>
-                </FavoritosContextProvider>
-            </HistorialContextProvider>
-            {/* <Footer /> */}
-        </ContextProvider>
-    </BrowserRouter>
+  <BrowserRouter>
+    <AuthContextProvider>
+      <ContextProvider>
+        <HistorialContextProvider>
+          <FavoritosContextProvider>
+            <PageContextProvider>
+              <MenuContextProvider>
+                <App />
+              </MenuContextProvider>
+            </PageContextProvider>
+          </FavoritosContextProvider>
+        </HistorialContextProvider>
+        {/* <Footer /> */}
+      </ContextProvider>
+    </AuthContextProvider>
+  </BrowserRouter>
 );

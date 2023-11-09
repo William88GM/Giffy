@@ -1,21 +1,21 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 :root {
-    --svgBackground: '<svg xmlns="http://www.w3.org/2000/svg" role="img" width="400" height="460" aria-labelledby="loading-aria" viewBox="0 0 400 460" preserveAspectRatio="none"><title id="loading-aria">Loading...</title><rect x="0" y="0" width="100%" height="100%" clip-path="url(#clip-path)" style="fill: url(%22#fill%22);"></rect><defs><clipPath id="clip-path"><circle cx="369" cy="127" r="15" /><rect x="23" y="95" rx="2" ry="2" width="400" height="400" /></clipPath><linearGradient id="fill"><stop offset="0.599964" stop-color="%23424855" stop-opacity="1"><animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="1.59996" stop-color="%23282c34" stop-opacity="1"><animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="2.59996" stop-color="%23424855" stop-opacity="1"><animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop></linearGradient></defs></svg>';
+  --svgBackground: '<svg xmlns="http://www.w3.org/2000/svg" role="img" width="400" height="460" aria-labelledby="loading-aria" viewBox="0 0 400 460" preserveAspectRatio="none"><title id="loading-aria">Loading...</title><rect x="0" y="0" width="100%" height="100%" clip-path="url(#clip-path)" style="fill: url(%22#fill%22);"></rect><defs><clipPath id="clip-path"><circle cx="369" cy="127" r="15" /><rect x="23" y="95" rx="2" ry="2" width="400" height="400" /></clipPath><linearGradient id="fill"><stop offset="0.599964" stop-color="%23424855" stop-opacity="1"><animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="1.59996" stop-color="%23282c34" stop-opacity="1"><animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop><stop offset="2.59996" stop-color="%23424855" stop-opacity="1"><animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate></stop></linearGradient></defs></svg>';
 }
 #root {
-    display: grid;
-    grid-template-columns: 20vw 1fr;
-    grid-template-rows: 60px auto 1fr;
-    /*Footer 
+  display: grid;
+  grid-template-columns: 20vw 1fr;
+  grid-template-rows: 60px auto 1fr;
+  /*Footer 
     grid-template-rows: 60px auto 1fr 400px; */
 }
 body {
-    background-color: #282c34;
+  background-color: #282c34;
 }
 
 /*_________________________________________________________________*/
@@ -39,283 +39,285 @@ body {
     transition: backdrop-filter 0.1s ease-out, opacity 0.5s ease-out;
 } */
 nav {
-    height: 60px;
-    width: 100%;
-    background-color: #23272e;
-    border-bottom: 1px solid #00fdff6e;
-    display: grid;
-    grid-template-columns: 20vw 1fr 8vw;
-    justify-items: center;
-    align-items: center;
-    z-index: 10;
-    position: fixed;
+  height: 60px;
+  width: 100%;
+  background-color: #23272e;
+  border-bottom: 1px solid #00fdff6e;
+  display: grid;
+  grid-template-columns: 20vw 1fr 8vw;
+  justify-items: center;
+  align-items: center;
+  z-index: 10;
+  position: fixed;
 }
 .logo {
-    height: 40px;
-    flex: 3;
-    grid-column: 1/2;
-    display: flex;
-    align-items: center;
-    font-family: "Dancing Script", cursive;
-    font-size: 30px;
+  height: 40px;
+  flex: 3;
+  grid-column: 1/2;
+  display: flex;
+  align-items: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
 }
 .logo img {
-    border-radius: 50%;
-    margin: 5px;
+  border-radius: 50%;
+  margin: 5px;
 }
 form {
-    grid-column: 2/3;
-    display: flex;
-    align-items: center;
-    flex: 3;
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  flex: 3;
 }
 .MenuButton {
-    grid-column: 3/4;
+  grid-column: 3/4;
 }
 .MenuAtrasButton {
-    position: fixed;
-    margin-right: 16px;
+  position: fixed;
+  margin-right: 16px;
 }
 .Menu aside {
-    border-top: 1px solid #0e8494;
-    border-right: none;
-    padding: 0;
+  border-top: 1px solid #0e8494;
+  border-right: none;
+  padding: 0;
 }
 
 .MenuHidden aside {
-    border-top: 1px solid #0e8494;
-    border-right: none;
+  border-top: 1px solid #0e8494;
+  border-right: none;
 }
 
 .BasicFavButton {
-    /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
-    font-size: 20px;
-    margin: 14px 0;
+  /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
+  font-size: 20px;
+  margin: 14px 0;
 }
 
 .LoginMenu {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    direction: ltr;
-    padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  direction: ltr;
+  padding: 0 8px;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .LoginMenu span {
-    margin-top: 8px;
-    margin-bottom: 32px;
-    font-size: 20px;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-size: 20px;
 }
 .LoginMenu form {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 .LoginMenu form label {
-    max-width: 250px;
+  max-width: 250px;
 }
 .LoginMenu form label input {
-    width: 100%;
-    max-width: 250px;
+  width: 100%;
+  max-width: 250px;
 }
 
-.LoginMenu a {
-    font-size: 12px;
-    color: #0e8494;
+.LoginMenu button {
+  font-size: 12px;
+  background-color: #282c34;
+  color: #00fdff6e;
 }
 
-.LoginMenu a:hover {
-    font-size: 12px;
-    color: #00ffff9d;
+.LoginMenu button:hover {
+  font-size: 12px;
+  background-color: #424855;
+  color: #00ffff9d;
 }
 
 .Menu {
-    background-color: #282c34;
-    color: #fff;
-    border-left: 1px solid #00fdff6e;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
-    top: 60px;
-    height: 91vh;
-    width: 20vw;
-    padding: 0 8px;
+  background-color: #282c34;
+  color: #fff;
+  border-left: 1px solid #00fdff6e;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  height: 91vh;
+  width: 20vw;
+  padding: 0 8px;
 
-    overflow: auto;
-    direction: rtl;
+  overflow: auto;
+  direction: rtl;
 
-    transition: right 0.5s ease-in-out;
+  transition: right 0.5s ease-in-out;
 }
 .MenuHidden {
-    background-color: #282c34;
-    color: #fff;
-    border-left: 1px solid #00fdff6e;
-    font-weight: bold;
-    position: absolute;
-    right: -20vw;
-    top: 60px;
-    height: 91vh;
-    width: 20vw;
-    padding: 0 8px;
+  background-color: #282c34;
+  color: #fff;
+  border-left: 1px solid #00fdff6e;
+  font-weight: bold;
+  position: absolute;
+  right: -20vw;
+  top: 60px;
+  height: 91vh;
+  width: 20vw;
+  padding: 0 8px;
 
-    direction: rtl;
+  direction: rtl;
 
-    transition: right 0.5s ease-in-out;
+  transition: right 0.5s ease-in-out;
 }
 .Menu::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .Menu::-webkit-scrollbar-track {
-    background-color: #282c34;
+  background-color: #282c34;
 }
 
 .Menu::-webkit-scrollbar-thumb {
-    background-color: #00ffff7e;
-    border-radius: 5px;
+  background-color: #00ffff7e;
+  border-radius: 5px;
 }
 body::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 body::-webkit-scrollbar-track {
-    background-color: #282c34;
+  background-color: #282c34;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #00ffff7e;
-    border-radius: 5px;
+  background-color: #00ffff7e;
+  border-radius: 5px;
 }
 
 .gif-favorito {
-    width: 100%;
-    height: auto;
-    transition: none;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  transition: none;
+  border-radius: 10px;
 }
 
 input,
 button {
-    font-size: 15px;
-    padding: 8px;
-    margin: 10px;
-    border: 0px;
-    border-radius: 5px;
-    background-color: #282c34;
-    font-weight: bold;
-    color: white;
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.514);
+  font-size: 15px;
+  padding: 8px;
+  margin: 10px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #282c34;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.514);
 }
 .moreResults {
-    /*Boton de mas resultados*/
-    max-height: 50%;
+  /*Boton de mas resultados*/
+  max-height: 50%;
 }
 button {
-    background-color: #414855;
+  background-color: #414855;
 }
 button:hover {
-    background-color: rgb(209, 209, 209);
-    color: #252525;
-    transition-property: background-color, color;
-    transition-duration: 0.2s;
+  background-color: rgb(209, 209, 209);
+  color: #252525;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }
 .div-absolute {
-    position: relative;
+  position: relative;
 }
 .absolute-button {
-    position: absolute;
-    right: 87px;
-    top: 0px;
-    color: #ffffff;
-    border: 0;
-    box-shadow: none;
-    background-color: #00000000;
+  position: absolute;
+  right: 87px;
+  top: 0px;
+  color: #ffffff;
+  border: 0;
+  box-shadow: none;
+  background-color: #00000000;
 }
 input:focus {
-    outline: none;
-    background-color: #424855;
-    color: #00ffff9d;
-    transition-property: background-color, color;
-    transition-duration: 0.2s;
+  outline: none;
+  background-color: #424855;
+  color: #00ffff9d;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }
 input::placeholder {
-    color: #00fdff6e;
-    font-weight: bold;
+  color: #00fdff6e;
+  font-weight: bold;
 }
 input:focus::placeholder {
-    color: #00ffff9d;
-    font-weight: bold;
+  color: #00ffff9d;
+  font-weight: bold;
 }
 h3 {
-    background-color: #282c34;
-    padding-top: 12px;
-    color: #ffffff;
+  background-color: #282c34;
+  padding-top: 12px;
+  color: #ffffff;
 }
 /*_________________________________________________________________*/
 aside {
-    background-color: #282c34;
-    grid-column: 1/2;
-    grid-row: 2/4;
-    text-align: center;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
+  background-color: #282c34;
+  grid-column: 1/2;
+  grid-row: 2/4;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
 
-    padding: 0 10px;
-    border-right: 1px solid #00fdff6e;
+  padding: 0 10px;
+  border-right: 1px solid #00fdff6e;
 }
 span {
-    display: block;
-    padding-top: 6px;
+  display: block;
+  padding-top: 6px;
 }
 footer {
-    grid-column: 1/3;
-    grid-row: 4/5;
-    background-color: #343841;
-    border-top: 1px solid #00fdff6e;
+  grid-column: 1/3;
+  grid-row: 4/5;
+  background-color: #343841;
+  border-top: 1px solid #00fdff6e;
 }
 
 /*_________________________________________________________________*/
 main {
-    grid-column: 2/3;
-    grid-row: 2/4;
+  grid-column: 2/3;
+  grid-row: 2/4;
 }
 article {
-    min-height: 90vh;
-    text-align: center;
+  min-height: 90vh;
+  text-align: center;
 }
 .gif {
-    grid-column: 1/-1;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background-color: #414855;
+  grid-column: 1/-1;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #414855;
 }
 .gif img {
-    object-fit: contain;
-    object-position: top;
-    width: 100%;
-    max-height: min-content;
+  object-fit: contain;
+  object-position: top;
+  width: 100%;
+  max-height: min-content;
 }
 .gif .Back {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-    border-radius: 60%;
-    width: 50px;
-    height: 50px;
-    box-shadow: 2px 2px 10px #23272ed7;
-    filter: brightness(90%);
-    padding: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  border-radius: 60%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 2px 2px 10px #23272ed7;
+  filter: brightness(90%);
+  padding: 0;
 }
 .gif_in_list {
-    min-height: 260px;
-    border-radius: 6px;
-    background-image: image();
+  min-height: 260px;
+  border-radius: 6px;
+  background-image: image();
 }
 /* skeleton solo con css
 l):not(.skeleton_loaded__oYWz_) {
@@ -323,157 +325,157 @@ l):not(.skeleton_loaded__oYWz_) {
     background-size: 400% 100%;
     animation: skeleton_loading__L5_xl 8s ease-in-out infinite; */
 .gif .Back:hover {
-    filter: brightness(100%);
-    transition-property: filter;
-    transition-duration: 0.2s;
+  filter: brightness(100%);
+  transition-property: filter;
+  transition-duration: 0.2s;
 }
 
 .gif .Descargar {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #0e8494;
-    background-color: #282c34;
-    border-radius: 8px;
-    width: 160px;
-    height: 40px;
-    font-family: Arial;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #0e8494;
+  background-color: #282c34;
+  border-radius: 8px;
+  width: 160px;
+  height: 40px;
+  font-family: Arial;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gif .Descargar:hover {
-    color: #00ffff9d;
-    background-color: #3b404d;
-    transition-property: background-color, color;
-    transition-duration: 0.2s;
+  color: #00ffff9d;
+  background-color: #3b404d;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }
 
 .App-content {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    grid-row: auto;
-    gap: 1rem;
-    padding: 15px;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  grid-row: auto;
+  gap: 1rem;
+  padding: 15px;
 }
 .App-content div {
-    position: relative;
+  position: relative;
 }
 .App-content div button {
-    position: absolute;
-    top: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .App-content-1-image {
-    background-color: #282c34;
+  background-color: #282c34;
 }
 img {
-    height: 100%; /*without masonry*/
+  height: 100%; /*without masonry*/
 }
 .galery-item {
-    border-radius: 5px;
-    width: 100%;
+  border-radius: 5px;
+  width: 100%;
 }
 /*_________________________________________________________________*/
 a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 2px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 li a {
-    border: 1px solid #00fdff6e;
-    margin: 10px;
-    padding: 10px;
-    width: 100%;
+  border: 1px solid #00fdff6e;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
 }
 .gif Aside {
-    display: none;
+  display: none;
 }
 /*_________________________________________________________________*/
 @media screen and (max-width: 780px) {
-    /*tablet/mobile*/
-    #root > aside {
-        display: none;
-    }
-    .gif aside {
-        display: block;
-    }
-    main {
-        grid-column: 1/3;
-        grid-row: 2/3;
-    }
-    footer {
-        grid-column: 1/3;
-        grid-row: 4/5;
-    }
-    nav form div button {
-        display: none;
-    }
-    .Back {
-        display: none;
-    }
-    nav {
-        display: flex;
-        justify-content: space-evenly;
-        padding: 0 5px;
-    }
-    form div {
-        display: flex;
-    }
-    input {
-        width: 100%;
-    }
-    .Menu {
-        position: absolute;
-        right: 0;
-        width: 100vw;
-        transition: right 0.5s ease-in-out;
-    }
-    .MenuHidden {
-        position: absolute;
-        right: -100vw;
-        width: 100vw;
-        transition: right 0.5s ease-in-out;
-    }
+  /*tablet/mobile*/
+  #root > aside {
+    display: none;
+  }
+  .gif aside {
+    display: block;
+  }
+  main {
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+  footer {
+    grid-column: 1/3;
+    grid-row: 4/5;
+  }
+  nav form div button {
+    display: none;
+  }
+  .Back {
+    display: none;
+  }
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 5px;
+  }
+  form div {
+    display: flex;
+  }
+  input {
+    width: 100%;
+  }
+  .Menu {
+    position: absolute;
+    right: 0;
+    width: 100vw;
+    transition: right 0.5s ease-in-out;
+  }
+  .MenuHidden {
+    position: absolute;
+    right: -100vw;
+    width: 100vw;
+    transition: right 0.5s ease-in-out;
+  }
 }
 
 @media screen and (min-width: 2400px) {
-    /*Hight res*/
-    .App-content {
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 35rem), 1fr));
-        grid-template-rows: 110px auto 1fr 400px;
-    }
-    aside {
-        font-size: 40px;
-    }
-    a {
-        font-size: 40px;
-    }
-    input,
-    button {
-        font-size: 30px;
-        padding: 16px;
-        margin: 20px;
-    }
-    .logo {
-        height: 70px;
-        width: 70px;
-        font-size: 50px;
-    }
+  /*Hight res*/
+  .App-content {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 35rem), 1fr));
+    grid-template-rows: 110px auto 1fr 400px;
+  }
+  aside {
+    font-size: 40px;
+  }
+  a {
+    font-size: 40px;
+  }
+  input,
+  button {
+    font-size: 30px;
+    padding: 16px;
+    margin: 20px;
+  }
+  .logo {
+    height: 70px;
+    width: 70px;
+    font-size: 50px;
+  }
 }
