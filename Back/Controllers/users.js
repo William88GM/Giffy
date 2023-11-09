@@ -48,7 +48,7 @@ usersRouter.post("/register", async (req, res) => {
           res.cookie("token", token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
-            sameSite: "strict",
+            sameSite: "none",
             secure: process.env.side === "production" ? true : false,
           });
           res.status(201).json(savedUser);

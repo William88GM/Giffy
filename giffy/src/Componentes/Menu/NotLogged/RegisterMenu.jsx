@@ -22,7 +22,7 @@ export function RegisterMenu({ setMenuToLogin }) {
       )
       .then((res) => {
         console.log(res);
-        if (res.status === 200) {
+        if (res.status === 201) {
           setSesion(res.data);
           // setError(false);
         } else {
