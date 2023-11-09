@@ -4,6 +4,7 @@ import { userModel } from "../Models/userModel.js";
 import { connectToMongo } from "../mongoDB_connection.js";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import { validateToken } from "../middlewares/validateToken.js";
 
 export const usersRouter = Router();
 
@@ -106,6 +107,9 @@ usersRouter.post("/login", async (req, res) => {
   }
 });
 
+usersRouter.post("/autoLogin", validateToken, async (req, res) => {
+  res.status(200).end();
+});
 usersRouter.post("/logout", async (req, res) => {
   res.cookie("token", "", { expires: new Date(0) });
 

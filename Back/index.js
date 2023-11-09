@@ -11,7 +11,12 @@ const App = Express();
 App.use(Express.json());
 App.use(
   cors({
-    origin: ["http://localhost:3000", "https://giffy-gm.vercel.app"],
+    origin: [
+      "http://localhost:3000",
+      "https://giffy-gm.vercel.app",
+      "https://giffy-william88gm.vercel.app",
+      "https://giffy-git-main-william88gm.vercel.app",
+    ],
     withCredentials: true,
     credentials: true,
     optionsSuccessStatus: 200,

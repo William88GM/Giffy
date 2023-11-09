@@ -27,13 +27,6 @@ export function MenuFavoritos({ setInicioOrFavs }) {
         setFavs(res.data);
         console.log(res.data);
       });
-
-    // fetch(`${baseURL}/api/favoritos/all`)
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     setFavs(res.data);
-    //     console.log(res);
-    //   });
   }, []); //eslint-disable-line
 
   function handleClickGif() {
