@@ -119,7 +119,12 @@ usersRouter.post("/logout", async (req, res) => {
   //   sameSite: "none",
   //   secure: process.env.side === "production" ? true : false,
   // });
-  res.clearCookie("token");
+
+  res.clearCookie("token", {
+    httpOnly: true,
+    sameSite: "none",
+    secure: process.env.side === "production" ? true : false,
+  });
 
   return res.sendStatus(200);
 });
