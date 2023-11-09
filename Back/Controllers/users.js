@@ -112,7 +112,13 @@ usersRouter.post("/autoLogin", validateToken, async (req, res) => {
   res.status(200).json(user);
 });
 usersRouter.post("/logout", async (req, res) => {
-  res.cookie("token", "", { expires: new Date(0) });
+  res.cookie("token", "", {
+    maxAge: 0,
+    expires: new Date(0),
+    httpOnly: true,
+    sameSite: "none",
+    secure: process.env.side === "production" ? true : false,
+  });
 
   return res.sendStatus(200);
 });
