@@ -9,7 +9,12 @@ export function MenuInicioUser() {
   const { sesion, setSesion } = useContext(authContext);
 
   function handleLogOut() {
-    axios.post("http://localhost:3002/api/users/logout").then((res) => {
+    const baseURL =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3002"
+        : "https://giffy-back.onrender.com";
+
+    axios.post(`${baseURL}/api/users/logout`).then((res) => {
       setSesion(false);
     });
   }

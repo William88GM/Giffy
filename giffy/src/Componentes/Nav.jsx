@@ -22,9 +22,13 @@ export default function Nav() {
         : "https://giffy-back.onrender.com";
 
     axios
-      .post(`${baseURL}/api/users/autoLogin`, {
-        withCredentials: true,
-      })
+      .post(
+        `${baseURL}/api/users/autoLogin`,
+        {},
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
