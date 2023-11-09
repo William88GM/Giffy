@@ -24,7 +24,7 @@ export function LoadingGif() {
     },
     {
       original:
-        "https://media4.giphy.com/media/270TRfaKb7axy/giphy.webp?cid=c2c5bb03rrmv5z9jku9iht64lfnomdpzvp6i98go4oqn6kxg&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+        "https://media4.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.webp?cid=c2c5bb03uocq9jqbjbj55fxfel79tg31xt2d4oeb6q69d7gl&ep=v1_gifs_search&rid=giphy.webp&ct=g",
       id_giffy: "270TRfaKb7axy", //ok
     },
     {

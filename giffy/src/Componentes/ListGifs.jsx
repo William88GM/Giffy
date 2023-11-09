@@ -28,7 +28,7 @@ export default function ListGifs() {
 
   function handleFavorite(id) {
     axios
-      .post(`${baseURL}/favoritos/${id}`, {}, { withCredentials: true })
+      .post(`${baseURL}/api/favoritos/${id}`, {}, { withCredentials: true })
       .then((res) => {
         if (favs) {
           setFavs((prevFavs) => prevFavs.concat(res.data));
