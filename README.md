@@ -40,8 +40,8 @@ Back:
 res.cookie("token", token, {
 maxAge: 1000 _ 60 _ 60 _ 24 _ 7,
 httpOnly: true,
-sameSite: "lax",
-secure: process.env.NODE_ENV === "development" ? false : true,
+sameSite: "none",
+secure: process.env.side === "production" ? true : false,
 });
 
 res.send({
