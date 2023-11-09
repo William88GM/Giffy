@@ -48,7 +48,7 @@ usersRouter.post("/register", async (req, res) => {
           res.cookie("token", token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "strict",
             secure: process.env.side === "production" ? true : false,
           });
           res.status(201).json(savedUser);
@@ -91,7 +91,7 @@ usersRouter.post("/login", async (req, res) => {
         res.cookie("token", token, {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           httpOnly: true,
-          sameSite: "lax",
+          sameSite: "strict",
           secure: process.env.side === "production" ? true : false,
         });
 
