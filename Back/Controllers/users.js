@@ -49,7 +49,7 @@ usersRouter.post("/register", async (req, res) => {
           res.cookie("token", token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
-            sameSite: "none",
+            sameSite: process.env.side === "production" ? "none" : "strict",
             secure: process.env.side === "production" ? true : false,
           });
           res.status(201).json(savedUser);
@@ -92,7 +92,7 @@ usersRouter.post("/login", async (req, res) => {
         res.cookie("token", token, {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           httpOnly: true,
-          sameSite: "none",
+          sameSite: process.env.side === "production" ? "none" : "strict",
           secure: process.env.side === "production" ? true : false,
         });
 
@@ -119,12 +119,17 @@ usersRouter.post("/logout", async (req, res) => {
   //   sameSite: "none",
   //   secure: process.env.side === "production" ? true : false,
   // });
-
-  res.clearCookie("token", {
-    httpOnly: true,
-    sameSite: "none",
-    secure: process.env.side === "production" ? true : false,
-  });
-
-  return res.sendStatus(200);
+  try {
+    res.clearCookie("token", {
+      maxAge: 0,
+      httpOnly: true,
+      sameSite: process.env.side === "production" ? "none" : "strict",
+      secure: process.env.side === "production" ? true : false,
+      // path: "/",
+    });
+    console.log("LOL");
+    res.sendStatus(200).end();
+  } catch (error) {
+    console.log(error);
+  }
 });

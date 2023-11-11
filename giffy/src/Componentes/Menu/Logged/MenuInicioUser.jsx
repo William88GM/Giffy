@@ -14,9 +14,18 @@ export function MenuInicioUser() {
         ? "http://localhost:3002"
         : "https://giffy-back.onrender.com";
 
-    axios.post(`${baseURL}/api/users/logout`).then((res) => {
-      setSesion(false);
-    });
+    axios
+      .post(
+        `${baseURL}/api/users/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        setSesion(false);
+        console.log(res);
+      });
   }
 
   return inicioOrFavs === "Inicio" ? (

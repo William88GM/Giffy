@@ -16,7 +16,7 @@ export function MenuFavoritos({ setInicioOrFavs }) {
       : "https://giffy-back.onrender.com";
 
   useEffect(() => {
-    if (favs[0]) return;
+    // if (favs[0]) return;
     // const token = Cookies.get("token");
 
     axios
