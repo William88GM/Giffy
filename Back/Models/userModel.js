@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
       ref: "Favorite", //Donde debe buscar las ids
     },
   ],
+  history: [String],
 });
 
 userSchema.set("toJSON", {

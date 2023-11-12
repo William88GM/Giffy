@@ -6,6 +6,7 @@ import { downloadsRouter } from "./Controllers/downloads.js";
 import "dotenv/config";
 import { validateToken } from "./middlewares/validateToken.js";
 import cookie_parser from "cookie-parser";
+import { historialRouter } from "./Controllers/historialRouter.js";
 
 const App = Express();
 App.use(Express.json());
@@ -27,5 +28,6 @@ App.use(cookie_parser());
 App.use("/api/users", usersRouter);
 App.use("/api/download", validateToken, downloadsRouter);
 App.use("/api/favoritos", validateToken, favoritesRouter);
+App.use("/api/historial", validateToken, historialRouter);
 
 App.listen(process.env.port || 3002);

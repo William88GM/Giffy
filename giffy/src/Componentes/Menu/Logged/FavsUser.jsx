@@ -1,30 +1,31 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FavContext } from "../../../Servicios/favoritosContextProvider";
 import { Link } from "react-router-dom";
 import { LoadingGif } from "../LoadingGif";
 import { menuContext } from "../../../Servicios/MenuContext";
-import Cookies from "js-cookie";
+
 import axios from "axios";
 // import { useLoadingGif } from "./useLoadingGif";
 
-export function MenuFavoritos({ setInicioOrFavs }) {
+export function MenuFavoritos({ setInicio }) {
   const { favs, setFavs } = useContext(FavContext);
   const { setMenuIsActive } = useContext(menuContext);
+  const [loading, setLoading] = useState();
+
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
       : "https://giffy-back.onrender.com";
 
   useEffect(() => {
-    // if (favs[0]) return;
-    // const token = Cookies.get("token");
-
+    setLoading(true);
     axios
       .get(`${baseURL}/api/favoritos/all`, {
         withCredentials: true,
       })
       .then((res) => {
         setFavs(res.data);
+        setLoading(false);
         console.log(res.data);
       });
   }, []); //eslint-disable-line
@@ -35,13 +36,12 @@ export function MenuFavoritos({ setInicioOrFavs }) {
 
   return (
     <>
-      <button
-        className="MenuAtrasButton"
-        onClick={() => setInicioOrFavs("Inicio")}
-      >
+      <button className="MenuAtrasButton" onClick={() => setInicio("Inicio")}>
         Inicio
       </button>
-      {favs[0] ? (
+      {loading ? (
+        <LoadingGif />
+      ) : (
         favs.map((e) => (
           <Link to={`/favorites/${e.id_Giphy}`} onClick={handleClickGif}>
             <img
@@ -52,8 +52,6 @@ export function MenuFavoritos({ setInicioOrFavs }) {
             ></img>
           </Link>
         ))
-      ) : (
-        <LoadingGif />
       )}
     </>
   );

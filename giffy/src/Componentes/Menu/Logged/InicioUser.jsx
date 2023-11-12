@@ -1,14 +1,16 @@
-import React, { useContext, useState } from "react";
-import Aside from "../../Aside";
-import { MenuFavoritos } from "./MenuFavoritos";
-import { authContext } from "../../../Servicios/authContex";
 import axios from "axios";
+import Aside from "../../Aside";
+import { useContext, useState } from "react";
+import { authContext } from "../../../Servicios/authContex";
+import { LoadingGif } from "../LoadingGif";
 
-export function MenuInicioUser() {
-  const [inicioOrFavs, setInicioOrFavs] = useState("Inicio");
+export function InicioUser({ setFavs }) {
   const { sesion, setSesion } = useContext(authContext);
+  const [loading, setLoading] = useState();
 
   function handleLogOut() {
+    setLoading(true);
+
     const baseURL =
       process.env.NODE_ENV === "development"
         ? "http://localhost:3002"
@@ -24,20 +26,20 @@ export function MenuInicioUser() {
       )
       .then((res) => {
         setSesion(false);
+        setLoading(false);
         console.log(res);
       });
   }
 
-  return inicioOrFavs === "Inicio" ? (
+  return loading ? (
+    <LoadingGif />
+  ) : (
     <ul>
       <li>
         <span>{sesion && sesion.name}</span>
       </li>
       <li>
-        <button
-          className="BasicFavButton"
-          onClick={() => setInicioOrFavs("Favs")}
-        >
+        <button className="BasicFavButton" onClick={() => setFavs("Favs")}>
           Favoritos
         </button>
         <button onClick={handleLogOut}>Cerrar sesión</button>
@@ -45,7 +47,5 @@ export function MenuInicioUser() {
 
       <Aside menu={true} />
     </ul>
-  ) : (
-    <MenuFavoritos setInicioOrFavs={setInicioOrFavs} />
   );
 }
