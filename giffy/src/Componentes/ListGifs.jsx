@@ -42,11 +42,13 @@ export default function ListGifs() {
   useEffect(() => {
     const updateColumns = () => {
       // Ajusta las reglas de media queries según tus necesidades
-      if (window.innerWidth >= 1200) {
+      if(window.innerWidth >= 1920){
+        setColumns(6);
+      } else if (window.innerWidth >= 1200) {
         setColumns(4);
       } else if (window.innerWidth >= 768) {
         setColumns(3);
-      } else {
+      } else if (window.innerWidth >= 340) {
         setColumns(1);
       }
     };
