@@ -6,10 +6,10 @@ export function petition(keyword, page = 0) {
         API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${keyword.replace(
             /\s/g,
             "+"
-        )}&limit=9&offset=${9 * page}&rating=g&lang=en&bundle=sticker_layering`;
+        )}&limit=12&offset=${12 * page}&rating=g&lang=en&bundle=sticker_layering`;
     } else {
-        API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=9&offset=${
-            9 * page
+        API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=12&offset=${
+            12 * page
         }&rating=g&bundle=sticker_layering`;
     }
 
