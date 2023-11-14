@@ -283,7 +283,6 @@ footer {
   border-top: 1px solid #00fdff6e;
 }
 
-/*_________________________________________________________________*/
 main {
   grid-column: 2/3;
   grid-row: 2/4;
@@ -380,10 +379,10 @@ l):not(.skeleton_loaded__oYWz_) {
 img {
   height: 100%; /*without masonry*/
 }
-.galery-item {
+/* .galery-item-grid {
   border-radius: 5px;
   width: 100%;
-}
+} */
 /*_________________________________________________________________*/
 a {
   text-decoration: none;

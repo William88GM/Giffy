@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Context } from "../Servicios/Context";
 import useObserver from "../hooks/useObserver";
@@ -11,10 +11,12 @@ import { Loading } from "./Loading";
 import { authContext } from "../Servicios/authContex";
 
 export default function ListGifs() {
+  const [loading, setLoading] = useState(false);
   const { gifs } = useContext(Context);
   const { favs, setFavs } = useContext(FavContext);
   const { sesion } = useContext(authContext);
   const { search } = useParams();
+  const [columnas, setColumns] = useState(1);
   const elRef = useRef();
   const { show } = useObserver({ elRef });
   const baseURL =
@@ -22,7 +24,7 @@ export default function ListGifs() {
       ? "http://localhost:3002"
       : "https://giffy-back.onrender.com";
 
-  useRenderSearch();
+  useRenderSearch({ loading, setLoading });
   //Cuando tenga tiempo les implemento el filtro de gifs, el problema que tiene es que no funciona el primer scroll, carga los siguientes gifs pero al instante los elimina y reemplaza con los inicialesm solo ocurre la primera vez
   usePagination({ show });
 
@@ -37,38 +39,92 @@ export default function ListGifs() {
       });
   }
 
+  useEffect(() => {
+    const updateColumns = () => {
+      // Ajusta las reglas de media queries según tus necesidades
+      if (window.innerWidth >= 1200) {
+        setColumns(4);
+      } else if (window.innerWidth >= 768) {
+        setColumns(3);
+      } else {
+        setColumns(1);
+      }
+    };
+
+    // Llama a updateColumns al cargar y al cambiar el tamaño de la pantalla
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+
+    // Limpia el evento al desmontar el componente
+    return () => {
+      window.removeEventListener("resize", updateColumns);
+    };
+  }, []);
+
+  const masonry = Array.from({ length: columnas }, () => []);
+
+  gifs.forEach((enlace, index) => {
+    const columna = index % columnas;
+    masonry[columna].push(enlace);
+  });
+
   return (
     <>
-      <div className={gifs[1] ? "App-content" : "App-content-1-image"}>
-        {/* Si el resultado de busqueda es un solo gif la imagen se rompe, por eso cambio la clase*/}
+      <div style={{ display: "flex", minWidth: "100%", padding: "10px" }}>
         <Toaster />
-        {gifs.map(
-          (
-            elem,
-            i //Uso el indice y no el id porque la API tiene gifs repetidos :( !!!
-          ) => (
-            <div key={i} className="gif_in_list">
-              <Link to={search ? `${elem.id}` : `trends/${elem.id}`}>
-                <img
-                  // loading="lazy"
-                  className="galery-item"
-                  src={elem.lowRes}
-                  alt={elem.title}
-                />
-              </Link>
-              {sesion ? (
-                <button
-                  title="Añadir a Favoritos"
-                  onClick={() => handleFavorite(elem.id)}
+        {masonry.map((columna, index) => (
+          <div
+            key={index}
+            style={{
+              flex: 1,
+              margin: "0 6px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
+          >
+            {columna.map((enlace, subIndex) => (
+              <div style={{ position: "relative" }}>
+                <Link
+                  key={subIndex}
+                  to={search ? `${enlace.id}` : `trends/${enlace.id}`}
+                  style={{ display: "block" }}
                 >
-                  💙
-                </button>
-              ) : (
-                ""
-              )}
-            </div>
-          )
-        )}
+                  <img
+                    style={{
+                      // marginBottom: "8px",
+                      height: "min-content",
+                      minHeight: "120px",
+                      width: "100%",
+                      borderRadius: "8px",
+                    }}
+                    src={enlace.lowRes}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt={enlace.title}
+                  />
+                </Link>
+                {sesion ? (
+                  <button
+                    title="Añadir a Favoritos"
+                    onClick={() => handleFavorite(enlace.id)}
+                    style={{
+                      position: "absolute",
+                      top: "5px",
+                      right: "5px",
+                      boxShadow: "none",
+                      margin: 0,
+                    }}
+                  >
+                    💙
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
       <div ref={elRef}></div>
       {show ? <Loading /> : ""}
