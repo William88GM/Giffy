@@ -32,7 +32,11 @@ export default function useRenderSearch({ loading, setLoading }) {
           /*que no se ejecute si ya estan los mismos gifs, ocurre un problema al hacer back desde el detalle de un gif:
         una vez que se buscó y se cargo una segunda tanda de gifs, al abrir una foto y luego volver a atras 
         no mantiene el array y empieza de nuevo*/
-          if (gifs[0].id === arrayGIFS[0].id) return; //Si los gifs que llegan son iguales a los anteriores...
+
+          if (gifs[0].id === arrayGIFS[0].id) {
+            setLoading(false);
+            return; //Si los gifs que llegan son iguales a los anteriores...
+          }
         }
 
         // filterGifs(arrayGIFS);

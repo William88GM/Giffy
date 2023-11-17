@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../../../Servicios/authContex";
 export function RegisterMenu({ setMenuToLogin }) {
   const { setSesion } = useContext(authContext);
+  const [errors, setErrors] = useState({});
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
@@ -12,8 +13,13 @@ export function RegisterMenu({ setMenuToLogin }) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const { username, name, password } = Object.fromEntries(formData.entries());
-
+    const { username, username2, name, password } = Object.fromEntries(
+      formData.entries()
+    );
+    if (username !== username2) {
+      setErrors({ Email: "Los mails deben ser identicos" });
+      return;
+    }
     axios
       .post(
         `${baseURL}/api/users/register`,
@@ -21,23 +27,32 @@ export function RegisterMenu({ setMenuToLogin }) {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res);
         if (res.status === 201) {
           setSesion(res.data);
           // setError(false);
-        } else {
-          // setError(true);
+        }
+      })
+      .catch((res) => {
+        if (res.response.status === 409) {
+          setErrors({
+            conflict: "Ya existe una cuenta con ese mail",
+          });
+          console.log(errors);
         }
       });
   }
 
   return (
     <div className="LoginMenu">
-      <span>Hola, vamo a registrarno lokoooo</span>
+      <span>Bienvenido</span>
       <form onSubmit={handleSubmit}>
         <label>
-          Usuario
-          <input type="text" name="username" />
+          Email
+          <input type="email" name="username" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="username2" />
         </label>
         <label>
           Nombre
@@ -51,6 +66,17 @@ export function RegisterMenu({ setMenuToLogin }) {
             name="password"
           />
         </label>
+
+        {Object.keys(errors).length > 0 && (
+          <div className="errores">
+            <ul>
+              {Object.keys(errors).map((clave, index) => (
+                <li key={index}>{errors[clave]}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <button>Registrarse</button>
       </form>
       <small>¿Ya tienes una cuenta?</small>
