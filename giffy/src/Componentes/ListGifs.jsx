@@ -18,14 +18,16 @@ export default function ListGifs() {
   const { search } = useParams();
   const [columnas, setColumns] = useState(1);
   const elRef = useRef();
-  const { show } = useObserver({ elRef });
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
       : "https://giffy-back.onrender.com";
 
+  const { show } = useObserver({ elRef });
+
   useRenderSearch({ loading, setLoading });
   //Cuando tenga tiempo les implemento el filtro de gifs, el problema que tiene es que no funciona el primer scroll, carga los siguientes gifs pero al instante los elimina y reemplaza con los inicialesm solo ocurre la primera vez
+
   usePagination({ show });
 
   function handleFavorite(id) {
@@ -87,7 +89,9 @@ export default function ListGifs() {
     masonry[columna].push(enlace);
   });
 
-  return (
+  return loading ? (
+    <h5>Cargando...</h5>
+  ) : gifs[0] ? (
     <>
       <div style={{ display: "flex", minWidth: "100%", padding: "10px" }}>
         <Toaster
@@ -157,5 +161,7 @@ export default function ListGifs() {
       <div ref={elRef}></div>
       {show ? <Loading /> : ""}
     </>
+  ) : (
+    <h5>Sin resultados</h5>
   );
 }
