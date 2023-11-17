@@ -29,20 +29,37 @@ export default function ListGifs() {
   usePagination({ show });
 
   function handleFavorite(id) {
+    const toastFavId = toast.loading("Guardando...");
     axios
       .post(`${baseURL}/api/favoritos/${id}`, {}, { withCredentials: true })
       .then((res) => {
         if (favs) {
           setFavs((prevFavs) => prevFavs.concat(res.data));
+          console.log(res);
+          toast.dismiss(toastFavId);
+          toast.success("Guardado", {
+            iconTheme: {
+              primary: "#23272e",
+              secondary: "#00ffff",
+            },
+          });
         }
-        toast.success("Guardado");
+      })
+      .catch((res) => {
+        if (res.response.status === 304) {
+          toast.dismiss(toastFavId);
+          toast.error("Ya guardaste ese gif");
+        } else {
+          toast.dismiss(toastFavId);
+          toast.error("Error al guardar");
+        }
       });
   }
 
   useEffect(() => {
     const updateColumns = () => {
       // Ajusta las reglas de media queries según tus necesidades
-      if(window.innerWidth >= 1920){
+      if (window.innerWidth >= 1920) {
         setColumns(6);
       } else if (window.innerWidth >= 1200) {
         setColumns(4);
@@ -73,7 +90,16 @@ export default function ListGifs() {
   return (
     <>
       <div style={{ display: "flex", minWidth: "100%", padding: "10px" }}>
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "#414855",
+              color: "#fff",
+              // border: "1px solid #00ffff44",
+              // boxShadow: "0px 0px 3px 2px #00ffff44",
+            },
+          }}
+        />
         {masonry.map((columna, index) => (
           <div
             key={index}

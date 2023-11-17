@@ -30,7 +30,7 @@ export default function Nav() {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         if (res.status === 200) {
           setSesion(res.data);
         }

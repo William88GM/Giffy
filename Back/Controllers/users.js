@@ -35,6 +35,7 @@ usersRouter.post("/register", async (req, res) => {
       const userForToken = {
         id: savedUser._id,
         username: savedUser.username,
+        name: savedUser.name,
       };
       jwt.sign(
         userForToken,
@@ -79,6 +80,7 @@ usersRouter.post("/login", async (req, res) => {
     const userForToken = {
       id: userFound._id,
       username: userFound.username,
+      name: userFound.name,
     };
 
     jwt.sign(

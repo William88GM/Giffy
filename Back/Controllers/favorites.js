@@ -41,7 +41,7 @@ favoritesRouter.post("/:id", async (req, res) => {
 
       console.log("Se enlazo el favorito al usuario " + userSaved + favUpdated);
 
-      return res.status(201).end();
+      return res.status(201).json(uniqueFav);
     } else {
       //si no existe el fav en db lo creamos
       const favorite = new favoriteModel({
@@ -113,12 +113,37 @@ favoritesRouter.delete("/:id", async (req, res) => {
     const { user } = req;
 
     const currentUser = await userModel.findById(user.id);
-    if (currentUser) {
-      console.log(currentUser.favs);
-      currentUser.favs = currentUser.favs.filter((e) => e.toString() !== gif);
-      const savedUser = await currentUser.save();
+    // console.log("id usuario actual " + currentUser._id);
+    // console.log("favs del usuario " + currentUser.favs);
 
-      res.status(200).json(savedUser);
+    const currentFav = await favoriteModel.findOne({ id_Giphy: gif });
+    // console.log("id favorito actual " + currentFav._id);
+    // console.log("usuarios del fav " + currentFav.user);
+
+    if (currentUser) {
+      currentUser.favs = currentUser.favs.filter(
+        (e) => e.toString() !== currentFav._id.toString()
+      );
+      const savedUser = await currentUser.save();
+      // console.log(
+      //   "favs del usuario luego de eliminar el fav " + currentUser.favs
+      // );
+
+      currentFav.user = currentFav.user.filter(
+        (e) => e.toString() !== currentUser._id.toString()
+      );
+      const savedFavs = await currentFav.save();
+      // console.log(
+      //   "usuarios del fav luego de quitar el user " + currentFav.user
+      // );
+
+      const favsListos = await currentUser.populate("favs", {
+        user: 0,
+        _id: 0,
+        __v: 0,
+      });
+      console.log("favs a devolver" + favsListos.favs);
+      res.status(200).json(favsListos.favs);
     } else {
       res.status(404).end();
     }
