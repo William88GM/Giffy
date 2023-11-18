@@ -75,6 +75,14 @@ usersRouter.post("/register", async (req, res) => {
 usersRouter.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
+    const zodResult = await validateRegister.safeParseAsync({
+      username,
+      password,
+    });
+    if (!zodResult.success) {
+      return res.status(400).json(zodResult.error);
+    }
+
     await connectToMongo();
 
     const userFound = await userModel.findOne({ username });

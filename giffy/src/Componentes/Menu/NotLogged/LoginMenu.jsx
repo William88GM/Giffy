@@ -44,12 +44,13 @@ export function LoginMenu({ setMenuToRegister }) {
       <form onSubmit={handleSubmit}>
         <label>
           User
-          <input type="text" name="username" />
+          <input type="text" name="username" required />
         </label>
 
         <label>
           Contraseña
           <input
+            required
             autoComplete="current-password"
             type="password"
             name="password"

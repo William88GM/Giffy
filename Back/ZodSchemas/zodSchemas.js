@@ -23,3 +23,8 @@ export const validateRegister = z.object({
       message: "La contraseña debe tener 8 caracteres como mínimo",
     }),
 });
+
+export const zodValidateLogin = z.object({
+  username: z.string({ message: "Complete los campos vacios" }),
+  password: z.string({ message: "Complete los campos vacios" }),
+});

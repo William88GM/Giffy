@@ -71,11 +71,7 @@ export function RegisterMenu({ setMenuToLogin }) {
         </label>
         <label>
           Contraseña
-          <input
-            autoComplete="current-password"
-            type="password"
-            name="password"
-          />
+          <input type="password" name="password" />
         </label>
         <div className="errores">
           <ul>
