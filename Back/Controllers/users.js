@@ -5,6 +5,7 @@ import { connectToMongo } from "../mongoDB_connection.js";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { validateToken } from "../middlewares/validateToken.js";
+import { validateRegister } from "../ZodSchemas/ZodSchemas.js";
 
 export const usersRouter = Router();
 
@@ -12,6 +13,15 @@ usersRouter.post("/register", async (req, res) => {
   try {
     await connectToMongo();
     const { username, name, password } = req.body;
+
+    const zodResult = await validateRegister.safeParseAsync({
+      username,
+      name,
+      password,
+    });
+    if (!zodResult.success) {
+      return res.status(400).json(zodResult.error);
+    }
 
     const userSearched = await userModel.find({ username }); //userSearched = [{username:"pepe"}]
 

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { authContext } from "../../../Servicios/authContex";
 export function RegisterMenu({ setMenuToLogin }) {
   const { setSesion } = useContext(authContext);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
@@ -17,9 +17,10 @@ export function RegisterMenu({ setMenuToLogin }) {
       formData.entries()
     );
     if (username !== username2) {
-      setErrors({ Email: "Los mails deben ser identicos" });
+      setErrors([{ message: "Los mails deben ser identicos" }]);
       return;
     }
+
     axios
       .post(
         `${baseURL}/api/users/register`,
@@ -34,10 +35,20 @@ export function RegisterMenu({ setMenuToLogin }) {
       })
       .catch((res) => {
         if (res.response.status === 409) {
-          setErrors({
-            conflict: "Ya existe una cuenta con ese mail",
-          });
+          setErrors([
+            {
+              message: "Ya existe una cuenta con ese mail",
+            },
+          ]);
           console.log(errors);
+        }
+
+        if (res.response.status === 400) {
+          const zodErrors = res.response.data.issues.map((e) => {
+            const { message } = e;
+            return { message };
+          });
+          setErrors(zodErrors);
         }
       });
   }
@@ -66,8 +77,15 @@ export function RegisterMenu({ setMenuToLogin }) {
             name="password"
           />
         </label>
+        <div className="errores">
+          <ul>
+            {errors.map((e, i) => (
+              <li key={i}>{e.message}</li>
+            ))}
+          </ul>
+        </div>
 
-        {Object.keys(errors).length > 0 && (
+        {/* {Object.keys(errors).length > 0 && (
           <div className="errores">
             <ul>
               {Object.keys(errors).map((clave, index) => (
@@ -75,7 +93,7 @@ export function RegisterMenu({ setMenuToLogin }) {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
 
         <button>Registrarse</button>
       </form>
