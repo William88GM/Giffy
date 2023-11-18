@@ -5,7 +5,7 @@ import { connectToMongo } from "../mongoDB_connection.js";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { validateToken } from "../middlewares/validateToken.js";
-import { validateRegister } from "../ZodSchemas/ZodSchemas.js";
+import { validateRegister } from "../ZodSchemas/zodSchemas.js";
 
 export const usersRouter = Router();
 
