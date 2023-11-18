@@ -5,7 +5,10 @@ import { connectToMongo } from "../mongoDB_connection.js";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { validateToken } from "../middlewares/validateToken.js";
-import { validateRegister } from "../ZodSchemas/zodSchemas.js";
+import {
+  validateRegister,
+  zodValidateLogin,
+} from "../ZodSchemas/zodSchemas.js";
 
 export const usersRouter = Router();
 
@@ -75,7 +78,7 @@ usersRouter.post("/register", async (req, res) => {
 usersRouter.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
-    const zodResult = await validateRegister.safeParseAsync({
+    const zodResult = await zodValidateLogin.safeParseAsync({
       username,
       password,
     });
