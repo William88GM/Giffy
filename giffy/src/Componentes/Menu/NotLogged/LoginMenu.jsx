@@ -7,7 +7,7 @@ export function LoginMenu({ setMenuToRegister }) {
   const { setSesion } = useContext(authContext);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState();
-
+  const [showPassword, setShowPassword] = useState(false);
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
@@ -36,6 +36,11 @@ export function LoginMenu({ setMenuToRegister }) {
       });
   }
 
+  function handleShowPassword(e) {
+    setShowPassword(!showPassword);
+    e.preventDefault();
+  }
+
   return loading ? (
     <LoadingGif />
   ) : (
@@ -47,14 +52,13 @@ export function LoginMenu({ setMenuToRegister }) {
           <input type="text" name="username" required />
         </label>
 
-        <label>
+        <label className="labelPassword">
           Contraseña
           <input
-            required
-            autoComplete="current-password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
-          />
+          ></input>
+          <button onClick={(e) => handleShowPassword(e)}>👁</button>
         </label>
         {error ? <small>Usuario o contraseña incorrectos</small> : ""}
         <button>Iniciar sesión</button>

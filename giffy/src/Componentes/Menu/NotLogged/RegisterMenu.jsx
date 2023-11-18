@@ -4,6 +4,7 @@ import { authContext } from "../../../Servicios/authContex";
 export function RegisterMenu({ setMenuToLogin }) {
   const { setSesion } = useContext(authContext);
   const [errors, setErrors] = useState([]);
+  const [showPassword, setShowPassword] = useState(true);
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
@@ -53,25 +54,36 @@ export function RegisterMenu({ setMenuToLogin }) {
       });
   }
 
+  function handleShowPassword(e) {
+    setShowPassword(!showPassword);
+    e.preventDefault();
+  }
+
   return (
     <div className="LoginMenu">
       <span>Bienvenido</span>
       <form onSubmit={handleSubmit}>
         <label>
           Email
-          <input type="email" name="username" />
+          <input type="email" name="username" required />
         </label>
         <label>
           Email
-          <input type="email" name="username2" />
+          <input type="email" name="username2" required />
         </label>
         <label>
           Nombre
-          <input type="text" name="name" />
+          <input type="text" name="name" required />
         </label>
-        <label>
+        <label className="labelPassword">
           Contraseña
-          <input type="password" name="password" />
+          <input
+            type={showPassword ? "text" : "password"}
+            onFocus={() => setShowPassword(false)}
+            name="password"
+            required
+          ></input>
+          <button onClick={(e) => handleShowPassword(e)}>👁</button>
         </label>
         <div className="errores">
           <ul>

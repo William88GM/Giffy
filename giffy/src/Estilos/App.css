@@ -18,6 +18,42 @@ body {
   background-color: #282c34;
 }
 
+/* Para WebKit/Blink (Chrome, Safari) */
+input:-webkit-autofill {
+  background-color: #282c34 !important;
+  color: #fff !important;
+}
+
+/* Para Firefox */
+input:-moz-placeholder {
+  background-color: #282c34 !important;
+  color: #fff !important;
+}
+input:-internal-autofill-selected {
+  background-color: #282c34 !important;
+  color: #fff !important;
+}
+input[type="password" i] {
+  background-color: #282c34 !important;
+  color: #fff !important;
+}
+
+.labelPassword {
+  position: relative;
+}
+.labelPassword button {
+  position: absolute;
+  font-weight: 100;
+  right: -10px;
+  top: 15px;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  font-size: 20px !important;
+  box-shadow: none !important;
+}
+.labelPassword button:hover {
+  color: #07a1c7 !important;
+}
 /*_________________________________________________________________*/
 /*Se tuvo que hacer en linea porque al enfocar no lo hacia de forma progresiva*/
 /* .blur {
@@ -143,7 +179,7 @@ form {
 .LoginMenu button {
   font-size: 12px;
   background-color: #282c34;
-  color: #00fdff6e;
+  color: #00ffff88;
 }
 
 .LoginMenu button:hover {

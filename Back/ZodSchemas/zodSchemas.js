@@ -4,7 +4,9 @@ export const validateRegister = z.object({
   username: z
     .string({ message: "Complete los campos vacios" })
     .email({ message: "Introduzca un email valido" }),
-  name: z.string({ message: "Complete los campos vacios" }),
+  name: z
+    .string({ message: "Complete los campos vacios" })
+    .min(1, { message: "El nombre debe tener un caracter como minimo" }),
   password: z
     .string({ message: "Complete los campos vacios" })
     .regex(new RegExp(".*[A-Z].*"), {
