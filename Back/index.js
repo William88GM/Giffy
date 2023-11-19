@@ -26,7 +26,7 @@ App.use(
 App.use(cookie_parser());
 
 App.use("/api/users", usersRouter);
-App.use("/api/download", validateToken, downloadsRouter);
+App.use("/api/download", downloadsRouter);
 App.use("/api/favoritos", validateToken, favoritesRouter);
 App.use("/api/historial", validateToken, historialRouter);
 
