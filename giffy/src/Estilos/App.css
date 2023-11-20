@@ -205,7 +205,7 @@ form {
   overflow: auto;
   direction: rtl;
 
-  transition: right 0.5s ease-in-out;
+  transition: right 0.3s ease-in-out;
 }
 .MenuHidden {
   background-color: #282c34;
@@ -221,7 +221,7 @@ form {
 
   direction: rtl;
 
-  transition: right 0.5s ease-in-out;
+  transition: right 0.3s ease-in-out;
 }
 .Menu::-webkit-scrollbar {
   width: 10px;
@@ -527,13 +527,13 @@ li a {
     position: absolute;
     right: 0;
     width: 100vw;
-    transition: right 0.5s ease-in-out;
+    transition: right 0.3s ease-in-out;
   }
   .MenuHidden {
     position: absolute;
     right: -100vw;
     width: 100vw;
-    transition: right 0.5s ease-in-out;
+    transition: right 0.3s ease-in-out;
   }
 }
 
