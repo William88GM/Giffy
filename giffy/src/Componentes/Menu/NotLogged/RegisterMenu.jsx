@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { authContext } from "../../../Servicios/authContex";
+import toast from "react-hot-toast";
+import { EmailNotification } from "../../EmailNotification";
+
 export function RegisterMenu({ setMenuToLogin }) {
   const { setSesion } = useContext(authContext);
   const [errors, setErrors] = useState([]);
@@ -30,8 +33,7 @@ export function RegisterMenu({ setMenuToLogin }) {
       )
       .then((res) => {
         if (res.status === 201) {
-          setSesion(res.data);
-          // setError(false);
+          setSesion(res.data.savedUser);
         }
       })
       .catch((res) => {

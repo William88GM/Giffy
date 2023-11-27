@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema({
     },
   ],
   history: [String],
+  emailConfirmed: Boolean,
+  tokenEmail: Schema.Types.UUID,
 });
 
 userSchema.set("toJSON", {

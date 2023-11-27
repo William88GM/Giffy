@@ -38,6 +38,59 @@ input[type="password" i] {
   color: #fff !important;
 }
 
+.EmailNotification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+
+  position: absolute;
+  top: -300px;
+  right: 100px;
+  z-index: 10;
+
+  background-color: #414855;
+  border-radius: 5px;
+  padding: 8px;
+  color: #fff;
+  box-shadow: 0px 0px 5px 0px #00fff0;
+  border: 1px solid #00fff0;
+
+  animation: aparecer 10s ease-in-out;
+}
+@keyframes aparecer {
+  0% {
+  }
+  10% {
+    top: 10px;
+  }
+  90% {
+    top: 10px;
+  }
+  100% {
+    top: -300px;
+  }
+}
+.EmailNotification h6 {
+  font-size: 14px;
+  font-weight: 400;
+  text-wrap: balance;
+}
+.EmailNotification a {
+  font-size: 16px;
+  background-color: #23272e;
+  color: #00ffff;
+  border-radius: 5px;
+  padding: 4px 8px;
+  transition: all 0.3s;
+}
+
+.EmailNotification a:hover {
+  background-color: #0a111e;
+  color: #00d9d9;
+}
+
 .labelPassword {
   position: relative;
 }
@@ -117,6 +170,7 @@ form {
 }
 .MenuButton {
   grid-column: 3/4;
+  font-weight: 400;
 }
 .Menufav {
   position: relative;

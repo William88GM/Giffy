@@ -7,7 +7,6 @@ import { LoadingGif } from "../LoadingGif";
 export function InicioUser({ setFavs }) {
   const { sesion, setSesion } = useContext(authContext);
   const [loading, setLoading] = useState();
-
   function handleLogOut() {
     setLoading(true);
 

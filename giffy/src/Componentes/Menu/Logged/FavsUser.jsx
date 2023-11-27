@@ -58,16 +58,6 @@ export function MenuFavoritos({ setInicio }) {
 
   return (
     <div className="Menufav">
-      <Toaster
-        toastOptions={{
-          style: {
-            background: "#414855",
-            color: "#fff",
-            // border: "1px solid #00ffff44",
-            // boxShadow: "0px 0px 3px 2px #00ffff44",
-          },
-        }}
-      />
       <button className="MenuAtrasButton" onClick={() => setInicio("Inicio")}>
         Home
       </button>

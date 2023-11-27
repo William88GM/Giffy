@@ -9,6 +9,7 @@ import {
   validateRegister,
   zodValidateLogin,
 } from "../ZodSchemas/zodSchemas.js";
+import { sendEmail } from "../email.js";
 
 export const usersRouter = Router();
 
@@ -41,15 +42,20 @@ usersRouter.post("/register", async (req, res) => {
         username,
         name,
         passwordHash,
+        emailConfirmed: false,
+        tokenEmail: globalThis.crypto.randomUUID(),
       });
 
       const savedUser = await user.save();
+      console.log("usuarioGuardado: " + savedUser._id);
 
       const userForToken = {
         id: savedUser._id,
-        username: savedUser.username,
+        username: savedUser.username, //Email
         name: savedUser.name,
+        emailConfirmed: savedUser.emailConfirmed,
       };
+
       jwt.sign(
         userForToken,
         process.env.tokenENV,
@@ -66,9 +72,18 @@ usersRouter.post("/register", async (req, res) => {
             sameSite: process.env.side === "production" ? "none" : "strict",
             secure: process.env.side === "production" ? true : false,
           });
-          res.status(201).json(savedUser);
+          res.status(201).json({ savedUser });
         }
       );
+
+      //Deberia ir antes de guardar el usuario, si no existe el email, no continuar
+      const emailResult = await sendEmail({
+        to: username,
+        token: savedUser.tokenEmail,
+      });
+      console.log(emailResult);
+
+      // const emailResult = await sendEmail({ to: username, id: savedUser._id });
     }
   } catch (error) {
     console.log(error);
@@ -92,16 +107,17 @@ usersRouter.post("/login", async (req, res) => {
     const passwordIsCorrect =
       userFound === null
         ? false
-        : await bcrypt.compare(password, userFound.passwordHash);
+        : bcrypt.compare(password, userFound.passwordHash);
 
     if (!passwordIsCorrect) {
-      res.status(401).json({ error: "Invalid password or username" });
+      return res.status(401).json({ error: "Invalid password or username" });
     }
     //
     const userForToken = {
       id: userFound._id,
       username: userFound.username,
       name: userFound.name,
+      emailConfirmed: userFound.emailConfirmed,
     };
 
     jwt.sign(
@@ -122,6 +138,7 @@ usersRouter.post("/login", async (req, res) => {
         res.send({
           name: userFound.name,
           username: userFound.username,
+          emailConfirmed: userFound.emailConfirmed,
         });
       }
     );

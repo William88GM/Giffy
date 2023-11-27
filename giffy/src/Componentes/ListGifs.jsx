@@ -94,16 +94,6 @@ export default function ListGifs() {
   ) : gifs[0] ? (
     <>
       <div style={{ display: "flex", minWidth: "100%", padding: "10px" }}>
-        <Toaster
-          toastOptions={{
-            style: {
-              background: "#414855",
-              color: "#fff",
-              // border: "1px solid #00ffff44",
-              // boxShadow: "0px 0px 3px 2px #00ffff44",
-            },
-          }}
-        />
         {masonry.map((columna, index) => (
           <div
             key={index}
