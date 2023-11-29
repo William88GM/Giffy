@@ -24,10 +24,9 @@ Si no tienes ni idea de que es Giffy, por favor ignora este Email
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
-      secure: true,
       auth: {
         user: "giffy.app.dev@gmail.com",
-        pass: "tork gtlt wtdf idf",
+        pass: "WuldNahKest*8",
       },
       // tls: {
       //   rejectUnauthorized: process.env.side === "production" ? true : false,
