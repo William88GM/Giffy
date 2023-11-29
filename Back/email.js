@@ -26,7 +26,7 @@ Si no tienes ni idea de que es Giffy, por favor ignora este Email
       port: 465,
       auth: {
         user: "giffy.app.dev@gmail.com",
-        pass: "WuldNahKest*8",
+        pass: "ukrl ebmp urxy mfux",
       },
       // tls: {
       //   rejectUnauthorized: process.env.side === "production" ? true : false,
