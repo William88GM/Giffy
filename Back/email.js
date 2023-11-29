@@ -2,6 +2,8 @@
 import nodemailer from "nodemailer";
 
 export async function sendEmail({ to, token }) {
+  // https://myaccount.google.com/lesssecureapps
+
   try {
     const BACK_URL =
       process.env.side === "production"
@@ -25,7 +27,7 @@ Si no tienes ni idea de que es Giffy, por favor ignora este Email
       secure: true,
       auth: {
         user: "giffy.app.dev@gmail.com",
-        pass: "WuldNahKest*8",
+        pass: "tork gtlt wtdf idf",
       },
       // tls: {
       //   rejectUnauthorized: process.env.side === "production" ? true : false,
