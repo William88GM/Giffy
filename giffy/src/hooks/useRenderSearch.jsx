@@ -4,8 +4,13 @@ import { Context } from "../Servicios/Context";
 import { contextPage } from "../Servicios/pageContextProvider";
 import { useParams } from "react-router-dom";
 
-export default function useRenderSearch({ loading, setLoading }) {
-  const { gifs, setGifs } = useContext(Context);
+export default function useRenderSearch({
+  loading,
+  setLoading,
+  setShow,
+  observerState,
+}) {
+  const { gifs, setGifs } = useContext(Context); //[]
   const { setPage } = useContext(contextPage);
 
   const { search } = useParams();
@@ -24,7 +29,7 @@ export default function useRenderSearch({ loading, setLoading }) {
   //     setGifs(() => arrayFiltrado);
   // }
   useEffect(() => {
-    setLoading(true);
+    if (!gifs[0]) setLoading(true); //Arreglar
     //creo que el problema esta aca, este hook o useEffect se vuelve a crear luego de que se setea el estado desde el usePagination y setea de nuevo el array a los gifs iniciales, y solo ocurre la primera vez porque los use effect se ejecutan solo la primera vez cuando tienen []
     petition(search).then((arrayGIFS) => {
       if (arrayGIFS[0]) {
@@ -34,17 +39,20 @@ export default function useRenderSearch({ loading, setLoading }) {
         no mantiene el array y empieza de nuevo*/
 
           if (gifs[0].id === arrayGIFS[0].id) {
+            console.log("Llegó al if");
             setLoading(false);
+            setShow(false);
             return; //Si los gifs que llegan son iguales a los anteriores...
+            console.log("aca no deberia llegar");
           }
         }
 
         // filterGifs(arrayGIFS);
-
+        console.log(arrayGIFS);
         setGifs(arrayGIFS);
         setLoading(false);
+        setShow(false);
       } else {
-        setGifs(arrayGIFS);
         setLoading(false);
       }
     });

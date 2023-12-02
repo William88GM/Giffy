@@ -3,15 +3,13 @@ import React, { useState } from "react";
 export const Context = React.createContext({}); //Creo el contexto
 
 export function ContextProvider({ children }) {
-    //Toma los hijos de lo que encierra el componente
+  //Toma los hijos de lo que encierra el componente
 
-    const [gifs, setGifs] = useState([]); //valor inicial solo para cuando no hay render condicional
+  const [gifs, setGifs] = useState([]); //valor inicial solo para cuando no hay render condicional
 
-    return (
-        <Context.Provider value={{ gifs, setGifs }}>
-            {children}
-        </Context.Provider> //Los vuelve a colocar pero en un provider
-    );
+  return (
+    <Context.Provider value={{ gifs, setGifs }}>{children}</Context.Provider> //Los vuelve a colocar pero en un provider
+  );
 }
 
 //ContextProvider!=Context.Provider

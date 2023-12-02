@@ -23,9 +23,9 @@ export default function ListGifs() {
       ? "http://localhost:3002"
       : "https://giffy-back.onrender.com";
 
-  const { show } = useObserver({ elRef });
+  const { show, setShow } = useObserver({ elRef });
 
-  useRenderSearch({ loading, setLoading });
+  useRenderSearch({ loading, setLoading, setShow });
   //Cuando tenga tiempo les implemento el filtro de gifs, el problema que tiene es que no funciona el primer scroll, carga los siguientes gifs pero al instante los elimina y reemplaza con los inicialesm solo ocurre la primera vez
 
   usePagination({ show });
@@ -145,7 +145,7 @@ export default function ListGifs() {
             ))}
 
             <div ref={elRef}></div>
-            {loading && (show ? <Loading /> : "")}
+            {show ? <Loading /> : ""}
             {/*Parece que no funciona :( */}
           </div>
         ))}
