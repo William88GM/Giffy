@@ -28,9 +28,9 @@ Si no tienes ni idea de que es Giffy, por favor ignora este Email
         user: "giffy.app.dev@gmail.com",
         pass: "ukrl ebmp urxy mfux",
       },
-      // tls: {
-      //   rejectUnauthorized: process.env.side === "production" ? true : false,
-      // },
+      tls: {
+        rejectUnauthorized: process.env.side === "production" ? true : false,
+      },
     });
 
     const info = await transporter.sendMail({

@@ -5,7 +5,7 @@ import { LoadingGif } from "../LoadingGif";
 
 export function LoginMenu({ setMenuToRegister }) {
   const { setSesion } = useContext(authContext);
-  const [error, setError] = useState(false);
+  const [errors, setErrors] = useState(false);
   const [loading, setLoading] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const baseURL =
@@ -29,9 +29,14 @@ export function LoginMenu({ setMenuToRegister }) {
         setLoading(false);
         if (res.status === 200) {
           setSesion(res.data);
-          setError(false);
-        } else {
-          setError(true);
+          setErrors(false);
+        }
+      })
+      .catch((res) => {
+        setLoading(false);
+        if (res.response.status === 401) {
+          setErrors(true);
+          console.log(errors);
         }
       });
   }
@@ -60,7 +65,13 @@ export function LoginMenu({ setMenuToRegister }) {
           ></input>
           <button onClick={(e) => handleShowPassword(e)}>👁</button>
         </label>
-        {error ? <small>Usuario o contraseña incorrectos</small> : ""}
+        {errors ? (
+          <small style={{ color: "red" }}>
+            Usuario o contraseña incorrectos
+          </small>
+        ) : (
+          ""
+        )}
         <button>Iniciar sesión</button>
       </form>
       <small>¿Aún no tienes una cuenta?</small>
