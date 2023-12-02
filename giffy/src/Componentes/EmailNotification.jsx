@@ -12,7 +12,7 @@ export function EmailNotification() {
         {sesion.emailConfirmed === false ? (
           <div className="EmailNotification">
             <h6>Confirme su correo electrónico</h6>
-            <a href={emailAdress} target="_blank" rel="noreferrer">
+            <a href={emailAdress} rel="noreferrer">
               Ir a {emailName.toUpperCase()}
             </a>
           </div>

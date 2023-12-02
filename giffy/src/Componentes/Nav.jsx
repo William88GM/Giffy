@@ -48,6 +48,7 @@ export default function Nav() {
     evt.preventDefault();
     navigate(`/${valueSearch}`); //Cambia url
     updateHistory(valueSearch);
+    setMenuIsActive(false);
     window.scroll(0, 0);
   }
   function handleMenu() {

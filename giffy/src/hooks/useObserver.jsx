@@ -13,7 +13,7 @@ export default function useObserver({ elRef }) {
       }
     }
     const observer = new IntersectionObserver(onView, {
-      rootMargin: "550px",
+      rootMargin: "200px",
     });
 
     observer.observe(elRef.current);

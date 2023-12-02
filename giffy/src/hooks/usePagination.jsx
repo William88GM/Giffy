@@ -14,19 +14,19 @@ export default function usePagination({ show }) {
     await setPage((prev) => prev + 1);
 
     //.............FILTRO DE GIFS REPETIDOS al scrollear..............
-    // console.log(nextGIFS);
-    // const concatedGifs = [...gifs, ...nextGIFS];
-    // const idsUnicos = {};
-    // const arrayFiltrado = concatedGifs.filter((objeto) => {
-    //     if (!idsUnicos[objeto.id]) {
-    //         idsUnicos[objeto.id] = true;
-    //         return true;
-    //     }
-    //     return false;
-    // });
-    // setGifs(() => arrayFiltrado);
+    console.log(nextGIFS);
+    const concatedGifs = [...gifs, ...nextGIFS];
+    const idsUnicos = {};
+    const arrayFiltrado = concatedGifs.filter((objeto) => {
+      if (!idsUnicos[objeto.id]) {
+        idsUnicos[objeto.id] = true;
+        return true;
+      }
+      return false;
+    });
+    setGifs(() => arrayFiltrado);
 
-    setGifs((prev) => prev.concat(nextGIFS));
+    // setGifs((prev) => prev.concat(nextGIFS));
   }
 
   useEffect(() => {

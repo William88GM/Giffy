@@ -60,7 +60,6 @@ export default function ListGifs() {
 
   useEffect(() => {
     const updateColumns = () => {
-      // Ajusta las reglas de media queries según tus necesidades
       if (window.innerWidth >= 1920) {
         setColumns(6);
       } else if (window.innerWidth >= 1200) {
@@ -72,7 +71,6 @@ export default function ListGifs() {
       }
     };
 
-    // Llama a updateColumns al cargar y al cambiar el tamaño de la pantalla
     updateColumns();
     window.addEventListener("resize", updateColumns);
 
@@ -82,9 +80,10 @@ export default function ListGifs() {
     };
   }, []);
 
-  const masonry = Array.from({ length: columnas }, () => []);
+  const masonry = Array.from({ length: columnas }, () => []); //Crear un array cuyo largo sera la cantidad de columnas
 
   gifs.forEach((enlace, index) => {
+    //Repartir gifs en las diferentes columnas
     const columna = index % columnas;
     masonry[columna].push(enlace);
   });
@@ -106,9 +105,8 @@ export default function ListGifs() {
             }}
           >
             {columna.map((enlace, subIndex) => (
-              <div style={{ position: "relative" }}>
+              <div style={{ position: "relative" }} key={subIndex}>
                 <Link
-                  key={subIndex}
                   to={search ? `${enlace.id}` : `trends/${enlace.id}`}
                   style={{ display: "block" }}
                 >
@@ -145,11 +143,15 @@ export default function ListGifs() {
                 )}
               </div>
             ))}
+
+            <div ref={elRef}></div>
+            {loading && (show ? <Loading /> : "")}
+            {/*Parece que no funciona :( */}
           </div>
         ))}
       </div>
-      <div ref={elRef}></div>
-      {show ? <Loading /> : ""}
+      {/* <div ref={elRef}></div>
+      {loading && (show ? <Loading /> : "")} */}
     </>
   ) : (
     <h5>Sin resultados</h5>
