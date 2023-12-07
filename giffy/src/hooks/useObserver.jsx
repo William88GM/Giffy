@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../Servicios/Context";
 export default function useObserver({ elRef }) {
   const [show, setShow] = useState(false);
-  const [observerState, setObserverState] = useState();
+  const { gifs } = useContext(Context);
 
   useEffect(() => {
     if (!elRef.current) return;
@@ -9,6 +10,10 @@ export default function useObserver({ elRef }) {
       const element = entries[0];
       if (element.isIntersecting) {
         setShow((prev) => true);
+        setTimeout(() => {
+          setShow((prev) => false);
+          return observer.disconnect();
+        }, 3500);
       } else {
         setShow((prev) => false);
       }
@@ -16,11 +21,10 @@ export default function useObserver({ elRef }) {
     const observer = new IntersectionObserver(onView, {
       rootMargin: "200px",
     });
-    setObserverState(observer);
     observer.observe(elRef.current);
 
     return () => observer.disconnect();
-  });
+  }, [gifs]);
 
   return { show, setShow };
 }

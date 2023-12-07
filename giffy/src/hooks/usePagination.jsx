@@ -9,12 +9,12 @@ export default function usePagination({ show }) {
   const { page, setPage } = useContext(contextPage);
   const { search } = useParams();
 
-  async function callConcatAndFiltertGifs() {
+  async function callConcatAndFilterGifs() {
     const nextGIFS = await petition(search, page);
     await setPage((prev) => prev + 1);
+    // setGifs((prev) => prev.concat(nextGIFS));
 
     //.............FILTRO DE GIFS REPETIDOS al scrollear..............
-    console.log(nextGIFS);
     const concatedGifs = [...gifs, ...nextGIFS];
     const idsUnicos = {};
     const arrayFiltrado = concatedGifs.filter((objeto) => {
@@ -25,13 +25,11 @@ export default function usePagination({ show }) {
       return false;
     });
     setGifs(() => arrayFiltrado);
-
-    // setGifs((prev) => prev.concat(nextGIFS));
   }
 
   useEffect(() => {
     if (!show) return;
-    callConcatAndFiltertGifs();
+    callConcatAndFilterGifs();
     console.log(page);
   }, [show]); //eslint-disable-line
 }

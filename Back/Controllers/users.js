@@ -67,7 +67,7 @@ usersRouter.post("/register", async (req, res) => {
             );
           }
           res.cookie("token", token, {
-            maxAge: 1000 * 60 * 60 * 24 * 7,
+            maxAge: 1000 * 60 * 60 * 24 * 7, //1 week
             httpOnly: true,
             sameSite: process.env.side === "production" ? "none" : "strict",
             secure: process.env.side === "production" ? true : false,
@@ -76,14 +76,11 @@ usersRouter.post("/register", async (req, res) => {
         }
       );
 
-      //Deberia ir antes de guardar el usuario, si no existe el email, no continuar
       const emailResult = await sendEmail({
         to: username,
         token: savedUser.tokenEmail,
       });
-      console.log(emailResult);
-
-      // const emailResult = await sendEmail({ to: username, id: savedUser._id });
+      // console.log(emailResult);
     }
   } catch (error) {
     console.log(error);

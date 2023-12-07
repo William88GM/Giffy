@@ -11,7 +11,6 @@ import { Loading } from "./Loading";
 import { authContext } from "../Servicios/authContex";
 
 export default function ListGifs() {
-  const [loading, setLoading] = useState(false);
   const { gifs } = useContext(Context);
   const { favs, setFavs } = useContext(FavContext);
   const { sesion } = useContext(authContext);
@@ -25,7 +24,8 @@ export default function ListGifs() {
 
   const { show, setShow } = useObserver({ elRef });
 
-  useRenderSearch({ loading, setLoading, setShow });
+  const { loading } = useRenderSearch({ setShow }); //aqui problema re renders
+
   //Cuando tenga tiempo les implemento el filtro de gifs, el problema que tiene es que no funciona el primer scroll, carga los siguientes gifs pero al instante los elimina y reemplaza con los inicialesm solo ocurre la primera vez
 
   usePagination({ show });
@@ -146,7 +146,6 @@ export default function ListGifs() {
 
             <div ref={elRef}></div>
             {show ? <Loading /> : ""}
-            {/*Parece que no funciona :( */}
           </div>
         ))}
       </div>

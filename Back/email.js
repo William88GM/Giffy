@@ -41,7 +41,7 @@ Si no tienes ni idea de que es Giffy, por favor ignora este Email
       html: htmlEmail,
     });
 
-    console.log("info" + info);
+    return info;
   } catch (error) {
     console.log(error);
   }

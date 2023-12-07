@@ -13,11 +13,11 @@ historialRouter.get("/", async (req, res) => {
 });
 historialRouter.put("/", async (req, res) => {
   const { user } = req;
-  const { history } = req.body;
+  const { historyElement } = req.body;
   await connectToMongo();
   const userFound = await userModel.findById({ _id: user.id });
-  if (!userFound.history.includes(history)) {
-    userFound.history = userFound.history.concat(history);
+  if (!userFound.history.includes(historyElement)) {
+    userFound.history = userFound.history.concat(historyElement);
     const userSaved = await userFound.save();
     console.log(userSaved);
     res.status(201).json({ history: userSaved.history });
@@ -26,15 +26,21 @@ historialRouter.put("/", async (req, res) => {
   }
 });
 historialRouter.delete("/", async (req, res) => {
-  const { user } = req;
-  const { history } = req.body;
-  await connectToMongo();
-  const userFound = await userModel.findById({ _id: user.id });
+  try {
+    const { user } = req;
+    const { historyElement } = req.body;
 
-  userFound.history = userFound.history.filter((e) => e !== history);
-  const userSaved = await userFound.save();
-  console.log(userSaved);
-  res.status(201).json({ history: userSaved.history });
+    await connectToMongo();
+    console.log(req.body);
+    const userFound = await userModel.findById({ _id: user.id });
+
+    userFound.history = userFound.history.filter((e) => e !== historyElement);
+    const userSaved = await userFound.save();
+    console.log(userSaved);
+    res.status(201).json({ history: userSaved.history });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export { historialRouter };

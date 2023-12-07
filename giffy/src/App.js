@@ -10,10 +10,16 @@ import SearchResults from "./Componentes/SearchResults";
 import { useContext } from "react";
 import { menuContext } from "./Servicios/MenuContext";
 import { Toaster } from "react-hot-toast";
+import { Recientes } from "./Componentes/Recientes";
+import { useOfflineHistory } from "./hooks/useOfflineHistory";
+import { Recomendados } from "./Componentes/Recomendados";
+import { authContext } from "./Servicios/authContex";
 
 function App() {
   //El bug es al entrar a un gif, luego salir y luego cargar mas gifs, ahi empieza a cargar repetidos
   const { menuIsActive, setMenuIsActive } = useContext(menuContext);
+  const { listOffline, deleteItem } = useOfflineHistory();
+  const { sesion } = useContext(authContext);
   return (
     <>
       <Toaster
@@ -60,7 +66,7 @@ function App() {
         </article>
       </main>
 
-      <Aside />
+      {sesion ? <Recomendados /> : <Aside />}
     </>
   );
 }
