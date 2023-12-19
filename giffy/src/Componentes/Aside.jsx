@@ -36,7 +36,7 @@ export default function Aside({ setMenuIsActive, menu }) {
 
   useEffect(() => {
     if (sesion) solicitarHistorial();
-  }, []);
+  }, [sesion]);
 
   if (sesion) {
     if (sesion.emailConfirmed) {
