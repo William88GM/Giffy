@@ -80,10 +80,14 @@ export function LoginMenu({ setMenuToRegister }) {
       setLoading(true);
       localStorage.setItem("fromGoogle", "false");
     }
+
     const auth = getAuth(appFireBase);
+
     getRedirectResult(auth)
       .then((result) => {
+        console.log(result);
         if (result) {
+          console.log("llego aqui");
           console.log(result);
           // This gives you a Google Access Token. You can use it to access Google APIs.
           const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -111,6 +115,7 @@ export function LoginMenu({ setMenuToRegister }) {
             )
             .then((res) => {
               console.log(res.data);
+              console.log("el back responde");
               setLoading(false);
               setSesion(res.data);
               setErrors(false);

@@ -9,12 +9,16 @@ import { historyUserContext } from "../Servicios/historyUserContext";
 export default function Aside({ setMenuIsActive, menu }) {
   const { listOffline, deleteItem } = useOfflineHistory();
   const { sesion } = useContext(authContext);
+  const baseURL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3002"
+      : "https://giffy-back.onrender.com";
   // const [listUser, setListUser] = useState([]);
   const { listUser, setListUser } = useContext(historyUserContext);
   function solicitarHistorial() {
     // fetch(/history).then((res)=>setListUser(res.data))
     axios
-      .get("http://localhost:3002/api/historial", { withCredentials: true })
+      .get(`${baseURL}/api/historial`, { withCredentials: true })
       .then((res) => {
         setListUser(res.data.history);
         console.log(res.data);
@@ -24,7 +28,7 @@ export default function Aside({ setMenuIsActive, menu }) {
   function deleteItemUser(word) {
     console.log(word);
     axios
-      .delete("http://localhost:3002/api/historial", {
+      .delete(`${baseURL}/api/historial`, {
         withCredentials: true,
         data: { historyElement: word },
       })
