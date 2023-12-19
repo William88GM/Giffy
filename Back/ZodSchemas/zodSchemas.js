@@ -26,7 +26,20 @@ export const validateRegister = z.object({
     }),
 });
 
+export const validateGoogleRegister = z.object({
+  username: z
+    .string({ message: "Complete los campos vacios" })
+    .email({ message: "Introduzca un email valido" }),
+  name: z
+    .string({ message: "Complete los campos vacios" })
+    .min(1, { message: "El nombre debe tener un caracter como minimo" }),
+});
+
 export const zodValidateLogin = z.object({
   username: z.string({ message: "Complete los campos vacios" }),
   password: z.string({ message: "Complete los campos vacios" }),
+});
+
+export const zodGoogleValidateLogin = z.object({
+  username: z.string({ message: "Complete los campos vacios" }),
 });

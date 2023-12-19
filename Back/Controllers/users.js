@@ -72,7 +72,11 @@ usersRouter.post("/register", async (req, res) => {
             sameSite: process.env.side === "production" ? "none" : "strict",
             secure: process.env.side === "production" ? true : false,
           });
-          res.status(201).json({ savedUser });
+          res.status(201).json({
+            username: savedUser.username, //Email
+            name: savedUser.name,
+            emailConfirmed: savedUser.emailConfirmed,
+          });
         }
       );
 

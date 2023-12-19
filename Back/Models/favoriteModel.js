@@ -6,6 +6,7 @@ const favoriteSchema = new mongoose.Schema({
   date: Date,
   id_Giphy: String,
   user: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  userGoogle: [{ type: Schema.Types.ObjectId, ref: "GoogleUser" }],
 });
 
 favoriteSchema.set("toJSON", {

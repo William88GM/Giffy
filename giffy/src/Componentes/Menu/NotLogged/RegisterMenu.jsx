@@ -33,7 +33,7 @@ export function RegisterMenu({ setMenuToLogin }) {
       )
       .then((res) => {
         if (res.status === 201) {
-          setSesion(res.data.savedUser);
+          setSesion(res.data);
         }
       })
       .catch((res) => {

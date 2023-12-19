@@ -9,7 +9,10 @@ import cookie_parser from "cookie-parser";
 import { historialRouter } from "./Controllers/historialRouter.js";
 import { confirmEmail } from "./Controllers/confirmEmail.js";
 
+import { loginWithGoogleRouter } from "./Controllers/loginWithGoogle.js";
+
 const App = Express();
+
 App.use(Express.json());
 App.use(
   cors({
@@ -27,6 +30,7 @@ App.use(
 App.use(cookie_parser());
 
 App.get("/api/confirmEmail/:token", confirmEmail);
+App.use("/api/loginWithGoogle", loginWithGoogleRouter);
 App.use("/api/users", usersRouter);
 App.use("/api/download", downloadsRouter);
 App.use("/api/favoritos", validateToken, favoritesRouter);

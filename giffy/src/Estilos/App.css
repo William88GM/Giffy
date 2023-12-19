@@ -465,6 +465,15 @@ l):not(.skeleton_loaded__oYWz_) {
   transition-property: background-color, color;
   transition-duration: 0.2s;
 }
+.google-button {
+  padding: 3px;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 50%;
+}
+.google-button img {
+  width: 40px;
+}
 
 .App-content {
   background-color: #282c34;
