@@ -18,13 +18,11 @@ export default function Nav() {
   const { setListUser } = useContext(historyUserContext);
   const { sesion, setSesion } = useContext(authContext);
   const location = useLocation();
-
+  const baseURL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3002"
+      : "https://giffy-back.onrender.com";
   useEffect(() => {
-    const baseURL =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3002"
-        : "https://giffy-back.onrender.com";
-
     if (location.pathname === "/" && location.hash === "#logout") return;
 
     axios
@@ -50,7 +48,7 @@ export default function Nav() {
   function handleHistoryLogged(valueSearch) {
     axios
       .put(
-        "http://localhost:3002/api/historial",
+        `${baseURL}/api/historial`,
         { historyElement: valueSearch },
         {
           withCredentials: true,
