@@ -52,7 +52,13 @@ export default function Aside({ setMenuIsActive, menu }) {
         />
       );
     } else {
-      return <span>Confirma tu email para ver tu historial</span>;
+      return (
+        <span
+          style={{ color: "white", textAlign: "center", marginTop: "20px" }}
+        >
+          Confirma tu email para ver tu historial
+        </span>
+      );
     }
   }
 

@@ -18,6 +18,19 @@ usersRouter.post("/register", async (req, res) => {
     await connectToMongo();
     const { username, name, password } = req.body;
 
+    const randomProfilePhoto = [
+      "https://media1.giphy.com/media/12HZukMBlutpoQ/giphy.webp?cid=c2c5bb03k9tghb52o9ewngv0zzx7ou7w99z0ntdaaa72ho0t&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media0.giphy.com/media/jTnGaiuxvvDNK/giphy.webp?cid=c2c5bb03k9tghb52o9ewngv0zzx7ou7w99z0ntdaaa72ho0t&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media3.giphy.com/media/JIX9t2j0ZTN9S/giphy.webp?cid=c2c5bb03zeo5fc7jlicy7ejh2in79h6oi77c302ajb735l33&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media4.giphy.com/media/Zx1ZEctOOvxK5VCwwE/giphy.webp?cid=c2c5bb035o4ii8s0qm1gebg0wps632ya8jggdw4hlsr4nxos&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media2.giphy.com/media/ewzF6uunnPn6L5amuW/giphy.webp?cid=c2c5bb03uojp6qdpcbuv8vt4heafpiziqg6k7yqnmebvb1t3&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media3.giphy.com/media/uSYQsJQWEv6O4/giphy.webp?cid=c2c5bb03uojp6qdpcbuv8vt4heafpiziqg6k7yqnmebvb1t3&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media2.giphy.com/media/Cmr1OMJ2FN0B2/giphy.webp?cid=c2c5bb03yeat0kgokyxvywb22z6vj1r7hs5wnlizh2i85sml&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media4.giphy.com/media/1pooFlqcmEz9AgNeRZ/giphy.webp?cid=c2c5bb03o7rqh8r4ywp6di47by3grncd1vggfhloqjgl7yf6&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media0.giphy.com/media/Md053RIVMG3Re/giphy.webp?cid=c2c5bb0379fbdwhmfle4bfcykha2b9xcf54m4ws98ajwnbfj&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      "https://media2.giphy.com/media/11J027GnyjrcJi/giphy.webp?cid=c2c5bb03c9hdgrmdex1b9woalb5qr2y54ogst3pcdtp77bpt&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+    ];
+
     const zodResult = await validateRegister.safeParseAsync({
       username,
       name,
@@ -42,6 +55,7 @@ usersRouter.post("/register", async (req, res) => {
         username,
         name,
         passwordHash,
+        photo: randomProfilePhoto[Math.floor(Math.random() * 9)] || undefined,
         emailConfirmed: false,
         tokenEmail: globalThis.crypto.randomUUID(),
       });
@@ -53,6 +67,7 @@ usersRouter.post("/register", async (req, res) => {
         id: savedUser._id,
         username: savedUser.username, //Email
         name: savedUser.name,
+        photo: savedUser.photo,
         emailConfirmed: savedUser.emailConfirmed,
       };
 

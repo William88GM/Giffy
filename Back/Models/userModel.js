@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
     },
   ],
   history: [String],
+  photo: String,
   emailConfirmed: Boolean,
   tokenEmail: Schema.Types.UUID,
 });

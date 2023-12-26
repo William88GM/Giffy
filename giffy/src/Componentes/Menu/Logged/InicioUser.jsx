@@ -7,6 +7,9 @@ import { LoadingGif } from "../LoadingGif";
 export function InicioUser({ setFavs }) {
   const { sesion, setSesion } = useContext(authContext);
   const [loading, setLoading] = useState();
+  // const randomProfilePhoto = [
+  //   "",
+  // ];
   function handleLogOut() {
     setLoading(true);
 
@@ -36,7 +39,10 @@ export function InicioUser({ setFavs }) {
     <ul style={{ display: "flex", flexDirection: "column" }}>
       <img //eslint-disable-line
         className="profile-picture"
-        src={sesion && sesion.photo}
+        src={
+          sesion && sesion.photo
+          // ||randomProfilePhoto[0]
+        }
         alt="Profile picture"
       />
       <li>
