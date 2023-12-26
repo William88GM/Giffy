@@ -10,6 +10,7 @@ import PageContextProvider from "./Servicios/pageContextProvider";
 import { MenuContextProvider } from "./Servicios/MenuContext";
 import { AuthContextProvider } from "./Servicios/authContex";
 import { HistoryUserContextProvider } from "./Servicios/historyUserContext";
+import { NoHayMasContextProvider } from "./Servicios/NoHayMasContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,18 +18,20 @@ root.render(
     <BrowserRouter>
       <HistoryUserContextProvider>
         <AuthContextProvider>
-          <ContextProvider>
-            <OfflineHistorialContextProvider>
-              <FavoritosContextProvider>
-                <PageContextProvider>
-                  <MenuContextProvider>
-                    <App />
-                  </MenuContextProvider>
-                </PageContextProvider>
-              </FavoritosContextProvider>
-            </OfflineHistorialContextProvider>
-            {/* <Footer /> */}
-          </ContextProvider>
+          <NoHayMasContextProvider>
+            <ContextProvider>
+              <OfflineHistorialContextProvider>
+                <FavoritosContextProvider>
+                  <PageContextProvider>
+                    <MenuContextProvider>
+                      <App />
+                    </MenuContextProvider>
+                  </PageContextProvider>
+                </FavoritosContextProvider>
+              </OfflineHistorialContextProvider>
+              {/* <Footer /> */}
+            </ContextProvider>
+          </NoHayMasContextProvider>
         </AuthContextProvider>
       </HistoryUserContextProvider>
     </BrowserRouter>

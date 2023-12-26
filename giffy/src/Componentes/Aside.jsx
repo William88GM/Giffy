@@ -20,7 +20,7 @@ export default function Aside({ setMenuIsActive, menu }) {
     axios
       .get(`${baseURL}/api/historial`, { withCredentials: true })
       .then((res) => {
-        setListUser(res.data.history);
+        setListUser(res.data.history.reverse());
         console.log(res.data);
       });
   }

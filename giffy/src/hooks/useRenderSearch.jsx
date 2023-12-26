@@ -11,28 +11,24 @@ export default function useRenderSearch({ setShow }) {
 
   const { search } = useParams();
 
-  // function filterGifs(arrayGIFS) {
-  //     const idsUnicos = {};
-
-  //     const arrayFiltrado = arrayGIFS.filter((objeto) => {
-  //         if (!idsUnicos[objeto.id]) {
-  //             idsUnicos[objeto.id] = true;
-  //             return true;
-  //         }
-  //         return false;
-  //     });
-
-  //     setGifs(() => arrayFiltrado);
-  // }
-
-  // useEffect(()=>{
-  //   petition(search).then((arrayGIFS) => {
-  //     setGifs(arrayGIFS);
-
-  //   })
-  // },[])
+  async function filterGifs(arrayGIFS) {
+    //Filtra solo la primera tirada
+    const idsUnicos = {};
+    const arrayFiltrado = arrayGIFS.filter((objeto) => {
+      if (!idsUnicos[objeto.id]) {
+        idsUnicos[objeto.id] = true;
+        return true;
+      }
+      return false;
+    });
+    setGifs(() => arrayFiltrado);
+    setPage(1); //Para activar el usePagination
+    setLoading(false);
+    setShow(false);
+  }
 
   useEffect(() => {
+    console.log(search);
     if (!gifs[0]) setLoading(true); //Se ejecuta solo la primera vez
     //este hook o useEffect se vuelve a crear luego de que se setea el estado desde el usePagination y setea de nuevo el array a los gifs iniciales, y solo ocurre la primera vez
     petition(search).then((arrayGIFS) => {
@@ -52,15 +48,14 @@ export default function useRenderSearch({ setShow }) {
         }
 
         console.log(arrayGIFS);
-        setGifs(arrayGIFS);
-        setLoading(false);
-        setShow(false);
+
+        filterGifs(arrayGIFS);
+
+        // setGifs(arrayGIFS);
       } else {
         setLoading(false);
       }
     });
-
-    return () => setPage(0); //cuando se desmonte el componente...
   }, [search]); //eslint-disable-line
 
   return { loading };

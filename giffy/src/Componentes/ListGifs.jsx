@@ -9,11 +9,13 @@ import useRenderSearch from "../hooks/useRenderSearch";
 import usePagination from "../hooks/usePagination";
 import { Loading } from "./Loading";
 import { authContext } from "../Servicios/authContex";
+import { NoHayMasContext } from "../Servicios/NoHayMasContextProvider";
 
 export default function ListGifs() {
   const { gifs } = useContext(Context);
   const { favs, setFavs } = useContext(FavContext);
   const { sesion } = useContext(authContext);
+  const { noHayMas } = useContext(NoHayMasContext);
   const { search } = useParams();
   const [columnas, setColumns] = useState(1);
   const elRef = useRef();
@@ -145,7 +147,7 @@ export default function ListGifs() {
             ))}
 
             <div ref={elRef}></div>
-            {show ? <Loading /> : ""}
+            {!noHayMas && show ? <Loading /> : ""}
           </div>
         ))}
       </div>

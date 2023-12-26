@@ -33,7 +33,12 @@ export function InicioUser({ setFavs }) {
   return loading ? (
     <LoadingGif />
   ) : (
-    <ul>
+    <ul style={{ display: "flex", flexDirection: "column" }}>
+      <img //eslint-disable-line
+        className="profile-picture"
+        src={sesion && sesion.photo}
+        alt="Profile picture"
+      />
       <li>
         <span>{sesion && sesion.name}</span>
       </li>

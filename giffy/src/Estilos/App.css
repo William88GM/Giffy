@@ -18,6 +18,11 @@ body {
   background-color: #282c34;
 }
 
+.profile-picture {
+  align-self: center;
+  border-radius: 50%;
+}
+
 /* Para WebKit/Blink (Chrome, Safari) */
 input:-webkit-autofill {
   background-color: #282c34 !important;

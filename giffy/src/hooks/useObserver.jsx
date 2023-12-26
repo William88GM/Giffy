@@ -10,10 +10,6 @@ export default function useObserver({ elRef }) {
       const element = entries[0];
       if (element.isIntersecting) {
         setShow((prev) => true);
-        setTimeout(() => {
-          setShow((prev) => false);
-          return observer.disconnect();
-        }, 3500);
       } else {
         setShow((prev) => false);
       }
