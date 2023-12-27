@@ -333,7 +333,8 @@ body::-webkit-scrollbar-thumb {
 input,
 button {
   font-size: 15px;
-  padding: 8px;
+  /* padding: 8px; */
+  padding: 1.2vh;
   margin: 10px;
   border: 0px;
   border-radius: 5px;
@@ -580,6 +581,10 @@ li a {
   /*tablet/mobile*/
   #root > aside {
     display: none;
+  }
+  input,
+  button {
+    padding: 1.4vh;
   }
   .gif aside {
     display: block;
