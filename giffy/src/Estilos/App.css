@@ -214,7 +214,7 @@ form {
   height: 100%;
   direction: ltr;
   padding: 0 8px;
-  padding-bottom: 45px;
+  padding-bottom: 15px;
 
   align-items: center;
   justify-content: center;
@@ -583,6 +583,9 @@ li a {
   }
   .gif aside {
     display: block;
+  }
+  .LoginMenu {
+    padding-bottom: 60px;
   }
   .EmailNotification {
     display: flex;
