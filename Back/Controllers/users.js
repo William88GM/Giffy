@@ -91,6 +91,7 @@ usersRouter.post("/register", async (req, res) => {
             username: savedUser.username, //Email
             name: savedUser.name,
             emailConfirmed: savedUser.emailConfirmed,
+            photo: savedUser.photo,
           });
         }
       );
@@ -134,6 +135,7 @@ usersRouter.post("/login", async (req, res) => {
       username: userFound.username,
       name: userFound.name,
       emailConfirmed: userFound.emailConfirmed,
+      photo: userFound.photo,
     };
 
     jwt.sign(
@@ -155,6 +157,7 @@ usersRouter.post("/login", async (req, res) => {
           name: userFound.name,
           username: userFound.username,
           emailConfirmed: userFound.emailConfirmed,
+          photo: userFound.photo,
         });
       }
     );

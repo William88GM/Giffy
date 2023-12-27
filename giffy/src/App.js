@@ -46,7 +46,7 @@ function App() {
             "backdrop-filter 0.2s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in",
           position: "fixed",
           zIndex: 5,
-          top: "60px",
+          top: "50px",
           left: 0,
           right: 0,
           bottom: 0,

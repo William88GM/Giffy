@@ -46,7 +46,7 @@ export function InicioUser({ setFavs }) {
         alt="Profile picture"
       />
       <li>
-        <span>{sesion && sesion.name}</span>
+        <h3>{sesion && sesion.name}</h3>
       </li>
       <li>
         <button className="BasicFavButton" onClick={() => setFavs("Favs")}>
