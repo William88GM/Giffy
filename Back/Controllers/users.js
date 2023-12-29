@@ -42,6 +42,10 @@ usersRouter.post("/register", async (req, res) => {
 
     const userSearched = await userModel.find({ username }); //userSearched = [{username:"pepe"}]
 
+    console.log("front:");
+    console.log(username);
+    console.log("encontrado:");
+    console.log(userSearched[0].username);
     if (
       userSearched &&
       userSearched[0] &&
@@ -121,10 +125,13 @@ usersRouter.post("/login", async (req, res) => {
     await connectToMongo();
 
     const userFound = await userModel.findOne({ username });
-    const passwordIsCorrect =
-      userFound === null
-        ? false
-        : bcrypt.compare(password, userFound.passwordHash);
+    if (!userFound) {
+      return res.status(401).json({ error: "Invalid password or username" });
+    }
+    const passwordIsCorrect = await bcrypt.compare(
+      password,
+      userFound.passwordHash
+    );
 
     if (!passwordIsCorrect) {
       return res.status(401).json({ error: "Invalid password or username" });
