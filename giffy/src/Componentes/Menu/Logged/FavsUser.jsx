@@ -28,7 +28,6 @@ export function MenuFavoritos({ setInicio }) {
       .then((res) => {
         setFavs(res.data);
         setLoading(false);
-        console.log(res.data);
       });
   }, []); //eslint-disable-line
 
@@ -37,7 +36,6 @@ export function MenuFavoritos({ setInicio }) {
   }
 
   function handleDeleteGif(id) {
-    console.log("ID: " + id);
     const toastId = toast.loading("Eliminando...");
     axios
       .delete(`${baseURL}/api/favoritos/${id}`, {
@@ -52,7 +50,6 @@ export function MenuFavoritos({ setInicio }) {
             secondary: "#00ffff",
           },
         });
-        console.log(res.data);
       });
   }
 

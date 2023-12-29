@@ -28,7 +28,6 @@ export default function useRenderSearch({ setShow }) {
   }
 
   useEffect(() => {
-    console.log(search);
     if (!gifs[0]) setLoading(true); //Se ejecuta solo la primera vez
     //este hook o useEffect se vuelve a crear luego de que se setea el estado desde el usePagination y setea de nuevo el array a los gifs iniciales, y solo ocurre la primera vez
     petition(search).then((arrayGIFS) => {
@@ -39,15 +38,11 @@ export default function useRenderSearch({ setShow }) {
         no mantiene el array y empieza de nuevo*/
 
           if (gifs[0].id === arrayGIFS[0].id) {
-            console.log("Llegó al if");
             setLoading(false);
             setShow(false);
             return; //Si los gifs que llegan son iguales a los anteriores...
-            console.log("aca no deberia llegar");
           }
         }
-
-        console.log(arrayGIFS);
 
         filterGifs(arrayGIFS);
 

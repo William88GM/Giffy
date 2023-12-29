@@ -29,7 +29,6 @@ export function InicioUser({ setFavs }) {
       .then((res) => {
         setSesion(false);
         setLoading(false);
-        console.log(res);
       });
   }
 

@@ -46,7 +46,6 @@ export function LoginMenu({ setMenuToRegister }) {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
         setLoading(false);
         if (res.status === 200) {
           setSesion(res.data);
@@ -57,7 +56,6 @@ export function LoginMenu({ setMenuToRegister }) {
         setLoading(false);
         if (res.response.status === 401) {
           setErrors(true);
-          console.log(errors);
         }
       });
   }
@@ -85,17 +83,13 @@ export function LoginMenu({ setMenuToRegister }) {
 
     getRedirectResult(auth)
       .then((result) => {
-        console.log(result);
         if (result) {
-          console.log("llego aqui");
-          console.log(result);
           // This gives you a Google Access Token. You can use it to access Google APIs.
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
 
           // The signed-in user info.
           // const user = result.user;
-          // console.log("token:  " + token);
 
           const userInfo = getAdditionalUserInfo(result);
           const user = {
@@ -106,7 +100,6 @@ export function LoginMenu({ setMenuToRegister }) {
             id_google: userInfo.profile.id,
           };
 
-          console.log(user);
           axios
             .post(
               `${baseURL}/api/loginWithGoogle`,
@@ -114,8 +107,6 @@ export function LoginMenu({ setMenuToRegister }) {
               { withCredentials: true }
             )
             .then((res) => {
-              console.log(res.data);
-              console.log("el back responde");
               setLoading(false);
               setSesion(res.data);
               setErrors(false);
@@ -123,7 +114,6 @@ export function LoginMenu({ setMenuToRegister }) {
             .catch((res) => {
               setLoading(false);
               setErrors(true);
-              console.log(errors);
             });
 
           // IdP data available using getAdditionalUserInfo(result)
@@ -139,7 +129,6 @@ export function LoginMenu({ setMenuToRegister }) {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log(errorMessage);
       });
   }, []);
 

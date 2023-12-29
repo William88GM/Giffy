@@ -22,7 +22,6 @@ export function Recomendados() {
       .then((res) => {
         setList(res.data);
         setLoading(false);
-        console.log(res.data);
       });
   }, []); //eslint-disable-line
 

@@ -39,7 +39,6 @@ export default function ListGifs() {
       .then((res) => {
         if (favs) {
           setFavs((prevFavs) => prevFavs.concat(res.data));
-          console.log(res);
           toast.dismiss(toastFavId);
           toast.success("Guardado", {
             iconTheme: {

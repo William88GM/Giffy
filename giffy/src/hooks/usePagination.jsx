@@ -37,6 +37,5 @@ export default function usePagination({ show }) {
     if (!show) return;
     if (page === 0) return; //Que no se ejecute la primera vez
     callConcatAndFilterGifs();
-    console.log(page);
   }, [show]); //eslint-disable-line
 }

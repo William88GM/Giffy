@@ -21,12 +21,10 @@ export default function Aside({ setMenuIsActive, menu }) {
       .get(`${baseURL}/api/historial`, { withCredentials: true })
       .then((res) => {
         setListUser(res.data.history.reverse());
-        console.log(res.data);
       });
   }
 
   function deleteItemUser(word) {
-    console.log(word);
     axios
       .delete(`${baseURL}/api/historial`, {
         withCredentials: true,
@@ -34,7 +32,6 @@ export default function Aside({ setMenuIsActive, menu }) {
       })
       .then((res) => {
         setListUser(res.data.history);
-        console.log(res.data);
       });
   }
 

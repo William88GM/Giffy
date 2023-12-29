@@ -34,7 +34,6 @@ export default function Nav() {
         }
       )
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
           setSesion(res.data);
         }
@@ -56,7 +55,6 @@ export default function Nav() {
       )
       .then((res) => {
         setListUser(res.data.history);
-        console.log(res.data);
       }); //Guardar en estado global de historial
   }
 

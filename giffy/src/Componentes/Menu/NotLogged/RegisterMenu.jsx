@@ -34,7 +34,6 @@ export function RegisterMenu({ setMenuToLogin }) {
       .then((res) => {
         if (res.status === 201) {
           setSesion(res.data);
-          console.log(res.data);
         }
       })
       .catch((res) => {
@@ -44,7 +43,6 @@ export function RegisterMenu({ setMenuToLogin }) {
               message: "Ya existe una cuenta con ese mail",
             },
           ]);
-          console.log(errors);
         }
 
         if (res.response.status === 400) {
