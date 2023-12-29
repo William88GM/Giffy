@@ -20,10 +20,12 @@ export function useOfflineHistory() {
     }
   }
   function deleteItem(index) {
-    setListOffline((prev) => prev.filter((e, i) => !(i === index)));
+    console.log("Llego al delete");
+    console.log(index);
+    setListOffline((prev) => prev.filter((e, i) => !(e === index)));
     localStorage.setItem(
       "HS",
-      listOffline.filter((e, i) => !(i === index))
+      listOffline.filter((e, i) => !(e === index))
     );
   }
 
