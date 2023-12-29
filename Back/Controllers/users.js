@@ -42,10 +42,6 @@ usersRouter.post("/register", async (req, res) => {
 
     const userSearched = await userModel.find({ username }); //userSearched = [{username:"pepe"}]
 
-    console.log("front:");
-    console.log(username);
-    console.log("encontrado:");
-    console.log(userSearched[0].username);
     if (
       userSearched &&
       userSearched[0] &&
