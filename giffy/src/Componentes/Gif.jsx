@@ -22,7 +22,7 @@ export default function Gif() {
 
   if (!gif) {
     fetch(
-      `https://api.giphy.com/v1/gifs/${id}?api_key=W4lIh5l8sYAEb9cE9NnQACvmFei8NNwM`
+      `https://api.giphy.com/v1/gifs/${id}?api_key=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => res.json())
       .then((res) =>

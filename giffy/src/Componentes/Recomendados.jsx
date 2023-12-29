@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 export function Recomendados({ setMenuIsActive }) {
-  const key = "W4lIh5l8sYAEb9cE9NnQACvmFei8NNwM";
   const [list, setList] = useState([]);
-
   useEffect(() => {
     fetch(
-      `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=9&offset=9&rating=g&bundle=sticker_layering`
+      `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9&offset=9&rating=g&bundle=sticker_layering`
     )
       .then((res) => res.json())
       .then((res) => {

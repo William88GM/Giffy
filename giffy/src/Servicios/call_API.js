@@ -1,16 +1,16 @@
 export function petition(keyword, page = 0) {
   let API_URL;
-  const key = "W4lIh5l8sYAEb9cE9NnQACvmFei8NNwM";
 
   if (keyword) {
-    API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${keyword.replace(
-      /\s/g,
-      "+"
-    )}&limit=18&offset=${18 * page}&rating=g&lang=en&bundle=sticker_layering`;
-  } else {
-    API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=18&offset=${
+    API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${
+      process.env.REACT_APP_API_KEY
+    }&q=${keyword.replace(/\s/g, "+")}&limit=18&offset=${
       18 * page
-    }&rating=g&bundle=sticker_layering`;
+    }&rating=g&lang=en&bundle=sticker_layering`;
+  } else {
+    API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${
+      process.env.REACT_APP_API_KEY
+    }&limit=18&offset=${18 * page}&rating=g&bundle=sticker_layering`;
   }
 
   //La api a veces manda gifs repetidos
