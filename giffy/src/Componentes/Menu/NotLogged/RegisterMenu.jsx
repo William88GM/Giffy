@@ -3,11 +3,13 @@ import { useContext, useState } from "react";
 import { authContext } from "../../../Servicios/authContex";
 import toast from "react-hot-toast";
 import { EmailNotification } from "../../EmailNotification";
+import { LoadingGif } from "../LoadingGif";
 
 export function RegisterMenu({ setMenuToLogin }) {
   const { setSesion } = useContext(authContext);
   const [errors, setErrors] = useState([]);
   const [showPassword, setShowPassword] = useState(true);
+  const [loading, setLoading] = useState();
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
@@ -24,7 +26,7 @@ export function RegisterMenu({ setMenuToLogin }) {
       setErrors([{ message: "Los mails deben ser identicos" }]);
       return;
     }
-
+    setLoading(true);
     axios
       .post(
         `${baseURL}/api/users/register`,
@@ -32,11 +34,21 @@ export function RegisterMenu({ setMenuToLogin }) {
         { withCredentials: true }
       )
       .then((res) => {
+        setLoading(false);
         if (res.status === 201) {
           setSesion(res.data);
         }
       })
       .catch((res) => {
+        setLoading(false);
+
+        if (res.code === "ERR_NETWORK") {
+          setErrors([
+            {
+              message: "Sin conexion a internet",
+            },
+          ]);
+        }
         if (res.response.status === 409) {
           setErrors([
             {
@@ -60,7 +72,9 @@ export function RegisterMenu({ setMenuToLogin }) {
     e.preventDefault();
   }
 
-  return (
+  return loading ? (
+    <LoadingGif />
+  ) : (
     <div className="LoginMenu">
       <span>Bienvenido</span>
       <form onSubmit={handleSubmit}>
@@ -126,9 +140,7 @@ export function RegisterMenu({ setMenuToLogin }) {
         </label>
         <div className="errores">
           <ul>
-            {errors.map((e, i) => (
-              <li key={i}>{e.message}</li>
-            ))}
+            {errors && errors.map((e, i) => <li key={i}>{e.message}</li>)}
           </ul>
         </div>
 
