@@ -76,20 +76,21 @@ export function RegisterMenu({ setMenuToLogin }) {
     <LoadingGif />
   ) : (
     <div className="LoginMenu">
-      <span>Bienvenido</span>
+      <span>🥳 Bienvenido 👋</span>
       <form onSubmit={handleSubmit}>
+        <label>
+          Nombre
+          <input type="text" name="name" required />
+        </label>
         <label>
           Email
           <input type="email" name="username" required />
         </label>
         <label>
-          Email
+          Repetir Email
           <input type="email" name="username2" required />
         </label>
-        <label>
-          Nombre
-          <input type="text" name="name" required />
-        </label>
+
         <label className="labelPassword">
           Contraseña
           <input
