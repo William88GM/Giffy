@@ -57,7 +57,7 @@ export function LoadingGif() {
         src={gifs[random].original}
         alt="Loading..."
       />
-      <h3>Loading</h3>
+      <h3>Cargando</h3>
       <br />
       <small>Esperando a que el servidor (gratuito) despierte</small>
     </>
