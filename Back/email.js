@@ -7,7 +7,8 @@ export async function sendEmail({ to, token }) {
   try {
     const BACK_URL =
       process.env.side === "production"
-        ? `https://giffy-back.onrender.com/api/confirmEmail/${token}`
+        // ? `https://giffy-back.onrender.com/api/confirmEmail/${token}`
+        ? `https://giffybackindependiente-william88gms-projects.vercel.app/api/confirmEmail/${token}`
         : `http://localhost:3002/api/confirmEmail/${token}`;
 
     const htmlEmail = `<div style="background-color: #282c34; padding: 30px; text-align: center;">
