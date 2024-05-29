@@ -11,7 +11,8 @@ export function Recomendados() {
   const baseURL =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3002"
-      : "https://giffy-back.onrender.com";
+      // : "https://giffy-back.onrender.com";
+      :"https://giffybackindependiente-william88gms-projects.vercel.app";
 
   useEffect(() => {
     setLoading(true);
