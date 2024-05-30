@@ -51,15 +51,21 @@ export function LoadingGif() {
   const random = Math.floor(Math.random() * 10);
 
   return (
-    <>
+    <div style={{"direction":"ltr"}}>
       <img
         className="gif-favorito"
-        src={gifs[random].original}
+        src={gifs[random].original||gifs[0]}
         alt="Loading..."
       />
       <h3>Cargando</h3>
       <br />
-      <small>Esperando a que el servidor (gratuito) despierte</small>
-    </>
+      {/* <small>Esperando a que el servidor (gratuito) despierte</small> */}
+      {navigator.userAgent.toLowerCase().indexOf("firefox")>-1?<>
+      <small >Si usas Firefox, desabilita la proteccion de rastreo aumentada para poder usar los servicios de Google</small>
+  <br />
+      <small >(En el icono de escudo al lado de la URL)</small>
+      </>
+      :""}
+    </div>
   );
 }
