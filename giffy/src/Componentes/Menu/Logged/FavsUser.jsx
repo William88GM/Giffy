@@ -60,7 +60,8 @@ export function MenuFavoritos({ setInicio }) {
       <button className="MenuAtrasButton" onClick={() => setInicio("Inicio")}>
         Home
       </button> 
-      <div className="divFavs">
+ 
+      <div className={typeof window.Brave !== 'undefined' ? "divFavsBrave":"divFavs"}  >
 
         {loading ? (
           <LoadingGif />

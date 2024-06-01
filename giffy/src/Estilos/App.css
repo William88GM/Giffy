@@ -205,6 +205,11 @@ form {
   /* margin-top:-6dvh; */
   
   margin-top:-7vh;
+  padding-bottom: 12px;
+}
+.divFavsBrave{
+  margin-top:-7vh;
+  padding-bottom: 30px;
 }
 .BasicFavButton {
   /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
@@ -686,6 +691,10 @@ li a {
   /*Hight res*/
   .divFavs{
     margin-top:-10dvh;
+  }
+  .divFavsBrave{
+    margin-top:-7vh;
+    padding-bottom: 30px;
   }
   .App-content {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 35rem), 1fr));
