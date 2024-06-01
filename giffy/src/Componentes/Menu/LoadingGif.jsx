@@ -54,7 +54,7 @@ export function LoadingGif() {
     <div style={{"direction":"ltr"}}>
       <img
         className="gif-favorito"
-        src={gifs[random].original||gifs[0]}
+        src={gifs[random].original||gifs[0].original}
         alt="Loading..."
       />
       <h3>Cargando</h3>
