@@ -48,10 +48,10 @@ export function InicioUser({ setFavs }) {
         <h3>{sesion && sesion.name}</h3>
       </li>
       <li>
+        <button onClick={handleLogOut}>Cerrar sesión</button>
         <button className="BasicFavButton" onClick={() => setFavs("Favs")}>
           Favoritos
         </button>
-        <button onClick={handleLogOut}>Cerrar sesión</button>
       </li>
 
       <Aside menu={true} />

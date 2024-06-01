@@ -188,7 +188,7 @@ form {
   /* position: absolute; */
   position: sticky;
   right: 500px;
-  top: 5px;
+  top: 12px;
   z-index: 10;
 }
 .Menu aside {
@@ -201,7 +201,11 @@ form {
   border-top: 1px solid #0e8494;
   border-right: none;
 }
-
+.divFavs{
+  /* margin-top:-6dvh; */
+  
+  margin-top:-7vh;
+}
 .BasicFavButton {
   /* font-size: clamp(0.4rem, 0.6rem, 2rem); */
   font-size: 15px;
@@ -281,8 +285,9 @@ form {
   top: 9vh;
   height: 92vh;
   width: 20vw;
-  padding: 8px 8px 10px 18px;
+  padding: 8px 8px 10px 8px;
 
+  overflow: auto;
   direction: ltr;
 
   transition: right 0.3s ease-in-out;
@@ -679,6 +684,9 @@ li a {
 
 @media screen and (min-width: 2400px) {
   /*Hight res*/
+  .divFavs{
+    margin-top:-10dvh;
+  }
   .App-content {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 35rem), 1fr));
     grid-template-rows: 110px auto 1fr 400px;

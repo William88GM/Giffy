@@ -12,10 +12,10 @@ export function Recientes({ setMenuIsActive, list, deleteItem }) {
       <ul>
         {list.map((el, i) => (
           <li key={i}>
-            <button onClick={() => deleteItem(el)}>X</button>
             <Link relative="path" onClick={handleClick} to={"/" + el}>
               {el}
             </Link>
+            <button onClick={() => deleteItem(el)}>X</button>
           </li>
         ))}
       </ul>
