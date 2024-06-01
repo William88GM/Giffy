@@ -55,9 +55,10 @@ export function MenuFavoritos({ setInicio }) {
 
   return (
     <div className="Menufav">
+
       <button className="MenuAtrasButton" onClick={() => setInicio("Inicio")}>
         Home
-      </button>
+      </button> 
       {loading ? (
         <LoadingGif />
       ) : favs[0] ? (

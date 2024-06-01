@@ -47,14 +47,22 @@ export function LoadingGif() {
         "https://media0.giphy.com/media/Y5hFJbdSUZolByAhyG/giphy.webp?cid=c2c5bb03gobgsrv6f0dwhqu35b43ty9kf001lno0aiz4m7ut&ep=v1_gifs_search&rid=giphy.webp&ct=g",
       id_giffy: "z9c1ZCvaH5WBq",
     },
+    {
+      original:"https://media3.giphy.com/media/9MImS9neQuoRa3D19h/giphy.webp?cid=c2c5bb03d90xcum1t2mdmujkiz58d8jytgj5q4nhu9abkva7&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      id_giffy:"9MImS9neQuoRa3D19h"
+    },
+    {
+      original:"https://media2.giphy.com/media/PkoBC2GlkLJ5yFIWtf/giphy.webp?cid=c2c5bb03d90xcum1t2mdmujkiz58d8jytgj5q4nhu9abkva7&ep=v1_gifs_search&rid=giphy.webp&ct=g",
+      id_giffy:"PkoBC2GlkLJ5yFIWtf"
+    }
   ];
-  const random = Math.floor(Math.random() * 10);
+  const random = Math.floor(Math.random() *  gifs.length);
 
   return (
-    <div style={{"direction":"ltr"}}>
+    <div >
       <img
         className="gif-favorito"
-        src={gifs[random].original||gifs[0].original}
+        src={gifs[random].original}
         alt="Loading..."
       />
       <h3>Cargando</h3>

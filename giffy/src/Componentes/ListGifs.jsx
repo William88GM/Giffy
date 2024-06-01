@@ -94,7 +94,7 @@ export default function ListGifs() {
     <h5>Cargando...</h5>
   ) : gifs[0] ? (
     <>
-      <div style={{ display: "flex", minWidth: "100%", padding: "10px" }}>
+      <div style={{ display: "flex", minWidth: "100%", padding: "10px"}}>
         {masonry.map((columna, index) => (
           <div
             key={index}

@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo_GF.svg";
 import { useOfflineHistory } from "../hooks/useOfflineHistory";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Menu from "./Menu/Menu";
 import { menuContext } from "../Servicios/MenuContext";
@@ -74,10 +74,14 @@ export default function Nav() {
   function handleMenu() {
     setMenuIsActive(!menuIsActive);
   }
+
+  
   function handleReload() {
     window.scroll(0, 0);
     navigate("/", { replace: true });
   }
+//Moraleja: El scroll en el body es malo ❌
+
   return (
     <nav>
       <EmailNotification />

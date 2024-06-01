@@ -10,12 +10,13 @@
 #root {
   display: grid;
   grid-template-columns: 20vw 1fr;
-  grid-template-rows: 9vh auto 1fr;
+  grid-template-rows: 9vh 91vh;
   /*Footer 
     grid-template-rows: 60px auto 1fr 400px; */
 }
 body {
   background-color: #282c34;
+  overflow: hidden;
 }
 
 .profile-picture {
@@ -184,11 +185,10 @@ form {
   position: relative;
 }
 .MenuAtrasButton {
-  position: absolute;
-  left: 5px;
+  /* position: absolute; */
+  position: sticky;
+  right: 500px;
   top: 5px;
-  padding: 8px;
-  margin-right: 16px;
   z-index: 10;
 }
 .Menu aside {
@@ -267,7 +267,7 @@ form {
   padding: 8px 8px 10px 8px;
 
   overflow: auto;
-  direction: rtl;
+  direction: ltr;
 
   transition: right 0.3s ease-in-out;
 }
@@ -283,7 +283,7 @@ form {
   width: 20vw;
   padding: 8px 8px 10px 18px;
 
-  direction: rtl;
+  direction: ltr;
 
   transition: right 0.3s ease-in-out;
 }
@@ -416,7 +416,8 @@ footer {
 main {
   grid-column: 2/3;
   grid-row: 2/4;
-  overflow: hidden;
+  max-height: 91vh;
+  overflow: auto;
   text-overflow: ellipsis;
 }
 article {
@@ -669,6 +670,13 @@ li a {
   }
 }
 
+@media screen and (min-width: 1920px) {
+  .absolute-button {
+    right: 95px;
+  }
+}
+
+
 @media screen and (min-width: 2400px) {
   /*Hight res*/
   .App-content {
@@ -717,7 +725,7 @@ li a {
     font-size: 50px;
   }
   .absolute-button {
-    right: 182px;
+    right: 175px;
   }
 
   .Menu,
